@@ -16,7 +16,12 @@ group :test do
   gem 'rspec-rails'
 end
 
+gem 'quiet_assets'
+
 gem 'devise'
+
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
