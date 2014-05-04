@@ -1,6 +1,6 @@
 == README
 
-Hi5 Exchange: A Pier to Pier Recycling App
+Hi5 Exchange: A Peer to Peer Recycling App
 
 Under construction.
 
