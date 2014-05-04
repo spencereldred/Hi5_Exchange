@@ -16,6 +16,8 @@ group :test do
   gem 'rspec-rails'
 end
 
+gem 'devise'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 # gem 'bootstrap-sass', '~> 3.0.3.0'
