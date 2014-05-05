@@ -17,10 +17,10 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+# limits the messages to the rails server - no asset load messages
 gem 'quiet_assets'
 
 gem 'devise'
-
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
