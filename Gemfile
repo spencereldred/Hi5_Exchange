@@ -10,6 +10,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-rails'
+  gem 'better_errors'
 end
 
 group :test do  
