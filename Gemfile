@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -14,8 +14,13 @@ group :development, :test do
 end
 
 group :test do  
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem "rspec-rails", "3.0.1"
+  gem 'rspec-collection_matchers', '~> 1.0.0'
+  gem "capybara", "2.3.0"
+  gem 'timecop'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 # limits the messages to the rails server - no asset load messages
