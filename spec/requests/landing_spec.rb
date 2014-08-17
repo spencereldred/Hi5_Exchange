@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe 'Requests' do 
-  describe 'Landing Page' do 
+  describe 'Landing Page' do
 
     before(:each) do  
-      get "/"
+      get '/'
     end  
     
     it 'should be a valid response' do
