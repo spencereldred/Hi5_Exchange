@@ -3,14 +3,13 @@ require 'capybara/rails'
 feature 'Session' do
 
   before (:all) do
-    signup('user@example.com', 'password')
   end
 
   after do
-
   end
 
   scenario "sign in or login goes to home page" do
+    signup('user@example.com', 'password')
     expect(page).to have_content("Landing Page")
     expect(page).to have_content("Welcome! You have signed up successfully.")
     click_link "Logout"
@@ -20,8 +19,8 @@ feature 'Session' do
     expect(page).to have_content("Landing Page")
     expect(page).to have_content("Logged in as user@example.com.")
     expect(page).to have_content("Logged in successfully.")
+    delete_user('user@example.com')
   end
-
 
   def signup(email, password)
     visit new_user_session_path
@@ -39,6 +38,8 @@ feature 'Session' do
     click_button "Login"
   end
 
-
+  def delete_user(email)
+    User.find_by(email: email).delete
+  end
 
 end
