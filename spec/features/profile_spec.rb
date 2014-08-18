@@ -2,14 +2,15 @@ require 'capybara/rails'
 
 feature 'Session' do
 
-  before (:all) do
+  before (:each) do
+    signup('user@example.com', 'password')
   end
 
-  after do
+  after (:each) do
+    delete_user('user@example.com')
   end
 
   scenario "sign in or login goes to home page" do
-    signup('user@example.com', 'password')
     expect(page).to have_content("Landing Page")
     expect(page).to have_content("Welcome! You have signed up successfully.")
     click_link "Logout"
@@ -19,7 +20,14 @@ feature 'Session' do
     expect(page).to have_content("Landing Page")
     expect(page).to have_content("Logged in as user@example.com.")
     expect(page).to have_content("Logged in successfully.")
-    delete_user('user@example.com')
+  end
+
+  scenario "user cannot sign up with an email already in use" do
+    expect(page).to have_content("Landing Page")
+    expect(page).to have_content("Welcome! You have signed up successfully.")
+    click_link "Logout"
+    signup('user@example.com', 'password')
+    expect(page).to have_content("1 error prohibited this user from being saved: Email has already been taken")
   end
 
   def signup(email, password)
