@@ -1,7 +1,6 @@
 class CreateProfile < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
-      t.integer :user_id
       t.string :function
       t.string :first_name
       t.string :last_name
@@ -13,6 +12,8 @@ class CreateProfile < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.integer :radius, default: 8
+
+      t.references :user
     end
   end
 end

@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20140818140715) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: true do |t|
-    t.integer "user_id"
     t.string  "function"
     t.string  "first_name"
     t.string  "last_name"
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140818140715) do
     t.float   "latitude"
     t.float   "longitude"
     t.integer "radius",     default: 8
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
