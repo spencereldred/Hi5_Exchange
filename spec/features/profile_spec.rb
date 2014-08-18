@@ -1,29 +1,42 @@
 require 'capybara/rails'
 
-feature 'Task lists' do
+feature 'Session' do
 
-  before do
-    visit new_user_session_path
-    click_link "Sign up"
-    expect(page).to have_content("Password confirmation")
-    fill_in "Email", with: 'user@example.com'
-    fill_in "Password", with: 'password'
-    fill_in "Password confirmation", with: 'password'
-    click_button "Sign up"
-
-
+  before (:all) do
+    signup('user@example.com', 'password')
   end
 
   after do
 
   end
 
-  scenario "login goes to home page" do
+  scenario "sign in or login goes to home page" do
     expect(page).to have_content("Landing Page")
     expect(page).to have_content("Welcome! You have signed up successfully.")
+    click_link "Logout"
+    expect(page).to have_content("Login")
+    expect(page).to have_content("You need to login or sign up before continuing.")
+    login('user@example.com','password')
+    expect(page).to have_content("Landing Page")
+    expect(page).to have_content("Logged in as user@example.com.")
+    expect(page).to have_content("Logged in successfully.")
+  end
 
 
+  def signup(email, password)
+    visit new_user_session_path
+    click_link "Sign up"
+    expect(page).to have_content("Password confirmation")
+    fill_in "Email", with: email
+    fill_in "Password", with: password
+    fill_in "Password confirmation", with: password
+    click_button "Sign up"
+  end
 
+  def login(email, password)
+    fill_in "Email", with: email
+    fill_in "Password", with: password
+    click_button "Login"
   end
 
 
