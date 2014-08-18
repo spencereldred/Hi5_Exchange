@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :profile
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
       end
     else
       super
-    end    
+    end
   end
 
   def password_required?

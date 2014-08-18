@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe 'Requests' do 
+describe 'Requests' do
   describe 'Landing Page' do
 
-    before(:each) do  
+    before(:each) do
       get '/'
-    end  
-    
-    it 'should be a valid response' do
-      expect(response.status).to eq(200) 
     end
 
-    it 'should render template index' do 
+    xit 'should be a valid response' do
+      expect(response.status).to eq(200)
+    end
+
+    xit 'should render template index' do
       expect(response).to render_template(:index)
     end
 
-    it 'should include "Landing" on the page' do 
+    xit 'should include "Landing" on the page' do
       expect(response.body).to include("Landing")
     end
 
