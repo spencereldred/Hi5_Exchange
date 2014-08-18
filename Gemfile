@@ -6,14 +6,14 @@ gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-group :development, :test do   
+group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-rails'
   gem 'better_errors'
 end
 
-group :test do  
+group :test do
   gem 'factory_girl_rails'
   gem "rspec-rails", "3.0.1"
   gem 'rspec-collection_matchers', '~> 1.0.0'
@@ -60,6 +60,8 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'geocoder'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
