@@ -7,4 +7,12 @@
  <% @users.each do |user| %>
   <%= user.email %><br>
  <% end  %>
+ <h3>Current User</h3>
+ <%= current_user.email %>
+ <% %>
+ <br>
+ <% if current_user.profile.blank? %>
+    we need a profile
+ <% end %>
+
 </div>
