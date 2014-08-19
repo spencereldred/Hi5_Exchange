@@ -13,5 +13,12 @@ class LandingController < ApplicationController
       puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a redeemer!"
     end
 
+    respond_to do |format|
+      format.json
+      format.html          # /app/views/landing/index.html.erb
+      format.html.phone    # /app/views/landing/index.html+phone.erb
+      format.html.tablet   # /app/views/landing/index.html+tablet.erb
+    end
+
   end
 end
