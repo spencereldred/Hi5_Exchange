@@ -1,4 +1,6 @@
 <h1>Enter Profile Information</h1>
 
-<%=render 'form' %>
+<%= render :partial => 'form',
+           :locals => { :profile => @profile, :message => "Create Profile"}
+  %>
 

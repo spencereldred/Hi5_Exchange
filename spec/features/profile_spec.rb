@@ -40,6 +40,12 @@ feature 'Session' do
     click_link "Edit Profile"
     expect(page).to have_content("Edit Profile Page")
     expect(page).to have_content("First name")
+    fill_in "First name", with: "Minnie"
+
+    click_on "Update Profile"
+    expect(page).to have_content("Profile Show Page")
+    expect(page).to have_content("First name: Minnie")
+
 
 
 

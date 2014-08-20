@@ -25,8 +25,11 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
-  # def update
-  # end
+  def update
+    profile = Profile.find(params[:id])
+    profile.update_attributes(profile_params)
+    redirect_to profile_path(params[:id])
+  end
 
   private
 

@@ -1,3 +1,5 @@
 <h1>Edit Profile Page</h1>
 
-<%=render 'form' %>
+<%= render :partial => 'form',
+           :locals => { :profile => @profile, :message => "Update Profile"}
+  %>
