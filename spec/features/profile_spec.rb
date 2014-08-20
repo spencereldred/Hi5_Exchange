@@ -25,7 +25,9 @@ feature 'Session' do
     fill_in "Zipcode", with: "96768"
     fill_in "Phone", with: "8082803758"
     fill_in "Function", with: "Recycler"
+
     click_on "Create Profile"
+    expect(page).to have_content("Profile was created successfully!")
     expect(page).to have_content("Profile Show Page")
     expect(page).to have_content("First name: Mickey")
     expect(page).to have_content("Last name: Mouse")
@@ -43,22 +45,49 @@ feature 'Session' do
     fill_in "First name", with: "Minnie"
 
     click_on "Update Profile"
+    expect(page).to have_content("Profile was successfully updated!")
     expect(page).to have_content("Profile Show Page")
     expect(page).to have_content("First name: Minnie")
-
     expect(page).to have_content("Home")
+
     click_link "Home"
     expect(page).to have_content("Landing#index")
     expect(page).to have_content("Edit Profile")
+
     click_link "Edit Profile"
     expect(page).to have_content("Edit Profile Page")
     expect(page).to have_content("First name")
     expect(page).to have_content("Home")
+
     click_link "Home"
     expect(page).to have_content("Landing#index")
 
+    click_link "Edit Profile"
+    expect(page).to have_content("Edit Profile Page")
+    expect(page).to have_content("First name")
+    fill_in "First name", with: ""
+
+    click_on "Update Profile"
+    expect(page).to have_content("Profile could not be updated")
+    expect(page).to have_content("Edit Profile Page")
 
 
+
+  end
+
+  scenario "user cannot create incomplete profile" do
+    expect(page).to have_content("Landing#index")
+    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content("Create Profile")
+
+    click_link "Create Profile"
+    expect(page).to have_content("Enter Profile Information")
+    fill_in "First name", with: "Mickey"
+    fill_in "Last name", with: "Mouse"
+
+    click_on "Create Profile"
+    expect(page).to have_content("Your profile could not be created.")
+    expect(page).to have_content("Enter Profile Information")
   end
 
 end

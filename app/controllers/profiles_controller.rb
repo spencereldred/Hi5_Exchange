@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def show
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(params_id)
   end
 
   def new
@@ -12,36 +12,42 @@ class ProfilesController < ApplicationController
     profile = Profile.new(profile_params)
     profile.user_id = current_user.id
     if profile.save
-      flash[:notice] = "Profile was created successfully!"
+      flash.notice = "Profile was created successfully!"
       redirect_to profile_path(profile.id)
     else
-      flash[:notice] = "Your profile could not be created."
-      render :new
+      flash.notice = "Your profile could not be created."
+      redirect_to new_profile_path
     end
     # ultimately redirect to "function" page
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(params_id)
   end
 
   def update
-    profile = Profile.find(params[:id])
-    profile.update_attributes(profile_params)
-    redirect_to profile_path(params[:id])
+    profile = Profile.find(params_id)
+    if profile.update_attributes(profile_params)
+      flash.notice = "Profile was successfully updated!"
+      redirect_to profile_path(params_id)
+    else
+      flash.notice = "Profile could not be updated."
+      redirect_to edit_profile_path(params_id)
+    end
+
   end
 
   private
 
+    def params_id
+      params[:id]
+    end
+
     def profile_params
-      params.require(:profile).permit(:first_name,
-                                      :last_name,
-                                      :address,
-                                      :city,
-                                      :state,
-                                      :zipcode,
-                                      :phone,
-                                      :function)
+      params.require(:profile).permit(:first_name, :last_name,
+                                      :address,    :city,
+                                      :state,      :zipcode,
+                                      :phone,      :function)
     end
 
 end
