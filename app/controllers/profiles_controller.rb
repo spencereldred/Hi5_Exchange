@@ -21,8 +21,9 @@ class ProfilesController < ApplicationController
     # ultimately redirect to "function" page
   end
 
-  # def edit
-  # end
+  def edit
+
+  end
 
   # def update
   # end

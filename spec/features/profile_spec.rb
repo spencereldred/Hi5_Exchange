@@ -10,7 +10,7 @@ feature 'Session' do
     delete_user('user@example.com')
   end
 
-  scenario "user can create a profile" do
+  scenario "user can create and edit a profile" do
     expect(page).to have_content("Landing#index")
     expect(page).to have_content("Welcome! You have signed up successfully.")
     expect(page).to have_content("Create Profile")
@@ -27,6 +27,19 @@ feature 'Session' do
     fill_in "Function", with: "Recycler"
     click_on "Create Profile"
     expect(page).to have_content("Profile Show Page")
+    expect(page).to have_content("First name: Mickey")
+    expect(page).to have_content("Last name: Mouse")
+    expect(page).to have_content("Address: 2741 Leolani Place")
+    expect(page).to have_content("City: Makawao")
+    expect(page).to have_content("State: HI")
+    expect(page).to have_content("Zipcode: 96768")
+    expect(page).to have_content("Phone: 8082803758")
+    expect(page).to have_content("Function: Recycler")
+    expect(page).to have_content("Edit Profile")
+
+    click_link "Edit Profile"
+    expect(page).to have_content("Edit Profile Page")
+
 
 
 
