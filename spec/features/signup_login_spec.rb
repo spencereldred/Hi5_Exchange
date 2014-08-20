@@ -11,19 +11,20 @@ feature 'Session' do
   end
 
   scenario "sign in or login goes to home page" do
-    expect(page).to have_content("Landing Page")
+    expect(page).to have_content("Landing#index")
     expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content("Create Profile")
     click_link "Logout"
     expect(page).to have_content("Login")
     expect(page).to have_content("You need to login or sign up before continuing.")
     login('user@example.com','password')
-    expect(page).to have_content("Landing Page")
+    expect(page).to have_content("Landing#index")
     expect(page).to have_content("Logged in as user@example.com.")
     expect(page).to have_content("Logged in successfully.")
   end
 
   scenario "user cannot sign up with an email already in use" do
-    expect(page).to have_content("Landing Page")
+    expect(page).to have_content("Landing#index")
     expect(page).to have_content("Welcome! You have signed up successfully.")
     click_link "Logout"
     signup('user@example.com', 'password')

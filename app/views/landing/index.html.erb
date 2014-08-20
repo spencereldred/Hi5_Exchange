@@ -3,16 +3,8 @@
   <p>This is from desktop page view.</p>
 </div>
 <div class="row">
-  <h3>List of users</h3>
- <% @users.each do |user| %>
-  <%= user.email %><br>
- <% end  %>
- <h3>Current User</h3>
- <%= current_user.email %>
- <% %>
- <br>
- <% if current_user.profile.blank? %>
-    we need a profile
- <% end %>
-
+<% if current_user.profile.blank? %>
+  <h3>New users need to create a profile.</h3>
+  <%= link_to "Create Profile", new_profile_path %>
+<% end %>
 </div>

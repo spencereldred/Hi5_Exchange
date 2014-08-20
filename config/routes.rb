@@ -9,6 +9,8 @@ Hi5::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'landing#index'
 
+  resources :profiles, except: [:index, :destroy]
+
 # spencers-mbp-2:Hi5 Spencer$ rake routes
 #                   Prefix Verb     URI Pattern                            Controller#Action
 #         new_user_session GET      /users/login(.:format)                 devise/sessions#new
@@ -30,11 +32,15 @@ Hi5::Application.routes.draw do
 #                          DELETE   /users(.:format)                       devise/registrations#destroy
 #            landing_index GET      /landing/index(.:format)               landing#index
 #                     root GET      /                                      landing#index
+#             profiles     POST     /profiles(.:format)                    profiles#create
+#              new_profile GET      /profiles/new(.:format)                profiles#new
+#             edit_profile GET      /profiles/:id/edit(.:format)           profiles#edit                   profile GET      /profiles/:id(.:format)                profiles#show
+#                          PATCH    /profiles/:id(.:format)                profiles#update
+#                          PUT      /profiles/:id(.:format)                profiles#update
 
 
 
 
-  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

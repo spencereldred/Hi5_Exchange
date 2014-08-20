@@ -1,10 +1,11 @@
 class LandingController < ApplicationController
   def index
     @users = User.all
+    # binding.pry
     if current_user.profile.blank?
       # go to profile new page
       # depending on what function - go to single page app of that function
-      puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ we need a profile!"
+      # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ we need a profile!"
     elsif current_user.profile.function == "recycler"
       # go to recycler single page app
       puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a recycler!"
