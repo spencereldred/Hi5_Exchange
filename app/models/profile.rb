@@ -13,7 +13,7 @@ class Profile < ActiveRecord::Base
 
   geocoded_by :full_address
   # need to comment out :geocode to not go over limit during testing
-  # after_validation :geocode
+  after_validation :geocode
 
   def full_address
      "#{self.address}, #{self.city} #{self.state} #{self.zipcode}"

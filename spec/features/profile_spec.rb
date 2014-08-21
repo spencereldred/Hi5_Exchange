@@ -1,6 +1,6 @@
 require 'capybara/rails'
 
-feature 'Session' do
+feature 'Profile' do
 
   before (:each) do
     signup('user@example.com', 'password')
@@ -11,12 +11,8 @@ feature 'Session' do
   end
 
   scenario "user can create and edit a profile" do
-    expect(page).to have_content("Landing#index")
-    expect(page).to have_content("Welcome! You have signed up successfully.")
-    expect(page).to have_content("Create Profile")
-
-    click_link "Create Profile"
     expect(page).to have_content("Enter Profile Information")
+    expect(page).to have_content("Welcome! You have signed up successfully.")
     fill_in "First name", with: "Mickey"
     fill_in "Last name", with: "Mouse"
     fill_in "Address", with: "2741 Leolani Place"
@@ -71,17 +67,11 @@ feature 'Session' do
     expect(page).to have_content("Profile could not be updated")
     expect(page).to have_content("Edit Profile Page")
 
-
-
   end
 
   scenario "user cannot create incomplete profile" do
-    expect(page).to have_content("Landing#index")
-    expect(page).to have_content("Welcome! You have signed up successfully.")
-    expect(page).to have_content("Create Profile")
-
-    click_link "Create Profile"
     expect(page).to have_content("Enter Profile Information")
+    expect(page).to have_content("Welcome! You have signed up successfully.")
     fill_in "First name", with: "Mickey"
     fill_in "Last name", with: "Mouse"
 

@@ -3,10 +3,5 @@
   <p>This is from desktop page view.</p>
 </div>
 <div class="row">
-<% if current_user.profile.blank? %>
-  <h3>New users need to create a profile.</h3>
-  <%= link_to "Create Profile", new_profile_path %>
-  <% else %>
   <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) %>
-<% end %>
 </div>

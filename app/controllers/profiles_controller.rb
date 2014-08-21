@@ -13,12 +13,13 @@ class ProfilesController < ApplicationController
     profile.user_id = current_user.id
     if profile.save
       flash.notice = "Profile was created successfully!"
+      # redirecting to show - ultimately redirect to "function" page
       redirect_to profile_path(profile.id)
     else
       flash.notice = "Your profile could not be created."
       redirect_to new_profile_path
     end
-    # ultimately redirect to "function" page
+
   end
 
   def edit
@@ -29,6 +30,7 @@ class ProfilesController < ApplicationController
     profile = Profile.find(params_id)
     if profile.update_attributes(profile_params)
       flash.notice = "Profile was successfully updated!"
+      # redirecting to show - ultimately redirect to "function" page
       redirect_to profile_path(params_id)
     else
       flash.notice = "Profile could not be updated."
