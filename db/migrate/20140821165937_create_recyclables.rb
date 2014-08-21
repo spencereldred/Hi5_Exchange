@@ -1,6 +1,6 @@
-class CreateTransaction < ActiveRecord::Migration
+class CreateRecyclables < ActiveRecord::Migration
   def change
-    create_table :transactions do |t|
+    create_table :recyclables do |t|
       t.string :trans_type
       t.integer :plastic
       t.integer :cans
@@ -16,6 +16,8 @@ class CreateTransaction < ActiveRecord::Migration
       t.boolean :selected
       t.boolean :completed
       t.integer :rating
+
+      t.timestamps
     end
   end
 end

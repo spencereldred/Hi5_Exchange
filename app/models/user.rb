@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
+  has_many :user_recyclables
+  has_many :recyclables, :through => :user_recyclables
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable

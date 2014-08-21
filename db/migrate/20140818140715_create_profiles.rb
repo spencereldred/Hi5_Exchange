@@ -1,4 +1,4 @@
-class CreateProfile < ActiveRecord::Migration
+class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.string :function
@@ -14,6 +14,7 @@ class CreateProfile < ActiveRecord::Migration
       t.integer :radius, default: 8
 
       t.references :user
+      t.timestamps
     end
   end
 end

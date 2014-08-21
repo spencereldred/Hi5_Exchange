@@ -31,27 +31,31 @@ ActiveRecord::Schema.define(version: 20140821171431) do
     t.integer "user_id"
   end
 
-  create_table "transactions", force: true do |t|
-    t.string  "trans_type"
-    t.integer "plastic"
-    t.integer "cans"
-    t.integer "glass"
-    t.integer "other"
-    t.boolean "non_hi5_plastic"
-    t.boolean "non_hi5_cans"
-    t.boolean "non_hi5_glass"
-    t.boolean "cardboard"
-    t.boolean "magazines"
-    t.boolean "newspaper"
-    t.boolean "paper"
-    t.boolean "selected"
-    t.boolean "completed"
-    t.integer "rating"
+  create_table "recyclables", force: true do |t|
+    t.string   "trans_type"
+    t.integer  "plastic"
+    t.integer  "cans"
+    t.integer  "glass"
+    t.integer  "other"
+    t.boolean  "non_hi5_plastic"
+    t.boolean  "non_hi5_cans"
+    t.boolean  "non_hi5_glass"
+    t.boolean  "cardboard"
+    t.boolean  "magazines"
+    t.boolean  "newspaper"
+    t.boolean  "paper"
+    t.boolean  "selected"
+    t.boolean  "completed"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "user_transactions", force: true do |t|
-    t.integer "user_id"
-    t.integer "transaction_id"
+  create_table "user_recyclables", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "recyclable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
