@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818140715) do
+ActiveRecord::Schema.define(version: 20140821165937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 20140818140715) do
     t.float   "longitude"
     t.integer "radius",     default: 8
     t.integer "user_id"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.string  "trans_type"
+    t.integer "plastic"
+    t.integer "cans"
+    t.integer "glass"
+    t.integer "other"
+    t.boolean "non_hi5_plastic"
+    t.boolean "non_hi5_cans"
+    t.boolean "non_hi5_glass"
+    t.boolean "cardboard"
+    t.boolean "magazines"
+    t.boolean "newspaper"
+    t.boolean "paper"
+    t.boolean "selected"
+    t.boolean "completed"
+    t.integer "rating"
   end
 
   create_table "users", force: true do |t|
