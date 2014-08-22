@@ -17,18 +17,20 @@ ActiveRecord::Schema.define(version: 20140821171431) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: true do |t|
-    t.string  "function"
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "address"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zipcode"
-    t.string  "phone"
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "radius",     default: 8
-    t.integer "user_id"
+    t.string   "function"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "radius",     default: 8
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recyclables", force: true do |t|
