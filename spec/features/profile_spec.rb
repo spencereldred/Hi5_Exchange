@@ -47,6 +47,7 @@ feature 'Profile' do
     expect(page).to have_content("Home")
 
     click_link "Home"
+    # redirect to function page
     expect(page).to have_content("Landing#index")
     expect(page).to have_content("Edit Profile")
 
