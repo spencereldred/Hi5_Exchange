@@ -20,7 +20,8 @@ feature 'Profile' do
     fill_in "State", with: "HI"
     fill_in "Zipcode", with: "96768"
     fill_in "Phone", with: "8082803758"
-    fill_in "Function", with: "Recycler"
+    select "Recycler", from: "profile[function]"
+    # fill_in "Function", with: "Recycler"
 
     click_on "Create Profile"
     expect(page).to have_content("Profile was created successfully!")
