@@ -4,13 +4,13 @@ class LandingController < ApplicationController
     # binding.pry
     if current_user.profile.blank?
       # go to profile new page
-      # puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ we need a profile!"
       redirect_to new_profile_path
     elsif current_user.profile.function == "recycler"
-      # go to recycler single page app
-      puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a recycler!"
+      # go to recycler controller index
+      recyclers_path
     elsif current_user.profile.function == "redeemer"
-      # go to redeemer single page app
+      # go to redeemer controller index
+      # redeemers_path
       puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a redeemer!"
     end
 

@@ -34,63 +34,31 @@ Hi5::Application.routes.draw do
 #                          PUT      /users(.:format)                       devise/registrations#update
 #                          DELETE   /users(.:format)                       devise/registrations#destroy
 #            landing_index GET      /landing/index(.:format)               landing#index
+
 #                     root GET      /                                      landing#index
+# Profiles:
 #             profiles     POST     /profiles(.:format)                    profiles#create
 #              new_profile GET      /profiles/new(.:format)                profiles#new
 #             edit_profile GET      /profiles/:id/edit(.:format)           profiles#edit                   profile GET      /profiles/:id(.:format)                profiles#show
 #                          PATCH    /profiles/:id(.:format)                profiles#update
 #                          PUT      /profiles/:id(.:format)                profiles#update
+# Recyclers:
+#                recyclers GET      /recyclers(.:format)                   recyclers#index
+#                          POST     /recyclers(.:format)                   recyclers#create
+#             new_recycler GET      /recyclers/new(.:format)               recyclers#new
+#            edit_recycler GET      /recyclers/:id/edit(.:format)          recyclers#edit
+#                 recycler GET      /recyclers/:id(.:format)               recyclers#show
+#                          PATCH    /recyclers/:id(.:format)               recyclers#update
+#                          PUT      /recyclers/:id(.:format)               recyclers#update
+#                          DELETE   /recyclers/:id(.:format)               recyclers#destroy
+# Redeemers:
+#                redeemers GET      /redeemers(.:format)                   redeemers#index
+#                          POST     /redeemers(.:format)                   redeemers#create
+#             new_redeemer GET      /redeemers/new(.:format)               redeemers#new
+#            edit_redeemer GET      /redeemers/:id/edit(.:format)          redeemers#edit
+#                 redeemer GET      /redeemers/:id(.:format)               redeemers#show
+#                          PATCH    /redeemers/:id(.:format)               redeemers#update
+#                          PUT      /redeemers/:id(.:format)               redeemers#update
+#                          DELETE   /redeemers/:id(.:format)               redeemers#destroy
 
-
-
-
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
