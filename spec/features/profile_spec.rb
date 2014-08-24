@@ -20,7 +20,7 @@ feature 'Profile' do
     fill_in "State", with: "HI"
     fill_in "Zipcode", with: "96768"
     fill_in "Phone", with: "8082803758"
-    select "Recycler", from: "profile[function]"
+    select "recycler", from: "profile[function]"
 
     click_on "Create Profile"
     expect(page).to have_content("Profile was created successfully!")
@@ -32,7 +32,7 @@ feature 'Profile' do
     expect(page).to have_content("State: HI")
     expect(page).to have_content("Zipcode: 96768")
     expect(page).to have_content("Phone: 8082803758")
-    expect(page).to have_content("Function: Recycler")
+    expect(page).to have_content("Function: recycler")
     expect(page).to have_content("Edit Profile")
 
     click_link "Edit Profile"
@@ -48,8 +48,8 @@ feature 'Profile' do
 
     click_link "Home"
     # redirect to function page
-    # expect(page).to have_content("Recycler#index")
-    expect(page).to have_content("Landing#index")
+    expect(page).to have_content("Recyclers#index")
+    # expect(page).to have_content("Landing#index")
     expect(page).to have_content("Edit Profile")
 
     click_link "Edit Profile"
@@ -58,8 +58,8 @@ feature 'Profile' do
     expect(page).to have_content("Home")
 
     click_link "Home"
-    # expect(page).to have_content("Recycler#index")
-    expect(page).to have_content("Landing#index")
+    expect(page).to have_content("Recyclers#index")
+    # expect(page).to have_content("Landing#index")
 
     click_link "Edit Profile"
     expect(page).to have_content("Edit Profile Page")

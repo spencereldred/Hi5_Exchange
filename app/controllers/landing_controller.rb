@@ -7,10 +7,11 @@ class LandingController < ApplicationController
       redirect_to new_profile_path
     elsif current_user.profile.function == "recycler"
       # go to recycler controller index
-      recyclers_path
+      puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a recycler!"
+      redirect_to recyclers_path
     elsif current_user.profile.function == "redeemer"
       # go to redeemer controller index
-      # redeemers_path
+      # redirect_to redeemers_path
       puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a redeemer!"
     end
 

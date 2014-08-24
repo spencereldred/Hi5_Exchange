@@ -53,8 +53,8 @@ feature 'Recycler' do
     fill_in "Email", with: 'rec1_co@example.com'
     fill_in "Password", with: 'password'
     click_button "Login"
-    # expect(page).to have_content("Recycler#index")
-    expect(page).to have_content("Landing#index")
+    expect(page).to have_content("Recyclers#index")
+    # expect(page).to have_content("Landing#index")
   end
 
 
