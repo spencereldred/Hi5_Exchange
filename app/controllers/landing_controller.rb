@@ -5,7 +5,7 @@ class LandingController < ApplicationController
     if current_user.profile.blank?
       redirect_to new_profile_path
     elsif current_user.profile.function == "recycler"
-      redirect_to recyclers_path
+      redirect_to recyclables_path
     elsif current_user.profile.function == "redeemer"
       # go to redeemer controller index
       # redirect_to redeemers_path

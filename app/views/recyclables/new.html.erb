@@ -1,0 +1,18 @@
+<h1>Create Redeemable Transaction</h1>
+
+<%= form_for @recyclable do |f| %>
+
+  <div><%= f.label :plastic %></div>
+  <div> <%= f.select :plastic, options_for_select(['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']) %></div>
+  <div><%= f.label :glass %></div>
+  <div> <%= f.select :glass, options_for_select(['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']) %></div>
+  <div><%= f.label :cans %></div>
+  <div> <%= f.select :cans, options_for_select(['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']) %></div>
+  <div><%= f.label "Mixed Hi5" %></div>
+  <div> <%= f.select :other, options_for_select(['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']) %></div>
+  <br>
+    <%= f.hidden_field :trans_type, :value => 'redeemable' %>
+  <div><%= f.submit "Create Redeemable Transaction", class: 'btn btn-primary' %></div>
+<% end %>
+
+<h1>Create Good Samaritan Transaction</h1>

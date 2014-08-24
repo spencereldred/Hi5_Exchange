@@ -11,7 +11,7 @@ Hi5::Application.routes.draw do
 
   resources :profiles, except: [:index, :destroy]
 
-  resources :recyclers
+  resources :recyclables
   resources :redeemers
 
 # spencers-mbp-2:Hi5 Spencer$ rake routes

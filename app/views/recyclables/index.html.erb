@@ -4,7 +4,7 @@
 </div>
 
 <!-- <button class="btn btn-primary">Create New Transaction</button> -->
-<%= button_to "Create New Transaction", new_recycler_path, :class => "btn btn-primary", :method => :get  %>
+<%= button_to "Create New Transaction", new_recyclable_path, :class => "btn btn-primary", :method => :get  %>
 <h1>Open Recyclable Transactions</h1>
 <% @recyclables.each do |recyclable|  %>
   <div><%= "#{recyclable.created_at.to_formatted_s(:short)}:" %>
