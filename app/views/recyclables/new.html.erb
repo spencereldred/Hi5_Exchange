@@ -12,8 +12,21 @@
   <div> <%= f.select :other, options_for_select(['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']) %></div>
   <br>
     <%= f.hidden_field :trans_type, :value => 'redeemable' %>
-   <!-- <div><button class="btn btn-primary">Create Redeemable Transaction</button></div> -->
   <div><%= f.submit "Create Redeemable Transaction", class: 'btn btn-primary' %></div>
 <% end %>
 
 <h1>Create Good Samaritan Transaction</h1>
+
+<%= form_for @recyclable do |f| %>
+
+  <div><%= f.check_box :cardboard %> <%= f.label :cardboard %></div>
+  <div><%= f.check_box :newspaper %> <%= f.label :newspaper %></div>
+  <div><%= f.check_box :magazines %> <%= f.label :magazines %></div>
+  <div><%= f.check_box :paper %> <%= f.label :paper %></div>
+  <div><%= f.check_box :non_hi5_plastic %> <%= f.label :non_hi5_plastic %></div>
+  <div><%= f.check_box :non_hi5_glass %> <%= f.label :non_hi5_glass %></div>
+  <div><%= f.check_box :non_hi5_cans %> <%= f.label :non_hi5_cans %></div>
+  <br>
+    <%= f.hidden_field :trans_type, :value => 'samaritan' %>
+  <div><%= f.submit "Create Samaritan Transaction", class: 'btn btn-primary' %></div>
+<% end %>

@@ -73,8 +73,26 @@ feature 'Recyclable' do
     expect(page).to have_content("Cans: 3")
     expect(page).to have_content("Mixed Hi5: 2")
 
+    click_button "Create New Transaction"
+    expect(page).to have_content("Create Redeemable Transaction")
+    expect(page).to have_content("Create Good Samaritan Transaction")
+    check("Cardboard")
+    check("Newspaper")
+    check("Magazines")
+    check("Paper")
+    check("Non hi5 plastic")
+    check("Non hi5 glass")
+    check("Non hi5 cans")
+    click_on "Create Samaritan Transaction"
+    expect(page).to have_content("Open Good Samaritan Transactions")
+    expect(page).to have_content("Cardboard")
+    expect(page).to have_content("Newspaper")
+    expect(page).to have_content("Magazines")
+    expect(page).to have_content("Paper")
+    expect(page).to have_content("Non_hi5_plastic")
+    expect(page).to have_content("Non_hi5_glass")
+    expect(page).to have_content("Non_hi5_cans")
 
   end
-
 
 end
