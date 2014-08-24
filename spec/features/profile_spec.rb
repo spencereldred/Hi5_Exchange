@@ -21,7 +21,6 @@ feature 'Profile' do
     fill_in "Zipcode", with: "96768"
     fill_in "Phone", with: "8082803758"
     select "Recycler", from: "profile[function]"
-    # fill_in "Function", with: "Recycler"
 
     click_on "Create Profile"
     expect(page).to have_content("Profile was created successfully!")
@@ -49,6 +48,7 @@ feature 'Profile' do
 
     click_link "Home"
     # redirect to function page
+    # expect(page).to have_content("Recycler#index")
     expect(page).to have_content("Landing#index")
     expect(page).to have_content("Edit Profile")
 
@@ -58,6 +58,7 @@ feature 'Profile' do
     expect(page).to have_content("Home")
 
     click_link "Home"
+    # expect(page).to have_content("Recycler#index")
     expect(page).to have_content("Landing#index")
 
     click_link "Edit Profile"

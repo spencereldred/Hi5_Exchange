@@ -11,6 +11,9 @@ Hi5::Application.routes.draw do
 
   resources :profiles, except: [:index, :destroy]
 
+  resources :recyclers
+  resources :redeemers
+
 # spencers-mbp-2:Hi5 Spencer$ rake routes
 #                   Prefix Verb     URI Pattern                            Controller#Action
 #         new_user_session GET      /users/login(.:format)                 devise/sessions#new
