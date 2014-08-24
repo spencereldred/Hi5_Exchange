@@ -2,3 +2,26 @@
 <div class="row">
   <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) %>
 </div>
+
+<h1>Open Recyclable Transactions</h1>
+<% @recyclables.each do |recyclable|  %>
+  <div><%= "#{recyclable.created_at.to_formatted_s(:short)}:" %>
+    <%= "Plastic: #{recyclable.plastic}" if recyclable.plastic %>
+    <%= "Glass: #{recyclable.glass}" if recyclable.glass %>
+    <%= "Cans: #{recyclable.cans}" if recyclable.cans %>
+    <%= "Mixed Hi5: #{recyclable.other}" if recyclable.other %>
+  </div>
+<% end  %>
+
+<h1>Open Good Samaritan Transactions</h1>
+<% @samaritans.each do |samaritan|  %>
+  <div><%= "#{samaritan.created_at.to_formatted_s(:short)}:" %>
+    <%= "Cardboard" if samaritan.cardboard %>
+    <%= "Newspaper" if samaritan.newspaper %>
+    <%= "Magazines" if samaritan.magazines %>
+    <%= "Paper" if samaritan.paper %>
+    <%= "Non_hi5_plastic" if samaritan.non_hi5_plastic %>
+    <%= "Non_hi5_glass" if samaritan.non_hi5_glass %>
+    <%= "Non_hi5_cans" if samaritan.non_hi5_cans %>
+  </div>
+<% end %>

@@ -54,7 +54,10 @@ feature 'Recycler' do
     fill_in "Password", with: 'password'
     click_button "Login"
     expect(page).to have_content("Recyclers#index")
-    # expect(page).to have_content("Landing#index")
+    expect(page).to have_content("Open Recyclable Transactions")
+    expect(page).to have_content("Plastic: 1")
+    expect(page).to have_content("Open Good Samaritan Transactions")
+    expect(page).to have_content("Cardboard")
   end
 
 

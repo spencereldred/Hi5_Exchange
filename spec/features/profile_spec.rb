@@ -47,9 +47,8 @@ feature 'Profile' do
     expect(page).to have_content("Home")
 
     click_link "Home"
-    # redirect to function page
+    # redirect to recycler function page
     expect(page).to have_content("Recyclers#index")
-    # expect(page).to have_content("Landing#index")
     expect(page).to have_content("Edit Profile")
 
     click_link "Edit Profile"
@@ -59,7 +58,6 @@ feature 'Profile' do
 
     click_link "Home"
     expect(page).to have_content("Recyclers#index")
-    # expect(page).to have_content("Landing#index")
 
     click_link "Edit Profile"
     expect(page).to have_content("Edit Profile Page")
