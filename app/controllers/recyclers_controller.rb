@@ -7,4 +7,8 @@ class RecyclersController < ApplicationController
     # binding.pry
   end
 
+  def new
+    @recyclable = Recyclable.new
+  end
+
 end

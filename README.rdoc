@@ -1,9 +1,0 @@
-== README
-
-Hi5 Exchange: A Peer to Peer Recycling App
-
-Under construction.
-
-New hi5exchange heroku web site
-http://desolate-beach-4438.herokuapp.com/
-

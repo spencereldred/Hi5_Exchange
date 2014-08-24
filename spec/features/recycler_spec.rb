@@ -58,6 +58,10 @@ feature 'Recycler' do
     expect(page).to have_content("Plastic: 1")
     expect(page).to have_content("Open Good Samaritan Transactions")
     expect(page).to have_content("Cardboard")
+
+    click_button "Create New Transaction"
+    expect(page).to have_content("Create Redeemable Transaction")
+    expect(page).to have_content("Create Good Samaritan Transaction")
   end
 
 
