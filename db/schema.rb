@@ -39,15 +39,15 @@ ActiveRecord::Schema.define(version: 20140822151102) do
     t.integer  "cans"
     t.integer  "glass"
     t.integer  "other"
-    t.boolean  "non_hi5_plastic"
-    t.boolean  "non_hi5_cans"
-    t.boolean  "non_hi5_glass"
-    t.boolean  "cardboard"
-    t.boolean  "magazines"
-    t.boolean  "newspaper"
-    t.boolean  "paper"
-    t.boolean  "selected"
-    t.boolean  "completed"
+    t.boolean  "non_hi5_plastic", default: false
+    t.boolean  "non_hi5_cans",    default: false
+    t.boolean  "non_hi5_glass",   default: false
+    t.boolean  "cardboard",       default: false
+    t.boolean  "magazines",       default: false
+    t.boolean  "newspaper",       default: false
+    t.boolean  "paper",           default: false
+    t.boolean  "selected",        default: false
+    t.boolean  "completed",       default: false
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"

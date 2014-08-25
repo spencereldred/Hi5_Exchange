@@ -76,6 +76,7 @@ feature 'Recyclable' do
     expect(page).to have_content("Redeemers#index")
     expect(page).to have_content("Available Redeemable Transactions")
     expect(page).to have_content("Plastic: 1")
+    expect(page).to have_content("1062 Delaware St.")
     expect(page).to have_content("Available Good Samaritan Transactions")
     expect(page).to have_content("Cardboard")
 

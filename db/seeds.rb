@@ -40,22 +40,59 @@ rec2_profile = Profile.create(
 co_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 1,
   cans: 1, glass: 1, other: 1)
 
-co_recyclable2 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+co_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 2,
+  cans: 2, glass: 2, other: 2, selected: true)
+
+co_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
   non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
   magazines: true, paper: true, newspaper: true)
 
-sf_recyclable3 = Recyclable.create(trans_type: "redeemable", plastic: 2,
-  cans: 2, glass: 2, other: 2)
+co_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+  magazines: true, paper: true, newspaper: true, selected: true)
 
-sf_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+co_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 2,
+  cans: 2, glass: 2, other: 2, selected: true, completed: true)
+
+co_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+  magazines: true, paper: true, newspaper: true, selected: true, completed: true)
+
+sf_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 3,
+  cans: 3, glass: 3, other: 3)
+
+sf_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true)
+
+sf_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
   non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
   magazines: false, paper: true, newspaper: false)
 
+sf_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true)
+
+sf_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true, completed: true)
+
+sf_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true, completed: true)
+
 user_recyclable = UserRecyclable.create([
-  {user_id: rec1.id , recyclable_id: co_recyclable1.id, redeemer_id: red1.id },
+  {user_id: rec1.id , recyclable_id: co_recyclable1.id},
   {user_id: rec1.id , recyclable_id: co_recyclable2.id, redeemer_id: red1.id },
-  {user_id: rec2.id , recyclable_id: sf_recyclable3.id, redeemer_id: red2.id },
-  {user_id: rec2.id , recyclable_id: sf_recyclable4.id, redeemer_id: red2.id }
+  {user_id: rec1.id , recyclable_id: co_recyclable3.id },
+  {user_id: rec1.id , recyclable_id: co_recyclable4.id, redeemer_id: red1.id },
+  {user_id: rec1.id , recyclable_id: co_recyclable5.id, redeemer_id: red1.id },
+  {user_id: rec1.id , recyclable_id: co_recyclable6.id, redeemer_id: red1.id },
+
+  {user_id: rec2.id , recyclable_id: sf_recyclable1.id},
+  {user_id: rec2.id , recyclable_id: sf_recyclable2.id, redeemer_id: red2.id },
+  {user_id: rec2.id , recyclable_id: sf_recyclable3.id },
+  {user_id: rec2.id , recyclable_id: sf_recyclable4.id, redeemer_id: red2.id },
+  {user_id: rec2.id , recyclable_id: sf_recyclable5.id, redeemer_id: red2.id },
+  {user_id: rec2.id , recyclable_id: sf_recyclable6.id, redeemer_id: red2.id }
   ])
 
 
