@@ -2,49 +2,13 @@ require 'capybara/rails'
 
 feature 'Recyclable' do
 
-  before (:all) do
-    @rec1_co = User.create(
-      email: 'rec1_co@example.com', password: 'password',
-      password_confirmation: 'password')
-
-    @rec1_co_profile = Profile.create(
-      user_id: @rec1_co.id, first_name: 'Joe-recycler', last_name: 'Colorado',
-      address: '1062 Delaware St.', city: 'Denver', state: 'CO',
-      zipcode: '80204', phone: '8082803758',function: 'recycler')
-
-    @red1_co = User.create(
-      email: 'red1_co@example.com', password: 'password',
-      password_confirmation: 'password')
-
-    @red1_co_profile = Profile.create(
-      user_id: @red1_co.id, first_name: 'Joe-redeemer', last_name: 'Colorado',
-      address: '460 Humboldt St.', city: 'Denver', state: 'CO',
-      zipcode: '80209', phone: '8082803758',function: 'redeemer')
-
-    @co_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 1,
-      cans: 1, glass: 1, other: 1)
-
-    @co_recyclable2 = Recyclable.create(trans_type: "samaritan", cardboard: true,
-      non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
-      magazines: true, paper: true, newspaper: true)
-
-    @user_recyclable1 = UserRecyclable.create(user_id: @rec1_co.id,
-      recyclable_id: @co_recyclable1.id, redeemer_id: @red1_co.id)
-
-    @user_recyclable2 = UserRecyclable.create(user_id: @rec1_co.id,
-      recyclable_id: @co_recyclable2.id, redeemer_id: @red1_co.id)
-
+  before (:each) do
+    # TODO: add users from other states to test geocoding
+    create_users_and_transactions
   end
 
-  after (:all) do
-    User.delete(@rec1_co.id)
-    User.delete(@red1_co.id)
-    Profile.delete(@rec1_co_profile.id)
-    Profile.delete(@red1_co_profile.id)
-    Recyclable.delete(@co_recyclable1.id)
-    Recyclable.delete(@co_recyclable2.id)
-    UserRecyclable.delete(@user_recyclable1.id)
-    UserRecyclable.delete(@user_recyclable2.id)
+  after (:each) do
+    delete_users_and_transactions
   end
 
 
@@ -56,8 +20,17 @@ feature 'Recyclable' do
     expect(page).to have_content("Recyclers#index")
     expect(page).to have_content("Open Recyclable Transactions")
     expect(page).to have_content("Plastic: 1")
+    expect(page).to have_content("Glass: 1")
+    expect(page).to have_content("Cans: 1")
+    expect(page).to have_content("Mixed Hi5: 1")
     expect(page).to have_content("Open Good Samaritan Transactions")
     expect(page).to have_content("Cardboard")
+    expect(page).to have_content("Newspaper")
+    expect(page).to have_content("Magazines")
+    expect(page).to have_content("Paper")
+    expect(page).to have_content("Non_hi5_plastic")
+    expect(page).to have_content("Non_hi5_glass")
+    expect(page).to have_content("Non_hi5_cans")
 
     click_button "Create New Transaction"
     expect(page).to have_content("Create Redeemable Transaction")
@@ -101,7 +74,10 @@ feature 'Recyclable' do
     fill_in "Password", with: 'password'
     click_button "Login"
     expect(page).to have_content("Redeemers#index")
-    # expect(page).to have_content("Select a transaction")
+    expect(page).to have_content("Available Redeemable Transactions")
+    expect(page).to have_content("Plastic: 1")
+    expect(page).to have_content("Available Good Samaritan Transactions")
+    expect(page).to have_content("Cardboard")
 
 
   end
