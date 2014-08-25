@@ -1,7 +1,7 @@
 class RecyclablesController < ApplicationController
 
   def index
-    user = User.find(current_user.id)
+    user = User.find(logged_in_user_id)
     @recyclables = user.recyclables.where(trans_type: 'redeemable')
     @samaritans = user.recyclables.where(trans_type: 'samaritan')
     @selections = ['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']
@@ -13,12 +13,29 @@ class RecyclablesController < ApplicationController
   end
 
   def create
-    user = User.find(current_user.id)
+    user = User.find(logged_in_user_id)
     user.recyclables.create(recyclable_params)
     redirect_to recyclables_path
   end
 
+  def update
+    # binding.pry
+    @recyclable = Recyclable.find(params_id)
+    @recyclable.selected = true
+    @recyclable.save
+    # binding.pry
+    redirect_to redeemers_path
+  end
+
   private
+
+    def params_id
+      params[:id]
+    end
+
+    def logged_in_user_id
+      current_user.id
+    end
 
     def recyclable_params
       params.require(:recyclable).permit(

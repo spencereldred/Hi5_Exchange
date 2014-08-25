@@ -79,7 +79,17 @@ feature 'Recyclable' do
     expect(page).to have_content("1062 Delaware St.")
     expect(page).to have_content("Available Good Samaritan Transactions")
     expect(page).to have_content("Cardboard")
+    expect(page).to have_button("Select")
 
+    within(first(".redeemable")) do
+      click_on "Select"
+    end
+    expect(page).not_to have_content("Plastic: 1")
+
+    within(first(".samaritan")) do
+      click_on "Select"
+    end
+    expect(page).not_to have_content("Cardboard")
 
   end
 
