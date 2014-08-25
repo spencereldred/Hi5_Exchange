@@ -74,22 +74,21 @@ feature 'Recyclable' do
     fill_in "Password", with: 'password'
     click_button "Login"
     expect(page).to have_content("Redeemers#index")
-    expect(page).to have_content("Available Redeemable Transactions")
-    expect(page).to have_content("Plastic: 1")
-    expect(page).to have_content("1062 Delaware St.")
-    expect(page).to have_content("Available Good Samaritan Transactions")
-    expect(page).to have_content("Cardboard")
+    expect(page).to have_content("Available Redeemable Transactions 1062 Delaware St.: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+    expect(page).to have_content("Available Good Samaritan Transactions 1062 Delaware St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
     expect(page).to have_button("Select")
 
     within(first(".redeemable")) do
       click_on "Select"
     end
-    expect(page).not_to have_content("Plastic: 1")
-
+    expect(page).not_to have_content("Available Redeemable Transactions 1062 Delaware St.: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
     within(first(".samaritan")) do
       click_on "Select"
     end
-    expect(page).not_to have_content("Cardboard")
+    expect(page).not_to have_content("Available Good Samaritan Transactions 1062 Delaware St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
+
+    expect(page).to have_content("Selected Redeemable Transactions")
+    expect(page).to have_content("Selected Good Samaritan Transactions")
 
   end
 

@@ -1,14 +1,11 @@
 <h1>Redeemers#index</h1>
-
 <h1>Available Redeemable Transactions</h1>
-
 <% @redeemables.each do |redeemable|  %>
   <div>
     <%= form_for redeemable do |f| %>
     <div class="redeemable">
       <%= f.submit "Select", class: 'btn btn-link' %>
       <%= redeemable.users[0].profile.address %>:
-      <%= redeemable.id %>
       <%= "Plastic: #{redeemable["plastic"]}" %>
       <%= "Glass: #{redeemable["glass"]}" %>
       <%= "Cans: #{redeemable["cans"]}" %>
@@ -18,7 +15,6 @@
   </div>
 <% end %>
 <h1>Available Good Samaritan Transactions</h1>
-
 <% @samaritans.each do |samaritan| %>
   <div>
     <%= form_for samaritan do |f| %>
@@ -37,3 +33,7 @@
     <% end %>
   </div>
 <% end %>
+
+<h1>Selected Redeemable Transactions</h1>
+<h1>Selected Good Samaritan Transactions</h1>
+
