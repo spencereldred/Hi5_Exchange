@@ -95,4 +95,15 @@ feature 'Recyclable' do
 
   end
 
+  scenario "redeemer can select a transaction" do
+    visit new_user_session_path
+    fill_in "Email", with: 'red1_co@example.com'
+    fill_in "Password", with: 'password'
+    click_button "Login"
+    expect(page).to have_content("Redeemers#index")
+    # expect(page).to have_content("Select a transaction")
+
+
+  end
+
 end

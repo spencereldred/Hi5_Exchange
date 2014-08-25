@@ -8,7 +8,7 @@ class LandingController < ApplicationController
       redirect_to recyclables_path
     elsif current_user.profile.function == "redeemer"
       # go to redeemer controller index
-      # redirect_to redeemers_path
+      redirect_to redeemers_path
       puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I am a redeemer!"
     end
 
