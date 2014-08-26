@@ -1,4 +1,7 @@
 <h1>Redeemers#index</h1>
+<div class="row">
+  <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) %>
+</div>
 <h1>Available Redeemable Transactions</h1>
 <% @redeemables.each do |redeemable|  %>
   <div>
