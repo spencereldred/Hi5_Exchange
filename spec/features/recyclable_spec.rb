@@ -87,8 +87,8 @@ feature 'Recyclable' do
     end
     expect(page).not_to have_content("Available Good Samaritan Transactions 1062 Delaware St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
-    expect(page).to have_content("Selected Redeemable Transactions")
-    expect(page).to have_content("Selected Good Samaritan Transactions")
+    expect(page).to have_content("Selected Redeemable Transactions 460 Humboldt St.: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+    expect(page).to have_content("Selected Good Samaritan Transactions 460 Humboldt St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
   end
 
