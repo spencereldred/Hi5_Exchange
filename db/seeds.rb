@@ -37,6 +37,24 @@ rec2_profile = Profile.create(
   address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
   zipcode: '94132', phone: '8082803758',function: 'recycler')
 
+red3 = User.create(
+  email: 'red3@example.com', password: 'password',
+  password_confirmation: 'password')
+
+red3_profile = Profile.create(
+  user_id: red3.id, first_name: 'Joe-redeemer', last_name: 'Makawao',
+  address: '283 Pukulani St.', city: 'Makawao', state: 'HI',
+  zipcode: '96768', phone: '8082803758',function: 'redeemer')
+
+rec3 = User.create(
+  email: 'rec3@example.com', password: 'password',
+  password_confirmation: 'password')
+
+rec3_profile = Profile.create(
+  user_id: rec3.id, first_name: 'Joe-recycler', last_name: 'Makawao',
+  address: '2741 Leolani Place', city: 'Makawao', state: 'HI',
+  zipcode: '96768', phone: '8082803758',function: 'recycler')
+
 co_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 1,
   cans: 1, glass: 1, other: 1)
 
@@ -79,6 +97,27 @@ sf_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
   non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
   magazines: false, paper: true, newspaper: false, selected: true, completed: true)
 
+hi_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 3,
+  cans: 3, glass: 3, other: 3)
+
+hi_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true)
+
+hi_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false)
+
+hi_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true)
+
+hi_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true, completed: true)
+
+hi_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true, completed: true)
+
 user_recyclable = UserRecyclable.create([
   {user_id: rec1.id , recyclable_id: co_recyclable1.id},
   {user_id: rec1.id , recyclable_id: co_recyclable2.id, redeemer_id: red1.id },
@@ -92,7 +131,14 @@ user_recyclable = UserRecyclable.create([
   {user_id: rec2.id , recyclable_id: sf_recyclable3.id },
   {user_id: rec2.id , recyclable_id: sf_recyclable4.id, redeemer_id: red2.id },
   {user_id: rec2.id , recyclable_id: sf_recyclable5.id, redeemer_id: red2.id },
-  {user_id: rec2.id , recyclable_id: sf_recyclable6.id, redeemer_id: red2.id }
+  {user_id: rec2.id , recyclable_id: sf_recyclable6.id, redeemer_id: red2.id },
+
+  {user_id: rec3.id , recyclable_id: hi_recyclable1.id},
+  {user_id: rec3.id , recyclable_id: hi_recyclable2.id, redeemer_id: red3.id },
+  {user_id: rec3.id , recyclable_id: hi_recyclable3.id },
+  {user_id: rec3.id , recyclable_id: hi_recyclable4.id, redeemer_id: red3.id },
+  {user_id: rec3.id , recyclable_id: hi_recyclable5.id, redeemer_id: red3.id },
+  {user_id: rec3.id , recyclable_id: hi_recyclable6.id, redeemer_id: red3.id }
   ])
 
 

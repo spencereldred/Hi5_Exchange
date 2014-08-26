@@ -3,6 +3,7 @@ class CreateUserRecyclables < ActiveRecord::Migration
     create_table :user_recyclables do |t|
       t.references :user
       t.references :recyclable
+      t.integer    :redeemer_id
 
       t.timestamps
     end
