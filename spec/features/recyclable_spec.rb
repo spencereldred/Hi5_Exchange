@@ -14,7 +14,7 @@ feature 'Recyclable' do
 
   scenario "recycler can view open transactions" do
     visit new_user_session_path
-    fill_in "Email", with: 'rec1_co@example.com'
+    fill_in "Email", with: 'rec1@example.com'
     fill_in "Password", with: 'password'
     click_button "Login"
     expect(page).to have_content("Recyclers#index")
@@ -70,7 +70,7 @@ feature 'Recyclable' do
 
   scenario "redeemer can select a transaction" do
     visit new_user_session_path
-    fill_in "Email", with: 'red1_co@example.com'
+    fill_in "Email", with: 'red1@example.com'
     fill_in "Password", with: 'password'
     click_button "Login"
     expect(page).to have_content("Redeemers#index")
@@ -87,7 +87,7 @@ feature 'Recyclable' do
     end
     expect(page).not_to have_content("Available Good Samaritan Transactions 1062 Delaware St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
-    expect(page).to have_content("Selected Redeemable Transactions 460 Humboldt St.: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+    expect(page).to have_content("Selected Redeemable Transactions 460 Humboldt St.: Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2")
     expect(page).to have_content("Selected Good Samaritan Transactions 460 Humboldt St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
   end

@@ -1,44 +1,148 @@
 def create_users_and_transactions
-    @rec1_co = User.create(
-      email: 'rec1_co@example.com', password: 'password',
-      password_confirmation: 'password')
+@red1 = User.create(
+  email: 'red1@example.com', password: 'password',
+  password_confirmation: 'password')
 
-    @rec1_co_profile = Profile.create(
-      user_id: @rec1_co.id, first_name: 'Joe-recycler', last_name: 'Colorado',
-      address: '1062 Delaware St.', city: 'Denver', state: 'CO',
-      zipcode: '80204', phone: '8082803758',function: 'recycler')
+@red1_profile = Profile.create(
+  user_id: @red1.id, first_name: 'Joe-redeemer', last_name: 'Colorado',
+  address: '460 Humboldt St.', city: 'Denver', state: 'CO',
+  zipcode: '80209', phone: '8082803758',function: 'redeemer')
 
-    @red1_co = User.create(
-      email: 'red1_co@example.com', password: 'password',
-      password_confirmation: 'password')
+@rec1 = User.create(
+  email: 'rec1@example.com', password: 'password',
+  password_confirmation: 'password')
 
-    @red1_co_profile = Profile.create(
-      user_id: @red1_co.id, first_name: 'Joe-redeemer', last_name: 'Colorado',
-      address: '460 Humboldt St.', city: 'Denver', state: 'CO',
-      zipcode: '80209', phone: '8082803758',function: 'redeemer')
+@rec1_profile = Profile.create(
+  user_id: @rec1.id, first_name: 'Joe-recycler', last_name: 'Colorado',
+  address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+  zipcode: '80204', phone: '8082803758',function: 'recycler')
 
-    @co_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 1,
-      cans: 1, glass: 1, other: 1)
+@red2 = User.create(
+  email: 'red2@example.com', password: 'password',
+  password_confirmation: 'password')
 
-    @co_recyclable2 = Recyclable.create(trans_type: "samaritan", cardboard: true,
-      non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
-      magazines: true, paper: true, newspaper: true)
+@red2_profile = Profile.create(
+  user_id: @red2.id, first_name: 'Joe-redeemer', last_name: 'SanFrancisco',
+  address: '414 Brannan St.', city: 'San Francisco', state: 'CA',
+  zipcode: '94107', phone: '8082803758',function: 'redeemer')
 
-    @user_recyclable1 = UserRecyclable.create(user_id: @rec1_co.id,
-      recyclable_id: @co_recyclable1.id, redeemer_id: @red1_co.id)
+@rec2 = User.create(
+  email: 'rec2@example.com', password: 'password',
+  password_confirmation: 'password')
 
-    @user_recyclable2 = UserRecyclable.create(user_id: @rec1_co.id,
-      recyclable_id: @co_recyclable2.id, redeemer_id: @red1_co.id)
+@rec2_profile = Profile.create(
+  user_id: @rec2.id, first_name: 'Joe-recycler', last_name: 'SanFrancisco',
+  address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+  zipcode: '94132', phone: '8082803758',function: 'recycler')
+
+@red3 = User.create(
+  email: 'red3@example.com', password: 'password',
+  password_confirmation: 'password')
+
+@red3_profile = Profile.create(
+  user_id: @red3.id, first_name: 'Joe-redeemer', last_name: 'Makawao',
+  address: '283 Pukulani St.', city: 'Makawao', state: 'HI',
+  zipcode: '96768', phone: '8082803758',function: 'redeemer')
+
+@rec3 = User.create(
+  email: 'rec3@example.com', password: 'password',
+  password_confirmation: 'password')
+
+@rec3_profile = Profile.create(
+  user_id: @rec3.id, first_name: 'Joe-recycler', last_name: 'Makawao',
+  address: '2741 Leolani Place', city: 'Makawao', state: 'HI',
+  zipcode: '96768', phone: '8082803758',function: 'recycler')
+
+@co_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 1,
+  cans: 1, glass: 1, other: 1)
+
+@co_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 2,
+  cans: 2, glass: 2, other: 2, selected: true)
+
+@co_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+  magazines: true, paper: true, newspaper: true)
+
+@co_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+  magazines: true, paper: true, newspaper: true, selected: true)
+
+@co_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 2,
+  cans: 2, glass: 2, other: 2, selected: true, completed: true)
+
+@co_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+  magazines: true, paper: true, newspaper: true, selected: true, completed: true)
+
+@sf_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 3,
+  cans: 3, glass: 3, other: 3)
+
+@sf_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true)
+
+@sf_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false)
+
+@sf_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true)
+
+@sf_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true, completed: true)
+
+@sf_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true, completed: true)
+
+@hi_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 3,
+  cans: 3, glass: 3, other: 3)
+
+@hi_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true)
+
+@hi_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false)
+
+@hi_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true)
+
+@hi_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 4,
+  cans: 4, glass: 4, other: 4, selected: true, completed: true)
+
+@hi_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+  non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
+  magazines: false, paper: true, newspaper: false, selected: true, completed: true)
+
+@user_recyclable = UserRecyclable.create([
+  {user_id: @rec1.id , recyclable_id: @co_recyclable1.id},
+  {user_id: @rec1.id , recyclable_id: @co_recyclable2.id, redeemer_id: @red1.id },
+  {user_id: @rec1.id , recyclable_id: @co_recyclable3.id },
+  {user_id: @rec1.id , recyclable_id: @co_recyclable4.id, redeemer_id: @red1.id },
+  {user_id: @rec1.id , recyclable_id: @co_recyclable5.id, redeemer_id: @red1.id },
+  {user_id: @rec1.id , recyclable_id: @co_recyclable6.id, redeemer_id: @red1.id },
+
+  {user_id: @rec2.id , recyclable_id: @sf_recyclable1.id},
+  {user_id: @rec2.id , recyclable_id: @sf_recyclable2.id, redeemer_id: @red2.id },
+  {user_id: @rec2.id , recyclable_id: @sf_recyclable3.id },
+  {user_id: @rec2.id , recyclable_id: @sf_recyclable4.id, redeemer_id: @red2.id },
+  {user_id: @rec2.id , recyclable_id: @sf_recyclable5.id, redeemer_id: @red2.id },
+  {user_id: @rec2.id , recyclable_id: @sf_recyclable6.id, redeemer_id: @red2.id },
+
+  {user_id: @rec3.id , recyclable_id: @hi_recyclable1.id},
+  {user_id: @rec3.id , recyclable_id: @hi_recyclable2.id, redeemer_id: @red3.id },
+  {user_id: @rec3.id , recyclable_id: @hi_recyclable3.id },
+  {user_id: @rec3.id , recyclable_id: @hi_recyclable4.id, redeemer_id: @red3.id },
+  {user_id: @rec3.id , recyclable_id: @hi_recyclable5.id, redeemer_id: @red3.id },
+  {user_id: @rec3.id , recyclable_id: @hi_recyclable6.id, redeemer_id: @red3.id }
+  ])
 
 end
 
 def delete_users_and_transactions
-    User.delete(@rec1_co.id)
-    User.delete(@red1_co.id)
-    Profile.delete(@rec1_co_profile.id)
-    Profile.delete(@red1_co_profile.id)
-    Recyclable.delete(@co_recyclable1.id)
-    Recyclable.delete(@co_recyclable2.id)
-    UserRecyclable.delete(@user_recyclable1.id)
-    UserRecyclable.delete(@user_recyclable2.id)
+    User.destroy_all
+    Recyclable.destroy_all
+    UserRecyclable.destroy_all
 end
