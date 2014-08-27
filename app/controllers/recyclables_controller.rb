@@ -15,6 +15,11 @@ class RecyclablesController < ApplicationController
   def create
     user = User.find(logged_in_user_id)
     user.recyclables.create(recyclable_params)
+    if user.recyclables.last.trans_type == 'redeemable'
+      flash.notice = "Redeemable transaction has been created!"
+    elsif user.recyclables.last.trans_type == 'samaritan'
+      flash.notice = "Samaritan transaction has been created!"
+    end
     redirect_to recyclables_path
   end
 

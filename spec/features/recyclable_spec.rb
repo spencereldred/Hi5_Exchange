@@ -40,6 +40,7 @@ feature 'Recyclable' do
     select "3 bags", from: "recyclable[cans]"
     select "2 bags", from: "recyclable[other]"
     click_on "Create Redeemable Transaction"
+    expect(page).to have_content("Redeemable transaction has been created!")
     expect(page).to have_content("Open Recyclable Transactions")
     expect(page).to have_content("Plastic: 5")
     expect(page).to have_content("Glass: 4")
@@ -57,6 +58,7 @@ feature 'Recyclable' do
     check("Non hi5 glass")
     check("Non hi5 cans")
     click_on "Create Samaritan Transaction"
+    expect(page).to have_content("Samaritan transaction has been created!")
     expect(page).to have_content("Open Good Samaritan Transactions")
     expect(page).to have_content("Cardboard")
     expect(page).to have_content("Newspaper")

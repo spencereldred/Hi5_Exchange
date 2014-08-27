@@ -43,14 +43,14 @@ Hi5::Application.routes.draw do
 #                          PATCH    /profiles/:id(.:format)                profiles#update
 #                          PUT      /profiles/:id(.:format)                profiles#update
 # Recyclers:
-#                recyclers GET      /recyclers(.:format)                   recyclers#index
-#                          POST     /recyclers(.:format)                   recyclers#create
-#             new_recycler GET      /recyclers/new(.:format)               recyclers#new
-#            edit_recycler GET      /recyclers/:id/edit(.:format)          recyclers#edit
-#                 recycler GET      /recyclers/:id(.:format)               recyclers#show
-#                          PATCH    /recyclers/:id(.:format)               recyclers#update
-#                          PUT      /recyclers/:id(.:format)               recyclers#update
-#                          DELETE   /recyclers/:id(.:format)               recyclers#destroy
+#              recyclables GET      /recyclables(.:format)                 recyclables#index
+#                          POST     /recyclables(.:format)                 recyclables#create
+#           new_recyclable GET      /recyclables/new(.:format)             recyclables#new
+#          edit_recyclable GET      /recyclables/:id/edit(.:format)        recyclables#edit
+#               recyclable GET      /recyclables/:id(.:format)             recyclables#show
+#                          PATCH    /recyclables/:id(.:format)             recyclables#update
+#                          PUT      /recyclables/:id(.:format)             recyclables#update
+#                          DELETE   /recyclables/:id(.:format)             recyclables#destroy
 # Redeemers:
 #                redeemers GET      /redeemers(.:format)                   redeemers#index
 #                          POST     /redeemers(.:format)                   redeemers#create
