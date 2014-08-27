@@ -83,13 +83,15 @@ feature 'Recyclable' do
     within(first(".redeemable")) do
       click_on "Select"
     end
+    expect(page).to have_content("Redeemable transaction has been selected!")
     expect(page).not_to have_content("Available Redeemable Transactions 1062 Delaware St.: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+    expect(page).to have_content("Selected Redeemable Transactions 460 Humboldt St.: Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2")
+
     within(first(".samaritan")) do
       click_on "Select"
     end
+    expect(page).to have_content("Good Samaritan transaction has been selected!")
     expect(page).not_to have_content("Available Good Samaritan Transactions 1062 Delaware St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
-
-    expect(page).to have_content("Selected Redeemable Transactions 460 Humboldt St.: Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2")
     expect(page).to have_content("Selected Good Samaritan Transactions 460 Humboldt St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
   end

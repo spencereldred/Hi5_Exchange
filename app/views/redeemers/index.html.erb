@@ -8,6 +8,7 @@
     <%= form_for redeemable do |f| %>
     <div class="redeemable">
       <%= f.submit "Select", class: 'btn btn-link' %>
+      <%= f.hidden_field :selected, :value => true %>
       <%= redeemable.users[0].profile.address %>:
       <%= "Plastic: #{redeemable["plastic"]}" %>
       <%= "Glass: #{redeemable["glass"]}" %>
@@ -24,6 +25,7 @@
     <!-- <input type="checkbox"> -->
     <div class="samaritan">
       <%= f.submit "Select", class: 'btn btn-link' %>
+      <%= f.hidden_field :selected, :value => true %>
       <%= samaritan.users[0].profile.address %>:
       <%= "Cardboard" if samaritan["cardboard"] == true %>
       <%= "Newspaper" if samaritan["newspaper"] == true %>

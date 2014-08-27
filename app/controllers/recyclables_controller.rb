@@ -24,11 +24,15 @@ class RecyclablesController < ApplicationController
   end
 
   def update
-    # binding.pry
     @recyclable = Recyclable.find(params_id)
-    @recyclable.selected = true
-    @recyclable.save
-    # binding.pry
+    @recyclable.update_attributes(recyclable_update)
+    if @recyclable.selected == true and @recyclable.completed == false
+      if @recyclable.trans_type == "redeemable"
+        flash.notice = "Redeemable transaction has been selected!"
+      else
+        flash.notice = "Good Samaritan transaction has been selected!"
+      end
+    end
     redirect_to redeemers_path
   end
 
@@ -40,6 +44,10 @@ class RecyclablesController < ApplicationController
 
     def logged_in_user_id
       current_user.id
+    end
+
+    def recyclable_update
+      params.require(:recyclable).permit(:selected, :completed)
     end
 
     def recyclable_params
