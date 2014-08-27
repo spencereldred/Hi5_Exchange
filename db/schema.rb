@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822151102) do
+ActiveRecord::Schema.define(version: 20140827173456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20140822151102) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
   create_table "user_recyclables", force: true do |t|
