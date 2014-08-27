@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe Profile do
 
-  before (:each) do
+  before (:all) do
+    sleep(1)
     @user = User.create(email: 'user@example.com', password: 'password', password_confirmation: 'password')
     @profile = Profile.create(user_id: @user.id, first_name: 'Spencer', last_name: 'Eldred', address: '2741 Leolani Place', city: 'Makawao', state: 'HI', zipcode: '96768', function: 'redeemer')
   end
 
-  after (:each) do
+  after (:all) do
     @user.destroy
   end
 
@@ -30,26 +31,31 @@ describe Profile do
   it "requires 'address' to be valid" do
     @profile.address = ""
     expect(@profile).not_to be_valid
+    @profile.address = "2741 Leolani Place"
   end
 
   it "requires 'city' to be valid" do
     @profile.city = ""
     expect(@profile).not_to be_valid
+    @profile.city = "Makawao"
   end
 
   it "requires 'state' to be valid" do
     @profile.state = ""
     expect(@profile).not_to be_valid
+    @profile.state = "HI"
   end
 
   it "requires 'zipcode' to be valid" do
     @profile.zipcode = ""
     expect(@profile).not_to be_valid
+    @profile.zipcode = "96768"
   end
 
   it "requires 'function' to be valid" do
     @profile.function = ""
     expect(@profile).not_to be_valid
+    @profile.function = "redeemer"
   end
 
 end

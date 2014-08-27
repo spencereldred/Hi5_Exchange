@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe UserRecyclable do
 
-  before (:each) do
+  before (:all) do
     @user = User.create(email: 'user@example.com', password: 'password', password_confirmation: 'password')
     @profile = Profile.create(user_id: @user.id, first_name: 'Spencer', last_name: 'Eldred', address: '2741 Leolani Place', city: 'Makawao', state: 'HI', zipcode: '96768', function: 'redeemer')
-    @recyclable = Recyclable.create(trans_type: "redeemable", plastic: 1)
+    @recyclable = Recyclable.create(trans_type: "redeemable", plastic: 1, user_id: @user.id)
     @user_recyclable = UserRecyclable.create(user_id: @user.id, recyclable_id: @recyclable.id)
 
   end
 
-  after (:each) do
+  after (:all) do
     @user.destroy
   end
 
@@ -24,11 +24,13 @@ describe UserRecyclable do
   it "should be invalid without user_id" do
     @user_recyclable.user_id = ""
     expect(@user_recyclable).not_to be_valid
+    @user_recyclable.user_id = "@user.id"
   end
 
   it "should be invalid without recyclable_id" do
     @user_recyclable.recyclable_id = ""
     expect(@user_recyclable).not_to be_valid
+    @user_recyclable.recyclable_id = "@recyclable.id"
   end
 
 end

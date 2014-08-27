@@ -58,6 +58,7 @@ feature 'Recyclable' do
     check("Non hi5 glass")
     check("Non hi5 cans")
     click_on "Create Samaritan Transaction"
+
     expect(page).to have_content("Samaritan transaction has been created!")
     expect(page).to have_content("Open Good Samaritan Transactions")
     expect(page).to have_content("Cardboard")

@@ -54,7 +54,8 @@ class RecyclablesController < ApplicationController
       params.require(:recyclable).permit(
         :plastic, :glass, :cans, :other, :trans_type,
         :cardboard, :newspaper, :magazines, :paper,
-        :non_hi5_plastic, :non_hi5_glass, :non_hi5_cans)
+        :non_hi5_plastic, :non_hi5_glass, :non_hi5_cans,
+        :user_id)
     end
 
 end

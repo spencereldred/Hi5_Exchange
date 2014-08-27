@@ -12,6 +12,7 @@
   <div> <%= f.select :other, options_for_select(['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']) %></div>
   <br>
     <%= f.hidden_field :trans_type, :value => 'redeemable' %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <div><%= f.submit "Create Redeemable Transaction", class: 'btn btn-primary' %></div>
 <% end %>
 
@@ -28,5 +29,6 @@
   <div><%= f.check_box :non_hi5_cans %> <%= f.label :non_hi5_cans %></div>
   <br>
     <%= f.hidden_field :trans_type, :value => 'samaritan' %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <div><%= f.submit "Create Samaritan Transaction", class: 'btn btn-primary' %></div>
 <% end %>
