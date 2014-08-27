@@ -5,11 +5,9 @@ class Recyclable < ActiveRecord::Base
   validates :trans_type, presence: true
 
   geocoded_by :full_address
-  # need to comment out :geocode to not go over limit during testing
   after_validation :geocode
 
   def full_address
-    # binding.pry
     user = User.find(self.user_id)
      "#{user.profile.address}, #{user.profile.city} #{user.profile.state} #{user.profile.zipcode}"
   end

@@ -6,6 +6,7 @@ describe Profile do
     sleep(1)
     @user = User.create(email: 'user@example.com', password: 'password', password_confirmation: 'password')
     @profile = Profile.create(user_id: @user.id, first_name: 'Spencer', last_name: 'Eldred', address: '2741 Leolani Place', city: 'Makawao', state: 'HI', zipcode: '96768', function: 'redeemer')
+    sleep(1)
   end
 
   after (:all) do
@@ -25,8 +26,8 @@ describe Profile do
   it { expect(@profile).to respond_to(:longitude) }
   it { expect(@profile).to respond_to(:latitude) }
 
-  it { expect(@profile.latitude).to eq(20.8364945) }
-  it { expect(@profile.longitude).to eq(-156.3535161) }
+  it { expect(@profile.latitude.round).to eq(21) }
+  it { expect(@profile.longitude.round).to eq(-156) }
 
   it "requires 'address' to be valid" do
     @profile.address = ""

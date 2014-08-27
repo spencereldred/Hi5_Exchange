@@ -3,7 +3,6 @@ require 'capybara/rails'
 feature 'Recyclable' do
 
   before (:each) do
-    # TODO: add users from other states to test geocoding
     create_users_and_transactions
   end
 
@@ -78,7 +77,9 @@ feature 'Recyclable' do
     click_button "Login"
     expect(page).to have_content("Redeemers#index")
     expect(page).to have_content("Available Redeemable Transactions 1062 Delaware St.: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+    expect(page).not_to have_content("268 St. Charles Ave.: Plastic: 3 Glass: 3 Cans: 3 Mixed Hi5: 3")
     expect(page).to have_content("Available Good Samaritan Transactions 1062 Delaware St.: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
+    expect(page).not_to have_content("268 St. Charles Ave.: Cardboard Paper Non_hi5_plastic Non_hi5_glass")
     expect(page).to have_button("Select")
 
     within(first(".redeemable")) do

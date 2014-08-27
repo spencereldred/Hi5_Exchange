@@ -5,7 +5,6 @@ class RecyclablesController < ApplicationController
     @recyclables = user.recyclables.where(trans_type: 'redeemable')
     @samaritans = user.recyclables.where(trans_type: 'samaritan')
     @selections = ['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']
-    # binding.pry
   end
 
   def new

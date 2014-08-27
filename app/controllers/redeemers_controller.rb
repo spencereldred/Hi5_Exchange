@@ -1,11 +1,8 @@
 class RedeemersController < ApplicationController
 
   def index
-    @redeemables = Recyclable.where(trans_type: "redeemable", selected: false, completed: false)
-    #.near([current_user.latitude, current_user.longitude], current_user.radius)
-    @samaritans = Recyclable.where(trans_type: "samaritan", selected: false, completed: false)
-    #.near([current_user.latitude, current_user.longitude], current_user.radius)
-
+    @redeemables = Recyclable.where(trans_type: "redeemable", selected: false, completed: false).near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
+    @samaritans = Recyclable.where(trans_type: "samaritan", selected: false, completed: false).near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
     # for testing in rails console:
     # @redeemables = Recyclable.where(trans_type: "redeemable", selected: false, completed: false).near([user.profile.latitude, user.profile.longitude], user.profile.radius)
     sql = "select users.email, profiles.address,
