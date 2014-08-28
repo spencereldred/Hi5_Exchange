@@ -3,11 +3,15 @@ require 'capybara/rails'
 feature 'Recyclable' do
 
   before (:each) do
+    # Freeze today to 8/28/2014, calculate date from there
+    Timecop.travel(Date.new(2014, 08, 28))
     create_users_and_transactions
   end
 
   after (:each) do
     delete_users_and_transactions
+    # release the Timecop
+    Timecop.return
   end
 
 
