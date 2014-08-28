@@ -5,7 +5,7 @@ class RedeemersController < ApplicationController
     @samaritans = Recyclable.where(trans_type: "samaritan", selected: false, completed: false).near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
     # for testing in rails console:
     # @redeemables = Recyclable.where(trans_type: "redeemable", selected: false, completed: false).near([user.profile.latitude, user.profile.longitude], user.profile.radius)
-    sql = "select users.email, profiles.address,
+    sql = "select users.email, profiles.address, profiles.city,
     user_recyclables.id as user_recyclables_id, recyclables.plastic,
     recyclables.glass, recyclables.cans, recyclables.other from users
     join profiles on users.id = profiles.user_id
@@ -16,7 +16,7 @@ class RedeemersController < ApplicationController
     and users.id = #{current_user.id}
     and recyclables.trans_type = 'redeemable';"
     @redeemables_selected = ActiveRecord::Base.connection.execute(sql)
-    sql = "select users.email, profiles.address,
+    sql = "select users.email, profiles.address, profiles.city,
     user_recyclables.id as user_recyclables_id, recyclables.cardboard,
     recyclables.newspaper, recyclables.magazines, recyclables.paper,
     recyclables.non_hi5_plastic, recyclables.non_hi5_glass,

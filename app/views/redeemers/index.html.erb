@@ -9,7 +9,8 @@
     <div class="redeemable">
       <%= f.submit "Select", class: 'btn btn-link' %>
       <%= f.hidden_field :selected, :value => true %>
-      <%= redeemable.users[0].profile.address %>:
+      <%= redeemable.users[0].profile.address %>,
+      <%= redeemable.users[0].profile.city %>:
       <%= "Plastic: #{redeemable["plastic"]}" %>
       <%= "Glass: #{redeemable["glass"]}" %>
       <%= "Cans: #{redeemable["cans"]}" %>
@@ -26,7 +27,8 @@
     <div class="samaritan">
       <%= f.submit "Select", class: 'btn btn-link' %>
       <%= f.hidden_field :selected, :value => true %>
-      <%= samaritan.users[0].profile.address %>:
+      <%= samaritan.users[0].profile.address %>,
+      <%= samaritan.users[0].profile.city %>:
       <%= "Cardboard" if samaritan["cardboard"] == true %>
       <%= "Newspaper" if samaritan["newspaper"] == true %>
       <%= "Magazines" if samaritan["magazines"] == true %>
@@ -45,7 +47,8 @@
     <%#= form_for redeemable do |f| %>
     <div class="redeemable">
       <%#= f.submit "Select", class: 'btn btn-link' %>
-      <%= redeemable["address"] %>:
+      <%= redeemable["address"] %>,
+      <%= redeemable["city"] %>:
       <%= "Plastic: #{redeemable["plastic"]}" if redeemable["plastic"] %>
       <%= "Glass: #{redeemable["glass"]}" if redeemable["glass"] %>
       <%= "Cans: #{redeemable["cans"]}" if redeemable["cans"]%>
@@ -61,7 +64,8 @@
     <!-- <input type="checkbox"> -->
     <div class="samaritan">
       <%#= f.submit "Select", class: 'btn btn-link' %>
-      <%= samaritan["address"] %>:
+      <%= samaritan["address"] %>,
+      <%= samaritan["city"] %>:
       <%= "Cardboard" if samaritan["cardboard"] == "t" %>
       <%= "Newspaper" if samaritan["newspaper"] == "t" %>
       <%= "Magazines" if samaritan["magazines"] == "t" %>
