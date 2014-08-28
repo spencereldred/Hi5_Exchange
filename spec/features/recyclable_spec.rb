@@ -18,18 +18,13 @@ feature 'Recyclable' do
     click_button "Login"
     expect(page).to have_content("Recyclers#index")
     expect(page).to have_content("Open Recyclable Transactions")
-    expect(page).to have_content("Plastic: 1")
-    expect(page).to have_content("Glass: 1")
-    expect(page).to have_content("Cans: 1")
-    expect(page).to have_content("Mixed Hi5: 1")
+    expect(page).to have_content("Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+    expect(page).to have_content("Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2 Selected")
+    expect(page).not_to have_content("Plastic: 3 Glass: 3 Cans: 3 Mixed Hi5: 3 Selected")
     expect(page).to have_content("Open Good Samaritan Transactions")
-    expect(page).to have_content("Cardboard")
-    expect(page).to have_content("Newspaper")
-    expect(page).to have_content("Magazines")
-    expect(page).to have_content("Paper")
-    expect(page).to have_content("Non_hi5_plastic")
-    expect(page).to have_content("Non_hi5_glass")
-    expect(page).to have_content("Non_hi5_cans")
+    expect(page).to have_content("Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
+    expect(page).to have_content("Cardboard Newspaper Magazines Paper Selected")
+    expect(page).not_to have_content("Non_hi5_plastic Non_hi5_glass Non_hi5_cans Selected")
 
     click_button "Create New Transaction"
     expect(page).to have_content("Create Redeemable Transaction")
@@ -94,7 +89,7 @@ feature 'Recyclable' do
     end
     expect(page).to have_content("Good Samaritan transaction has been selected!")
     expect(page).not_to have_content("Available Good Samaritan Transactions 1062 Delaware St., Denver: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
-    expect(page).to have_content("Selected Good Samaritan Transactions 460 Humboldt St., Denver: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
+    expect(page).to have_content("Selected Good Samaritan Transactions 460 Humboldt St., Denver: Cardboard Newspaper Magazines Paper")
 
   end
 

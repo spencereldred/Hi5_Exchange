@@ -2,9 +2,10 @@ class RecyclablesController < ApplicationController
 
   def index
     user = User.find(logged_in_user_id)
-    @recyclables = user.recyclables.where(trans_type: 'redeemable')
-    @samaritans = user.recyclables.where(trans_type: 'samaritan')
+    @recyclables = user.recyclables.where(trans_type: 'redeemable', completed: false)
+    @samaritans = user.recyclables.where(trans_type: 'samaritan', completed: false)
     @selections = ['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']
+    # binding.pry
   end
 
   def new

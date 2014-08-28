@@ -12,6 +12,7 @@
     <%= "Glass: #{recyclable.glass}" if recyclable.glass %>
     <%= "Cans: #{recyclable.cans}" if recyclable.cans %>
     <%= "Mixed Hi5: #{recyclable.other}" if recyclable.other %>
+    <%= "Selected" if recyclable.selected %>
   </div>
 <% end  %>
 
@@ -25,5 +26,6 @@
     <%= "Non_hi5_plastic" if samaritan.non_hi5_plastic %>
     <%= "Non_hi5_glass" if samaritan.non_hi5_glass %>
     <%= "Non_hi5_cans" if samaritan.non_hi5_cans %>
+    <%= "Selected" if samaritan.selected %>
   </div>
 <% end %>

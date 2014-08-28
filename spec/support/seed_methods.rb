@@ -60,22 +60,20 @@ sleep(1)
 sleep(1)
 
 @co_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
-  non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
   magazines: true, paper: true, newspaper: true, selected: true,
   user_id: @rec1.id)
 
 sleep(1)
 
-@co_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 2,
-  cans: 2, glass: 2, other: 2, selected: true, completed: true,
+@co_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 3,
+  cans: 3, glass: 3, other: 3, selected: true, completed: true,
   user_id: @rec1.id)
 
 sleep(1)
 
-@co_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+@co_recyclable6 = Recyclable.create(trans_type: "samaritan",
   non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
-  magazines: true, paper: true, newspaper: true, selected: true,
-  completed: true, user_id: @rec1.id)
+  selected: true, completed: true, user_id: @rec1.id)
 
 sleep(1)
 
