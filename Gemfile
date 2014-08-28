@@ -13,6 +13,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'better_errors'
+  gem 'launchy'
 end
 
 group :test do

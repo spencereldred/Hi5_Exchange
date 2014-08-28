@@ -5,7 +5,6 @@ class RecyclablesController < ApplicationController
     @recyclables = user.recyclables.where(trans_type: 'redeemable', completed: false)
     @samaritans = user.recyclables.where(trans_type: 'samaritan', completed: false)
     @selections = ['none', '1 bag', '2 bags', '3 bags', '4 bags', '5 bags']
-    # binding.pry
   end
 
   def new
@@ -32,8 +31,16 @@ class RecyclablesController < ApplicationController
       else
         flash.notice = "Good Samaritan transaction has been selected!"
       end
+      redirect_to redeemers_path
     end
-    redirect_to redeemers_path
+    if @recyclable.selected == true and @recyclable.completed == true
+      if @recyclable.trans_type == "redeemable"
+        flash.notice = "Redeemable transaction has been completed!"
+      else
+        flash.notice = "Good Samaritan transaction has been completed!"
+      end
+      redirect_to recyclables_path
+    end
   end
 
   private

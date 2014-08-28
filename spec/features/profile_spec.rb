@@ -3,7 +3,9 @@ require 'capybara/rails'
 feature 'Profile' do
 
   before (:each) do
+    sleep(1)
     signup('user@example.com', 'password')
+    sleep(1)
   end
 
   after (:each) do

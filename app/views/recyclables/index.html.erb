@@ -7,18 +7,26 @@
 <%= button_to "Create New Transaction", new_recyclable_path, :class => "btn btn-primary", :method => :get  %>
 <h1>Open Recyclable Transactions</h1>
 <% @recyclables.each do |recyclable|  %>
-  <div><%= "#{recyclable.created_at.to_formatted_s(:short)}:" %>
+  <%= form_for recyclable do |f| %>
+  <div class="redeemable">
+    <%= "#{recyclable.created_at.to_formatted_s(:short)}:" %>
     <%= "Plastic: #{recyclable.plastic}" if recyclable.plastic %>
     <%= "Glass: #{recyclable.glass}" if recyclable.glass %>
     <%= "Cans: #{recyclable.cans}" if recyclable.cans %>
     <%= "Mixed Hi5: #{recyclable.other}" if recyclable.other %>
     <%= "Selected" if recyclable.selected %>
+    <%= f.submit "Completed", class: 'btn btn-link' %>
+    <%= f.hidden_field :selected, :value => true %>
+    <%= f.hidden_field :completed, :value => true %>
   </div>
+  <% end %>
 <% end  %>
 
 <h1>Open Good Samaritan Transactions</h1>
 <% @samaritans.each do |samaritan|  %>
-  <div><%= "#{samaritan.created_at.to_formatted_s(:short)}:" %>
+  <%= form_for samaritan do |f| %>
+  <div class="samaritan">
+    <%= "#{samaritan.created_at.to_formatted_s(:short)}:" %>
     <%= "Cardboard" if samaritan.cardboard %>
     <%= "Newspaper" if samaritan.newspaper %>
     <%= "Magazines" if samaritan.magazines %>
@@ -27,5 +35,9 @@
     <%= "Non_hi5_glass" if samaritan.non_hi5_glass %>
     <%= "Non_hi5_cans" if samaritan.non_hi5_cans %>
     <%= "Selected" if samaritan.selected %>
+    <%= f.submit "Completed", class: 'btn btn-link' %>
+    <%= f.hidden_field :selected, :value => true %>
+    <%= f.hidden_field :completed, :value => true %>
   </div>
+  <% end %>
 <% end %>

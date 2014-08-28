@@ -36,17 +36,14 @@ feature 'Recyclable' do
     click_on "Create Redeemable Transaction"
     expect(page).to have_content("Redeemable transaction has been created!")
     expect(page).to have_content("Open Recyclable Transactions")
-    expect(page).to have_content("Plastic: 5")
-    expect(page).to have_content("Glass: 4")
-    expect(page).to have_content("Cans: 3")
-    expect(page).to have_content("Mixed Hi5: 2")
+    expect(page).to have_content("Plastic: 5 Glass: 4 Cans: 3 Mixed Hi5: 2")
 
     click_button "Create New Transaction"
     expect(page).to have_content("Create Redeemable Transaction")
     expect(page).to have_content("Create Good Samaritan Transaction")
     check("Cardboard")
     check("Newspaper")
-    check("Magazines")
+    # check("Magazines")
     check("Paper")
     check("Non hi5 plastic")
     check("Non hi5 glass")
@@ -55,14 +52,23 @@ feature 'Recyclable' do
 
     expect(page).to have_content("Samaritan transaction has been created!")
     expect(page).to have_content("Open Good Samaritan Transactions")
-    expect(page).to have_content("Cardboard")
-    expect(page).to have_content("Newspaper")
-    expect(page).to have_content("Magazines")
-    expect(page).to have_content("Paper")
-    expect(page).to have_content("Non_hi5_plastic")
-    expect(page).to have_content("Non_hi5_glass")
-    expect(page).to have_content("Non_hi5_cans")
+    expect(page).to have_content("Cardboard Newspaper Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
+    expect(page).to have_button("Completed")
+
+    within(first(".redeemable")) do
+      click_on "Completed"
+    end
+    expect(page).to have_content("Redeemable transaction has been completed!")
+    expect(page).not_to have_content("Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
+
+    within(first(".samaritan")) do
+      click_on "Completed"
+    end
+    expect(page).to have_content("Good Samaritan transaction has been completed!")
+    expect(page).not_to have_content("Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
+
+    # save_and_open_page
   end
 
   scenario "redeemer can select a transaction" do
