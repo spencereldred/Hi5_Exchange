@@ -4,7 +4,10 @@ feature 'Recyclable' do
 
   before (:each) do
     # Freeze today to 8/28/2014, calculate date from there
-    Timecop.travel(Date.new(2014, 08, 28))
+    date = Time.local(2014, 8, 28, 9, 0, 0)
+    Timecop.travel(date)
+    # seconds will be hours
+    Timecop.scale(3600)
     create_users_and_transactions
   end
 

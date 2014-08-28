@@ -43,13 +43,15 @@ def create_users_and_transactions
 
   sleep(1)
 
-  @co_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 1,
-    cans: 1, glass: 1, other: 1, user_id: @rec1.id)
+  @co_recyclable1 = Recyclable.create(trans_type: "redeemable",
+    plastic: 1, cans: 1, glass: 1, other: 1, user_id: @rec1.id)
 
   sleep(1)
 
-  @co_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 2,
-    cans: 2, glass: 2, other: 2, selected: true, user_id: @rec1.id)
+  @co_recyclable2 = Recyclable.create(trans_type: "redeemable",
+    plastic: 2, cans: 2, glass: 2, other: 2,
+    selected: true, selected_date: (Time.now + (60*60*24)),
+    user_id: @rec1.id)
 
   sleep(1)
 
@@ -59,31 +61,38 @@ def create_users_and_transactions
 
   sleep(1)
 
-  @co_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
-    magazines: true, paper: true, newspaper: true, selected: true,
-    user_id: @rec1.id)
+  @co_recyclable4 = Recyclable.create(trans_type: "samaritan",
+    cardboard: true, magazines: true, paper: true, newspaper: true,
+    selected: true, selected_date: (Time.now + (60*60*24)),user_id: @rec1.id)
 
   sleep(1)
 
-  @co_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 3,
-    cans: 3, glass: 3, other: 3, selected: true, completed: true,
+  @co_recyclable5 = Recyclable.create(trans_type: "redeemable",
+    plastic: 3, cans: 3, glass: 3, other: 3,
+    selected: true, selected_date: (Time.now + (60*60*24)),
+    completed: true, completed_date: (Time.now + (2*60*60*24)),
     user_id: @rec1.id)
 
   sleep(1)
 
   @co_recyclable6 = Recyclable.create(trans_type: "samaritan",
     non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
-    selected: true, completed: true, user_id: @rec1.id)
+    selected: true, selected_date: (Time.now + (60*60*24)),
+    completed: true, completed_date: (Time.now + (2*60*60*24)),
+    user_id: @rec1.id)
 
   sleep(1)
 
-  @sf_recyclable1 = Recyclable.create(trans_type: "redeemable", plastic: 3,
-    cans: 3, glass: 3, other: 3, user_id: @rec2.id)
+  @sf_recyclable1 = Recyclable.create(trans_type: "redeemable",
+    plastic: 3, cans: 3, glass: 3, other: 3,
+    user_id: @rec2.id)
 
   sleep(1)
 
-  @sf_recyclable2 = Recyclable.create(trans_type: "redeemable", plastic: 4,
-    cans: 4, glass: 4, other: 4, selected: true, user_id: @rec2.id)
+  @sf_recyclable2 = Recyclable.create(trans_type: "redeemable",
+    plastic: 4, cans: 4, glass: 4, other: 4,
+    selected: true, selected_date: (Time.now + (60*60*24)),
+    user_id: @rec2.id)
 
   sleep(1)
 
@@ -95,21 +104,26 @@ def create_users_and_transactions
 
   @sf_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
-    magazines: false, paper: true, newspaper: false, selected: true,
+    magazines: false, paper: true, newspaper: false,
+    selected: true, selected_date: (Time.now + (60*60*24)),
     user_id: @rec2.id)
 
   sleep(1)
 
-  @sf_recyclable5 = Recyclable.create(trans_type: "redeemable", plastic: 4,
-    cans: 4, glass: 4, other: 4, selected: true, completed: true,
+  @sf_recyclable5 = Recyclable.create(trans_type: "redeemable",
+    plastic: 4, cans: 4, glass: 4, other: 4,
+    selected: true, selected_date: (Time.now + (60*60*24)),
+    completed: true, completed_date: (Time.now + (2*60*60*24)),
     user_id: @rec2.id)
 
   sleep(1)
 
   @sf_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
-    magazines: false, paper: true, newspaper: false, selected: true,
-    completed: true, user_id: @rec2.id)
+    magazines: false, paper: true, newspaper: false,
+    selected: true, selected_date: (Time.now + (60*60*24)),
+    completed: true, completed_date: (Time.now + (2*60*60*24)),
+    user_id: @rec2.id)
 
   user_recyclable = UserRecyclable.create([
     {user_id: @rec1.id , recyclable_id: @co_recyclable1.id},
@@ -127,8 +141,6 @@ def create_users_and_transactions
     {user_id: @rec2.id , recyclable_id: @sf_recyclable6.id, redeemer_id: @red2.id }
 
   ])
-
-
 
 end
 
