@@ -72,6 +72,7 @@ class RecyclablesController < ApplicationController
         else
           flash.notice = "Good Samaritan transaction has been completed!"
         end
+        Hi5Mailer.completed(recyclable.users[0]).deliver
         redirect_to recyclables_path
       end
     end
