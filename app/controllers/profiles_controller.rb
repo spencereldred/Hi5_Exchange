@@ -30,6 +30,7 @@ class ProfilesController < ApplicationController
     profile = Profile.find(params_id)
     if profile.update_attributes(profile_params)
       flash.notice = "Profile was successfully updated!"
+      Hi5Mailer.profile_updated(profile.user).deliver
       # redirecting to show - ultimately redirect to "function" page
       redirect_to profile_path(params_id)
     else
