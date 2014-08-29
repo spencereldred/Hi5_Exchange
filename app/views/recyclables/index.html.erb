@@ -14,7 +14,7 @@
     <%= "Glass: #{recyclable.glass}" if recyclable.glass %>
     <%= "Cans: #{recyclable.cans}" if recyclable.cans %>
     <%= "Mixed Hi5: #{recyclable.other}" if recyclable.other %>
-    <%= "Selected" if recyclable.selected %>
+    <%= "Selected: #{recyclable.selected_date.to_formatted_s(:short)}" if recyclable.selected %>
     <%= f.submit "Completed", class: 'btn btn-link' %>
     <%= f.hidden_field :selected, :value => true %>
     <%= f.hidden_field :completed, :value => true %>
@@ -35,7 +35,7 @@
     <%= "Non_hi5_plastic" if samaritan.non_hi5_plastic %>
     <%= "Non_hi5_glass" if samaritan.non_hi5_glass %>
     <%= "Non_hi5_cans" if samaritan.non_hi5_cans %>
-    <%= "Selected" if samaritan.selected %>
+    <%= "Selected: #{samaritan.selected_date.to_formatted_s(:short)}" if samaritan.selected %>
     <%= f.submit "Completed", class: 'btn btn-link' %>
     <%= f.hidden_field :selected, :value => true %>
     <%= f.hidden_field :completed, :value => true %>

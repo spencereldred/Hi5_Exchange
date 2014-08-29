@@ -26,11 +26,11 @@ feature 'Recyclable' do
     expect(page).to have_content("Recyclers#index")
     expect(page).to have_content("Open Recyclable Transactions")
     expect(page).to have_content("Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
-    expect(page).to have_content("Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2 Selected")
+    expect(page).to have_content("Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2 Selected: 29 Aug")
     expect(page).not_to have_content("Plastic: 3 Glass: 3 Cans: 3 Mixed Hi5: 3 Selected")
     expect(page).to have_content("Open Good Samaritan Transactions")
     expect(page).to have_content("Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
-    expect(page).to have_content("Cardboard Newspaper Magazines Paper Selected")
+    expect(page).to have_content("Cardboard Newspaper Magazines Paper Selected: 29 Aug")
     expect(page).not_to have_content("Non_hi5_plastic Non_hi5_glass Non_hi5_cans Selected")
 
     click_button "Create New Transaction"
@@ -93,9 +93,11 @@ feature 'Recyclable' do
     within(first(".redeemable")) do
       click_on "Select"
     end
+    save_and_open_page
     expect(page).to have_content("Redeemable transaction has been selected!")
     expect(page).not_to have_content("Available Redeemable Transactions 1062 Delaware St., Denver: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
     expect(page).to have_content("Selected Redeemable Transactions 460 Humboldt St., Denver: Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2")
+
 
     within(first(".samaritan")) do
       click_on "Select"
