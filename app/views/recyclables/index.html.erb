@@ -18,6 +18,7 @@
     <%= f.submit "Completed", class: 'btn btn-link' %>
     <%= f.hidden_field :selected, :value => true %>
     <%= f.hidden_field :completed, :value => true %>
+    <%= f.hidden_field :completed_date, :value => Time.now %>
   </div>
   <% end %>
 <% end  %>
@@ -38,6 +39,7 @@
     <%= f.submit "Completed", class: 'btn btn-link' %>
     <%= f.hidden_field :selected, :value => true %>
     <%= f.hidden_field :completed, :value => true %>
+    <%= f.hidden_field :completed_date, :value => Time.now %>
   </div>
   <% end %>
 <% end %>

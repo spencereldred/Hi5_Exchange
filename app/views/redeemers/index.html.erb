@@ -9,6 +9,7 @@
     <div class="redeemable">
       <%= f.submit "Select", class: 'btn btn-link' %>
       <%= f.hidden_field :selected, :value => true %>
+      <%= f.hidden_field :selected_date, :value => Time.now %>
       <%= redeemable.users[0].profile.address %>,
       <%= redeemable.users[0].profile.city %>:
       <%= "Plastic: #{redeemable["plastic"]}" %>
@@ -27,6 +28,7 @@
     <div class="samaritan">
       <%= f.submit "Select", class: 'btn btn-link' %>
       <%= f.hidden_field :selected, :value => true %>
+      <%= f.hidden_field :selected_date, :value => Time.now %>
       <%= samaritan.users[0].profile.address %>,
       <%= samaritan.users[0].profile.city %>:
       <%= "Cardboard" if samaritan["cardboard"] == true %>

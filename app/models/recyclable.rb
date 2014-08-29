@@ -7,9 +7,11 @@ class Recyclable < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode
 
-  def full_address
-    user = User.find(self.user_id)
-     "#{user.profile.address}, #{user.profile.city} #{user.profile.state} #{user.profile.zipcode}"
-  end
+  private
+
+    def full_address
+      user = User.find(self.user_id)
+       "#{user.profile.address}, #{user.profile.city} #{user.profile.state} #{user.profile.zipcode}"
+    end
 
 end

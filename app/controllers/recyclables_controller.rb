@@ -25,7 +25,7 @@ class RecyclablesController < ApplicationController
   def update
     @recyclable = Recyclable.find(params_id)
     @recyclable.update_attributes(recyclable_update)
-    if @recyclable.selected == true and @recyclable.completed == false
+    if @recyclable.selected and !@recyclable.completed
       if @recyclable.trans_type == "redeemable"
         flash.notice = "Redeemable transaction has been selected!"
       else
@@ -33,7 +33,7 @@ class RecyclablesController < ApplicationController
       end
       redirect_to redeemers_path
     end
-    if @recyclable.selected == true and @recyclable.completed == true
+    if @recyclable.selected and @recyclable.completed
       if @recyclable.trans_type == "redeemable"
         flash.notice = "Redeemable transaction has been completed!"
       else
@@ -54,7 +54,9 @@ class RecyclablesController < ApplicationController
     end
 
     def recyclable_update
-      params.require(:recyclable).permit(:selected, :completed)
+      params.require(:recyclable).permit(
+        :selected, :selected_date,
+        :completed, :completed_date)
     end
 
     def recyclable_params
