@@ -7,7 +7,8 @@ class RedeemersController < ApplicationController
     # @redeemables = Recyclable.where(trans_type: "redeemable", selected: false, completed: false).near([user.profile.latitude, user.profile.longitude], user.profile.radius)
     sql = "select users.email, profiles.address, profiles.city,
     user_recyclables.id as user_recyclables_id, recyclables.plastic,
-    recyclables.glass, recyclables.cans, recyclables.other from users
+    recyclables.glass, recyclables.cans, recyclables.other, recyclables.selected_date
+    from users
     join profiles on users.id = profiles.user_id
     join user_recyclables on users.id = user_recyclables.redeemer_id
     join recyclables on user_recyclables.recyclable_id = recyclables.id
@@ -20,7 +21,8 @@ class RedeemersController < ApplicationController
     user_recyclables.id as user_recyclables_id, recyclables.cardboard,
     recyclables.newspaper, recyclables.magazines, recyclables.paper,
     recyclables.non_hi5_plastic, recyclables.non_hi5_glass,
-    recyclables.non_hi5_cans from users
+    recyclables.non_hi5_cans, recyclables.selected_date
+    from users
     join profiles on users.id = profiles.user_id
     join user_recyclables on users.id = user_recyclables.redeemer_id
     join recyclables on user_recyclables.recyclable_id = recyclables.id

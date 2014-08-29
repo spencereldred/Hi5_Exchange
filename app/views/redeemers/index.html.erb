@@ -25,7 +25,6 @@
 <% @samaritans.each do |samaritan| %>
   <div>
     <%= form_for samaritan do |f| %>
-    <!-- <input type="checkbox"> -->
     <div class="samaritan">
       <%= f.submit "Select", class: 'btn btn-link' %>
       <%= f.hidden_field :selected, :value => true %>
@@ -48,26 +47,21 @@
 <h1>Selected Redeemable Transactions</h1>
 <% @redeemables_selected.each do |redeemable|  %>
   <div>
-    <%#= form_for redeemable do |f| %>
     <div class="redeemable">
-      <%#= f.submit "Select", class: 'btn btn-link' %>
       <%= redeemable["address"] %>,
       <%= redeemable["city"] %>:
       <%= "Plastic: #{redeemable["plastic"]}" if redeemable["plastic"] %>
       <%= "Glass: #{redeemable["glass"]}" if redeemable["glass"] %>
       <%= "Cans: #{redeemable["cans"]}" if redeemable["cans"]%>
       <%= "Mixed Hi5: #{redeemable["other"]}" if redeemable["other"] %>
+      <%= "Selected: #{redeemable["selected_date"].to_datetime.to_formatted_s(:short)}" %>
     </div>
-    <%# end %>
   </div>
 <% end %>
 <h1>Selected Good Samaritan Transactions</h1>
 <% @samaritans_selected.each do |samaritan| %>
   <div>
-    <%#= form_for samaritan do |f| %>
-    <!-- <input type="checkbox"> -->
     <div class="samaritan">
-      <%#= f.submit "Select", class: 'btn btn-link' %>
       <%= samaritan["address"] %>,
       <%= samaritan["city"] %>:
       <%= "Cardboard" if samaritan["cardboard"] == "t" %>
@@ -77,8 +71,8 @@
       <%= "Non_hi5_plastic" if samaritan["non_hi5_plastic"] == "t" %>
       <%= "Non_hi5_glass" if samaritan["non_hi5_glass"] == "t" %>
       <%= "Non_hi5_cans" if samaritan["non_hi5_cans"] == "t" %>
+      <%= "Selected: #{samaritan["selected_date"].to_datetime.to_formatted_s(:short)}" %>
     </div>
-    <%# end %>
   </div>
 <% end %>
 
