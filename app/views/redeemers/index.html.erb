@@ -16,6 +16,7 @@
       <%= "Glass: #{redeemable["glass"]}" %>
       <%= "Cans: #{redeemable["cans"]}" %>
       <%= "Mixed Hi5: #{redeemable["other"]}" %>
+      <%= "Posted: #{redeemable["created_at"].to_formatted_s(:short)}" %>
     </div>
     <% end %>
   </div>
@@ -38,6 +39,7 @@
       <%= "Non_hi5_plastic" if samaritan["non_hi5_plastic"] == true %>
       <%= "Non_hi5_glass" if samaritan["non_hi5_glass"] == true %>
       <%= "Non_hi5_cans" if samaritan["non_hi5_cans"] == true %>
+      <%= "Posted: #{samaritan["created_at"].to_formatted_s(:short)}" %>
     </div>
     <% end %>
   </div>
