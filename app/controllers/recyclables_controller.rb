@@ -14,33 +14,14 @@ class RecyclablesController < ApplicationController
   def create
     user = User.find(logged_in_user_id)
     user.recyclables.create(recyclable_params)
-    if user.recyclables.last.trans_type == 'redeemable'
-      flash.notice = "Redeemable transaction has been created!"
-    elsif user.recyclables.last.trans_type == 'samaritan'
-      flash.notice = "Samaritan transaction has been created!"
-    end
+    create_flash_notice(user)
     redirect_to recyclables_path
   end
 
   def update
     @recyclable = Recyclable.find(params_id)
     @recyclable.update_attributes(recyclable_update)
-    if @recyclable.selected and !@recyclable.completed
-      if @recyclable.trans_type == "redeemable"
-        flash.notice = "Redeemable transaction has been selected!"
-      else
-        flash.notice = "Good Samaritan transaction has been selected!"
-      end
-      redirect_to redeemers_path
-    end
-    if @recyclable.selected and @recyclable.completed
-      if @recyclable.trans_type == "redeemable"
-        flash.notice = "Redeemable transaction has been completed!"
-      else
-        flash.notice = "Good Samaritan transaction has been completed!"
-      end
-      redirect_to recyclables_path
-    end
+    update_flash_notice(@recyclable)
   end
 
   private
@@ -65,6 +46,33 @@ class RecyclablesController < ApplicationController
         :cardboard, :newspaper, :magazines, :paper,
         :non_hi5_plastic, :non_hi5_glass, :non_hi5_cans,
         :user_id)
+    end
+
+    def create_flash_notice(user)
+      if user.recyclables.last.trans_type == 'redeemable'
+        flash.notice = "Redeemable transaction has been created!"
+      elsif user.recyclables.last.trans_type == 'samaritan'
+        flash.notice = "Samaritan transaction has been created!"
+      end
+    end
+
+    def update_flash_notice(recyclable)
+      if recyclable.selected and !recyclable.completed
+        if recyclable.trans_type == "redeemable"
+          flash.notice = "Redeemable transaction has been selected!"
+        else
+          flash.notice = "Good Samaritan transaction has been selected!"
+        end
+        redirect_to redeemers_path
+      end
+      if recyclable.selected and recyclable.completed
+        if recyclable.trans_type == "redeemable"
+          flash.notice = "Redeemable transaction has been completed!"
+        else
+          flash.notice = "Good Samaritan transaction has been completed!"
+        end
+        redirect_to recyclables_path
+      end
     end
 
 end
