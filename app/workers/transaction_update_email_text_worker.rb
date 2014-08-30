@@ -10,7 +10,7 @@ class TransactionUpdateEmailTextWorker
       user = User.find(recyclable.users[0].id)
       puts "#{user.profile.first_name} - Email"
 
-      if recyclable.completed == true && recyclable.selected == true
+      if recyclable.completed && recyclable.selected
         ############ COMPLETED ##############
         # send recycler email that the redeemer indicates the job is done
         Hi5Mailer.completed(user).deliver
@@ -20,7 +20,7 @@ class TransactionUpdateEmailTextWorker
         send_text(message, user.profile.phone ) if !user.profile.phone.empty?
       end
 
-      if recyclable.completed == false && recyclable.selected == true
+      if !recyclable.completed && recyclable.selected
         ############ SELECTED ##############
         # send recycler an email that states a redeemer has claimed the job
         Hi5Mailer.selected(user).deliver
