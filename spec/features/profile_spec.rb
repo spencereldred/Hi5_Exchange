@@ -1,6 +1,6 @@
 require 'capybara/rails'
 
-feature 'Profile' do
+feature 'Create and Update Profile' do
 
   before (:each) do
     sleep(1)

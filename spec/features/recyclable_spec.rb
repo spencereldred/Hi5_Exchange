@@ -1,6 +1,6 @@
 require 'capybara/rails'
 
-feature 'Transaction' do
+feature 'Create and Update Transaction' do
 
   before (:each) do
     # Freeze today to 8/28/2014, calculate date from there

@@ -7,9 +7,9 @@ class ProfileUpdatedEmailTextWorker
     user = User.find(user_id)
     Hi5Mailer.profile_updated(user).deliver
     # send text message alert
-    message = "Shaka! #{user.first_name}, your profile has been updated.
+    message = "Shaka! #{user.profile.first_name}, your profile has been updated.
     Questions, contact Annie at hi5exchange@gmail.com."
-    send_text(message, user.phone ) if !user.phone.empty?
+    send_text(message, user.profile.phone ) if !user.profile.phone.empty?
   end
 
   # Sends text message using Twilio's service
