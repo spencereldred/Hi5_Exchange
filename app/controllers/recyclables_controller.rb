@@ -63,7 +63,8 @@ class RecyclablesController < ApplicationController
         else
           flash.notice = "Good Samaritan transaction has been selected!"
         end
-        Hi5Mailer.selected(recyclable.users[0]).deliver
+        # Hi5Mailer.selected(recyclable.users[0]).deliver
+        TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
         redirect_to redeemers_path
       end
       if recyclable.selected and recyclable.completed
@@ -72,7 +73,8 @@ class RecyclablesController < ApplicationController
         else
           flash.notice = "Good Samaritan transaction has been completed!"
         end
-        Hi5Mailer.completed(recyclable.users[0]).deliver
+        # Hi5Mailer.completed(recyclable.users[0]).deliver
+        TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
         redirect_to recyclables_path
       end
     end
