@@ -1,3 +1,44 @@
+def create_selectable_transactions
+  @red1 = User.create(
+    email: 'eldredspencer@gmail.com', password: 'password',
+    password_confirmation: 'password')
+
+  @red1_profile = Profile.create(
+    user_id: @red1.id, first_name: 'Joe-redeemer', last_name: 'Colorado',
+    address: '460 Humboldt St.', city: 'Denver', state: 'CO',
+    zipcode: '80209', phone: '8082803758',function: 'redeemer')
+
+  sleep(1)
+
+  @rec1 = User.create(
+    email: 'seldred694@aol.com', password: 'password',
+    password_confirmation: 'password')
+
+  @rec1_profile = Profile.create(
+    user_id: @rec1.id, first_name: 'Joe-recycler', last_name: 'Colorado',
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', phone: '8082803758',function: 'recycler')
+
+  sleep(1)
+
+  @co_recyclable1 = Recyclable.create(trans_type: "redeemable",
+    plastic: 1, cans: 1, glass: 1, other: 1, user_id: @rec1.id)
+
+  sleep(1)
+
+  @co_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
+    non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+    magazines: true, paper: true, newspaper: true, user_id: @rec1.id)
+
+  sleep(1)
+
+  user_recyclable = UserRecyclable.create([
+    {user_id: @rec1.id , recyclable_id: @co_recyclable1.id},
+    {user_id: @rec1.id , recyclable_id: @co_recyclable3.id }
+  ])
+
+end
+
 def create_users_and_transactions
   @red1 = User.create(
     email: 'red1@example.com', password: 'password',

@@ -19,8 +19,10 @@ class RecyclablesController < ApplicationController
   end
 
   def update
+    # UserRecyclable redeemer_id is nil!!!
     @recyclable = Recyclable.find(params_id)
     @recyclable.update_attributes(recyclable_update)
+    # binding.pry
     update_flash_notice(@recyclable)
   end
 
@@ -58,6 +60,10 @@ class RecyclablesController < ApplicationController
 
     def update_flash_notice(recyclable)
       if recyclable.selected and !recyclable.completed
+        user_recyclable = UserRecyclable.all.where(recyclable_id: recyclable.id)
+        user_recyclable.last.redeemer_id = current_user.id
+        user_recyclable.last.save
+        # binding.pry
         if recyclable.trans_type == "redeemable"
           flash.notice = "Redeemable transaction has been selected!"
         else

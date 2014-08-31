@@ -4,9 +4,9 @@ class TransactionUpdateEmailTextWorker
 
   # recurrence {hourly}
   def perform(recyclable_id)
-      binding.pry
+      # binding.pry
       recyclable = Recyclable.find(recyclable_id)
-      binding.pry
+      # binding.pry
       user = User.find(recyclable.users[0].id)
       puts "#{user.profile.first_name} - Email"
 
