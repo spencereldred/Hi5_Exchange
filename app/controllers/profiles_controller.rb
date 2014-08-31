@@ -14,9 +14,9 @@ class ProfilesController < ApplicationController
     if profile.save
       flash.notice = "Profile was created successfully!"
       if profile.function == "redeemer"
-        Hi5Mailer.welcome_redeemer(profile.user).deliver
+        WelcomeEmailTextRedeemerWorker.perform_async(profile.user.id)
       else
-        Hi5Mailer.welcome_recycler(profile.user).deliver
+        WelcomeEmailTextRecyclerWorker.perform_async(profile.user.id)
       end
       # redirecting to show - ultimately redirect to "function" page
       redirect_to profile_path(profile.id)
