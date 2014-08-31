@@ -22,7 +22,7 @@
   <div><%= f.text_field :phone %></div>
 
   <div><%= f.label :function %></div>
-  <div> <%= f.select :function, options_for_select(%w[recycler redeemer]) %></div>
+  <div> <%= f.select :function, options_for_select(%w[recycler redeemer]), :select => "redeemer"  %></div>
   <br>
 
   <div><%= f.submit message, class: "btn btn-primary" %></div>

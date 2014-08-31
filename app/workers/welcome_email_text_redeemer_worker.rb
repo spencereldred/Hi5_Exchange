@@ -1,12 +1,10 @@
 class WelcomeEmailTextRedeemerWorker
   include Sidekiq::Worker
-  # include Sidetiq::Schedulable
 
-  # recurrence {hourly}
   def perform(user_id)
     user = User.find(user_id)
     Hi5Mailer.welcome_redeemer(user).deliver
-    message = "Shaka! #{user.first_name}, your redeemer account has been created.
+    message = "Shaka! #{user.profile.first_name}, your redeemer account has been created.
     Questions, contact Annie at hi5exchange@gmail.com."
     send_text(message, user.phone ) if !user.phone.empty?
   end

@@ -54,6 +54,7 @@ class RecyclablesController < ApplicationController
       elsif user.recyclables.last.trans_type == 'samaritan'
         flash.notice = "Samaritan transaction has been created!"
       end
+      # JobAvailableEmailTextWorker.perform_async(user.id)
     end
 
     def update_flash_notice(recyclable)
