@@ -19,10 +19,8 @@ class RecyclablesController < ApplicationController
   end
 
   def update
-    # UserRecyclable redeemer_id is nil!!!
     @recyclable = Recyclable.find(params_id)
     @recyclable.update_attributes(recyclable_update)
-    # binding.pry
     update_flash_notice(@recyclable)
   end
 
@@ -63,13 +61,11 @@ class RecyclablesController < ApplicationController
         user_recyclable = UserRecyclable.all.where(recyclable_id: recyclable.id)
         user_recyclable.last.redeemer_id = current_user.id
         user_recyclable.last.save
-        # binding.pry
         if recyclable.trans_type == "redeemable"
           flash.notice = "Redeemable transaction has been selected!"
         else
           flash.notice = "Good Samaritan transaction has been selected!"
         end
-        # Hi5Mailer.selected(recyclable.users[0]).deliver
         TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
         redirect_to redeemers_path
       end
@@ -79,7 +75,6 @@ class RecyclablesController < ApplicationController
         else
           flash.notice = "Good Samaritan transaction has been completed!"
         end
-        # Hi5Mailer.completed(recyclable.users[0]).deliver
         TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
         redirect_to recyclables_path
       end

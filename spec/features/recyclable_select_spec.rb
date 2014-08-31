@@ -6,8 +6,6 @@ feature 'Update Transaction' do
     # Freeze today to 8/28/2014, calculate date from there
     date = Time.local(2014, 8, 28, 9, 0, 0)
     Timecop.freeze(date)
-    # seconds will be hours
-    # Timecop.scale(3600)
     create_selectable_transactions
   end
 

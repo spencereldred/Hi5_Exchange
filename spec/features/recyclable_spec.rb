@@ -6,8 +6,6 @@ feature 'Create and Complete Transaction' do
     # Freeze today to 8/28/2014, calculate date from there
     date = Time.local(2014, 8, 28, 9, 0, 0)
     Timecop.freeze(date)
-    # seconds will be hours
-    # Timecop.scale(3600)
     create_users_and_transactions
   end
 
@@ -60,15 +58,11 @@ feature 'Create and Complete Transaction' do
     check("Non hi5 cans")
     click_on "Create Samaritan Transaction"
 
-    save_and_open_page
-
     expect(page).to have_content("Samaritan transaction has been created!")
     expect(page).to have_content("Open Good Samaritan Transactions ")
     expect(page).to have_content("Cardboard Newspaper Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
     expect(page).to have_button("Completed")
-
-    save_and_open_page
 
     within(first(".redeemable")) do
       click_on "Completed"
@@ -76,15 +70,13 @@ feature 'Create and Complete Transaction' do
     expect(page).to have_content("Redeemable transaction has been completed!")
     expect(page).not_to have_content("Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
 
-    save_and_open_page
-
     within(first(".samaritan")) do
       click_on "Completed"
     end
     expect(page).to have_content("Good Samaritan transaction has been completed!")
     expect(page).not_to have_content("Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
-    save_and_open_page
+    # save_and_open_page
   end
 
 
