@@ -23,6 +23,7 @@ feature 'Update Transaction' do
     click_button "Login"
 
     expect(page).to have_content("Redeemers#index")
+    expect(page).to have_content("Logged in successfully.")
     expect(page).to have_content("Available Redeemable Transactions 1062 Delaware St., Denver: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1 Posted: 28 Aug")
     expect(page).not_to have_content("268 St. Charles Ave., San Francisco: Plastic: 3 Glass: 3 Cans: 3 Mixed Hi5: 3")
     expect(page).to have_content("Available Good Samaritan Transactions 1062 Delaware St., Denver: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans Posted: 28 Aug")

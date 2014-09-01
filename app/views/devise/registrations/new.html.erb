@@ -10,11 +10,11 @@
     <div><%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %></div>
 
-    <div><%= f.label :password_confirmation %><br />
+    <div><%= f.label :password_confirmation, "Password Confirmation" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
   <% end %>
   <br>
-  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
+  <div><%= f.submit "Create User", class: "btn btn-primary" %></div>
 <% end %>
 
 <%#= render "devise/shared/links" %>

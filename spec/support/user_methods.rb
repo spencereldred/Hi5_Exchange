@@ -1,11 +1,11 @@
 def signup(email, password)
   visit new_user_session_path
   click_link "Sign up"
-  expect(page).to have_content("Password confirmation")
+  expect(page).to have_content("Password Confirmation")
   fill_in "Email", with: email
   fill_in "Password", with: password
-  fill_in "Password confirmation", with: password
-  click_button "Sign up"
+  fill_in "Password Confirmation", with: password
+  click_button "Create User"
 end
 
 def login(email, password)

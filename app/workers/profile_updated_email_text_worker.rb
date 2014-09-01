@@ -1,8 +1,8 @@
 class ProfileUpdatedEmailTextWorker
   include Sidekiq::Worker
 
-  def perform(user_id)
-    user = User.find(user_id)
+  def perform(user)
+    # user = User.find(user_id)
     Hi5Mailer.profile_updated(user).deliver
     message = "Shaka! #{user.profile.first_name}, your profile has been updated.
     Questions, contact Annie at hi5exchange@gmail.com."

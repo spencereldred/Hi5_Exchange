@@ -22,6 +22,7 @@ feature 'Create and Complete Transaction' do
     fill_in "Password", with: 'password'
     click_button "Login"
     expect(page).to have_content("Recyclers#index")
+    expect(page).to have_content("Logged in successfully.")
     expect(page).to have_content("Open Recyclable Transactions")
     expect(page).to have_content("Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
     expect(page).to have_content("Plastic: 2 Glass: 2 Cans: 2 Mixed Hi5: 2 Selected: 29 Aug")
@@ -40,7 +41,7 @@ feature 'Create and Complete Transaction' do
     select "2 bags", from: "recyclable[other]"
     click_on "Create Redeemable Transaction"
 
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content("Redeemable transaction has been created!")
     expect(page).to have_content("Open Recyclable Transactions ")

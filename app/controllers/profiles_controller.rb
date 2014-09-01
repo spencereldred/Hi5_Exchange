@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
     profile = Profile.find(params_id)
     if profile.update_attributes(profile_params)
       flash.notice = "Profile was successfully updated!"
-      ProfileUpdatedEmailTextWorker.perform_async(profile.user.id)
+      ProfileUpdatedEmailTextWorker.perform_async(profile.user)
       redirect_to profile_path(params_id)
     else
       flash.notice = "Profile could not be updated."

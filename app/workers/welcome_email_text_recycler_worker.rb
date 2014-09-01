@@ -6,7 +6,7 @@ class WelcomeEmailTextRecyclerWorker
     Hi5Mailer.welcome_recycler(user).deliver
     message = "Shaka! #{user.profile.first_name}, your recycler account has been created.
     Questions, contact Annie at hi5exchange@gmail.com."
-    send_text(message, user.phone ) if !user.phone.empty?
+    send_text(message, user.profile.phone ) if !user.profile.phone.empty?
   end
 
   # Sends text message using Twilio's service
