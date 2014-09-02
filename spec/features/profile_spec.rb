@@ -1,8 +1,10 @@
 require 'capybara/rails'
+require 'sidekiq/testing'
 
 feature 'Create and Update Profile' do
 
   before (:each) do
+    Sidekiq::Testing.fake!
     sleep(1)
     signup('user@example.com', 'password')
     sleep(1)

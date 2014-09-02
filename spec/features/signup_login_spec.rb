@@ -1,8 +1,10 @@
 require 'capybara/rails'
+require 'sidekiq/testing'
 
 feature 'Signup' do
 
   before (:each) do
+    Sidekiq::Testing.fake!
     signup('user@example.com', 'password')
   end
 

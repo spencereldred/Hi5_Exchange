@@ -1,8 +1,10 @@
 require 'capybara/rails'
+require 'sidekiq/testing'
 
 feature 'Create and Complete Transaction' do
 
   before (:each) do
+    Sidekiq::Testing.fake!
     # Freeze today to 8/28/2014, calculate date from there
     date = Time.local(2014, 8, 28, 9, 0, 0)
     Timecop.freeze(date)
