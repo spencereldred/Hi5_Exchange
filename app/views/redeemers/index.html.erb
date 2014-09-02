@@ -76,3 +76,8 @@
   </div>
 <% end %>
 
+<input type="hidden" id="center_latitude" value="<%= current_user.profile.latitude %>" />
+<input type="hidden" id="center_longitude" value="<%= current_user.profile.longitude %>" />
+<input type="hidden" id="current_user_id" value="<%= current_user.id %>" />
+<div id="map-canvas"></div>
+
