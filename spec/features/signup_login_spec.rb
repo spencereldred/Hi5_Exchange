@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'capybara/rails'
 require 'sidekiq/testing'
 

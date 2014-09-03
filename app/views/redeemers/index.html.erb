@@ -49,8 +49,7 @@
 <h1>Selected Redeemable Transactions</h1>
 <% @redeemables_selected.each do |redeemable|  %>
   <div>
-    <% recyclable = Recyclable.find(redeemable["id"]) %>
-    <%= form_for recyclable do |f| %>
+    <%= form_for redeemable do |f| %>
       <div class="redeemable">
         <%= redeemable["address"] %>,
         <%= redeemable["city"] %>:
@@ -71,18 +70,17 @@
 <h1>Selected Good Samaritan Transactions</h1>
 <% @samaritans_selected.each do |samaritan| %>
   <div>
-    <% recyclable = Recyclable.find(samaritan["id"]) %>
-    <%= form_for recyclable do |f| %>
+    <%= form_for samaritan do |f| %>
       <div class="samaritan">
         <%= samaritan["address"] %>,
         <%= samaritan["city"] %>:
-        <%= "Cardboard" if samaritan["cardboard"] == "t" %>
-        <%= "Newspaper" if samaritan["newspaper"] == "t" %>
-        <%= "Magazines" if samaritan["magazines"] == "t" %>
-        <%= "Paper" if samaritan["paper"] == "t" %>
-        <%= "Non_hi5_plastic" if samaritan["non_hi5_plastic"] == "t" %>
-        <%= "Non_hi5_glass" if samaritan["non_hi5_glass"] == "t" %>
-        <%= "Non_hi5_cans" if samaritan["non_hi5_cans"] == "t" %>
+        <%= "Cardboard" if samaritan["cardboard"] %>
+        <%= "Newspaper" if samaritan["newspaper"] %>
+        <%= "Magazines" if samaritan["magazines"] %>
+        <%= "Paper" if samaritan["paper"] %>
+        <%= "Non_hi5_plastic" if samaritan["non_hi5_plastic"] %>
+        <%= "Non_hi5_glass" if samaritan["non_hi5_glass"] %>
+        <%= "Non_hi5_cans" if samaritan["non_hi5_cans"] %>
         <%= "Selected: #{samaritan["selected_date"].to_datetime.to_formatted_s(:short)}" %>
         <%= f.submit "Completed", class: 'btn btn-link' %>
         <%= f.hidden_field :selected, :value => true %>

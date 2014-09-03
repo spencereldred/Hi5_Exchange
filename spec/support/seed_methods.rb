@@ -22,13 +22,17 @@ def create_selectable_transactions
   sleep(1)
 
   @co_recyclable1 = Recyclable.create(trans_type: "redeemable",
-    plastic: 1, cans: 1, glass: 1, other: 1, user_id: @rec1.id)
+    plastic: 1, cans: 1, glass: 1, other: 1,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', user_id: @rec1.id)
 
   sleep(1)
 
   @co_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
-    magazines: true, paper: true, newspaper: true, user_id: @rec1.id)
+    magazines: true, paper: true, newspaper: true,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', user_id: @rec1.id)
 
   sleep(1)
 
@@ -85,12 +89,16 @@ def create_users_and_transactions
   sleep(1)
 
   @co_recyclable1 = Recyclable.create(trans_type: "redeemable",
-    plastic: 1, cans: 1, glass: 1, other: 1, user_id: @rec1.id)
+    plastic: 1, cans: 1, glass: 1, other: 1,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', user_id: @rec1.id)
 
   sleep(1)
 
   @co_recyclable2 = Recyclable.create(trans_type: "redeemable",
     plastic: 2, cans: 2, glass: 2, other: 2,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     user_id: @rec1.id)
 
@@ -98,18 +106,24 @@ def create_users_and_transactions
 
   @co_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
-    magazines: true, paper: true, newspaper: true, user_id: @rec1.id)
+    magazines: true, paper: true, newspaper: true,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', user_id: @rec1.id)
 
   sleep(1)
 
   @co_recyclable4 = Recyclable.create(trans_type: "samaritan",
     cardboard: true, magazines: true, paper: true, newspaper: true,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),user_id: @rec1.id)
 
   sleep(1)
 
   @co_recyclable5 = Recyclable.create(trans_type: "redeemable",
     plastic: 3, cans: 3, glass: 3, other: 3,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     completed: true, completed_date: (Time.now + (2*60*60*24)),
     user_id: @rec1.id)
@@ -118,6 +132,8 @@ def create_users_and_transactions
 
   @co_recyclable6 = Recyclable.create(trans_type: "samaritan",
     non_hi5_plastic: true, non_hi5_cans: true, non_hi5_glass: true,
+    address: '1062 Delaware St.', city: 'Denver', state: 'CO',
+    zipcode: '80204', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     completed: true, completed_date: (Time.now + (2*60*60*24)),
     user_id: @rec1.id)
@@ -126,12 +142,15 @@ def create_users_and_transactions
 
   @sf_recyclable1 = Recyclable.create(trans_type: "redeemable",
     plastic: 3, cans: 3, glass: 3, other: 3,
-    user_id: @rec2.id)
+    address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+    zipcode: '94132', user_id: @rec2.id)
 
   sleep(1)
 
   @sf_recyclable2 = Recyclable.create(trans_type: "redeemable",
     plastic: 4, cans: 4, glass: 4, other: 4,
+    address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+    zipcode: '94132', selected_redeemer_id: @red2.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     user_id: @rec2.id)
 
@@ -139,13 +158,17 @@ def create_users_and_transactions
 
   @sf_recyclable3 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
-    magazines: false, paper: true, newspaper: false, user_id: @rec2.id)
+    magazines: false, paper: true, newspaper: false,
+    address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+    zipcode: '94132', user_id: @rec2.id)
 
   sleep(1)
 
   @sf_recyclable4 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
     magazines: false, paper: true, newspaper: false,
+    address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+    zipcode: '94132', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     user_id: @rec2.id)
 
@@ -153,6 +176,8 @@ def create_users_and_transactions
 
   @sf_recyclable5 = Recyclable.create(trans_type: "redeemable",
     plastic: 4, cans: 4, glass: 4, other: 4,
+    address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+    zipcode: '94132', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     completed: true, completed_date: (Time.now + (2*60*60*24)),
     user_id: @rec2.id)
@@ -162,6 +187,8 @@ def create_users_and_transactions
   @sf_recyclable6 = Recyclable.create(trans_type: "samaritan", cardboard: true,
     non_hi5_plastic: true, non_hi5_cans: false, non_hi5_glass: true,
     magazines: false, paper: true, newspaper: false,
+    address: '268 St. Charles Ave.', city: 'San Francisco', state: 'CA',
+    zipcode: '94132', selected_redeemer_id: @red1.id,
     selected: true, selected_date: (Time.now + (60*60*24)),
     completed: true, completed_date: (Time.now + (2*60*60*24)),
     user_id: @rec2.id)
