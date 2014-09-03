@@ -27,6 +27,8 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem 'binding_of_caller'
+
 # limits the messages to the rails server - no asset load messages
 gem 'quiet_assets'
 

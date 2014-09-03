@@ -9,7 +9,7 @@ class RedeemersController < ApplicationController
     sql = "select user_recyclables.recyclable_id, recyclables.selected,
     users.email, profiles.address, profiles.city,
     recyclables.plastic, recyclables.glass, recyclables.cans,
-    recyclables.other, recyclables.selected_date
+    recyclables.other, recyclables.selected_date, recyclables.id
     from user_recyclables
     join recyclables
     on user_recyclables.recyclable_id = recyclables.id
@@ -27,7 +27,7 @@ class RedeemersController < ApplicationController
     users.email, profiles.address, profiles.city,
     recyclables.cardboard,recyclables.newspaper, recyclables.magazines,
     recyclables.paper,recyclables.non_hi5_plastic, recyclables.non_hi5_glass,
-    recyclables.non_hi5_cans, recyclables.selected_date
+    recyclables.non_hi5_cans, recyclables.selected_date, recyclables.id
     from user_recyclables
     join recyclables
     on user_recyclables.recyclable_id = recyclables.id
@@ -40,6 +40,7 @@ class RedeemersController < ApplicationController
     and recyclables.completed = 'false'
     and recyclables.trans_type = 'samaritan';"
     @samaritans_selected = ActiveRecord::Base.connection.execute(sql)
+    # binding.pry
   end
 
 end

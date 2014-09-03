@@ -47,6 +47,21 @@ feature 'Update Transaction' do
     expect(page).not_to have_content("Available Good Samaritan Transactions 1062 Delaware St., Denver: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
     expect(page).to have_content("Selected Good Samaritan Transactions 1062 Delaware St., Denver: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans Selected: 28 Aug")
 
+    expect(page).to have_button("Completed")
+
+    within(first(".redeemable")) do
+      click_on "Completed"
+    end
+    expect(page).to have_content("Redeemable transaction has been completed!")
+    expect(page).not_to have_content("Selected Redeemable Transactions 1062 Delaware St., Denver: Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1 Selected: 28 Aug")
+
+    within(first(".samaritan")) do
+      click_on "Completed"
+    end
+    expect(page).to have_content("Good Samaritan transaction has been completed!")
+    expect(page).not_to have_content("Selected Good Samaritan Transactions 1062 Delaware St., Denver: Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans Selected: 28 Aug")
+
+
   end
 
 end

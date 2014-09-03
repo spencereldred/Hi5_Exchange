@@ -68,7 +68,6 @@ class RecyclablesController < ApplicationController
           flash.notice = "Good Samaritan transaction has been selected!"
         end
         TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
-        redirect_to redeemers_path
       end
       if recyclable.selected and recyclable.completed
         if recyclable.trans_type == "redeemable"
@@ -77,8 +76,8 @@ class RecyclablesController < ApplicationController
           flash.notice = "Good Samaritan transaction has been completed!"
         end
         TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
-        redirect_to recyclables_path
       end
+      redirect_to redeemers_path
     end
 
 end

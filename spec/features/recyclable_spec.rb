@@ -1,7 +1,7 @@
 require 'capybara/rails'
 require 'sidekiq/testing'
 
-feature 'Create and Complete Transaction' do
+feature 'Create Transaction' do
 
   before (:each) do
     Sidekiq::Testing.fake!
@@ -65,19 +65,6 @@ feature 'Create and Complete Transaction' do
     expect(page).to have_content("Open Good Samaritan Transactions ")
     expect(page).to have_content("Cardboard Newspaper Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
-    expect(page).to have_button("Completed")
-
-    within(first(".redeemable")) do
-      click_on "Completed"
-    end
-    expect(page).to have_content("Redeemable transaction has been completed!")
-    expect(page).not_to have_content("Plastic: 1 Glass: 1 Cans: 1 Mixed Hi5: 1")
-
-    within(first(".samaritan")) do
-      click_on "Completed"
-    end
-    expect(page).to have_content("Good Samaritan transaction has been completed!")
-    expect(page).not_to have_content("Cardboard Newspaper Magazines Paper Non_hi5_plastic Non_hi5_glass Non_hi5_cans")
 
     # save_and_open_page
   end
