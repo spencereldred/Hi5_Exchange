@@ -13,7 +13,6 @@ class RecyclablesController < ApplicationController
 
   def create
     user = User.find(logged_in_user_id)
-    binding.pry
     user.recyclables.create(recyclable_params)
     create_flash_notice(user)
     redirect_to recyclables_path
@@ -21,7 +20,6 @@ class RecyclablesController < ApplicationController
 
   def update
     @recyclable = Recyclable.find(params_id)
-    binding.pry
     @recyclable.update_attributes(recyclable_update)
     update_flash_notice(@recyclable)
   end

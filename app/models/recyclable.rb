@@ -10,8 +10,9 @@ class Recyclable < ActiveRecord::Base
   private
 
     def full_address
-      user = User.find(self.user_id)
-       "#{user.profile.address}, #{user.profile.city} #{user.profile.state} #{user.profile.zipcode}"
+      # user = User.find(self.user_id)
+       # "#{user.profile.address}, #{user.profile.city} #{user.profile.state} #{user.profile.zipcode}"
+       "#{address}, #{city} #{state} #{zipcode}"
     end
 
 end
