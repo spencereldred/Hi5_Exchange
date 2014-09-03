@@ -13,6 +13,10 @@
   <br>
     <%= f.hidden_field :trans_type, :value => 'redeemable' %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :address, :value => current_user.profile.address %>
+    <%= f.hidden_field :city, :value => current_user.profile.city %>
+    <%= f.hidden_field :state, :value => current_user.profile.state %>
+    <%= f.hidden_field :zipcode, :value => current_user.profile.zipcode %>
   <div><%= f.submit "Create Redeemable Transaction", class: 'btn btn-primary' %></div>
 <% end %>
 
@@ -30,5 +34,9 @@
   <br>
     <%= f.hidden_field :trans_type, :value => 'samaritan' %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :address, :value => current_user.profile.address %>
+    <%= f.hidden_field :city, :value => current_user.profile.city %>
+    <%= f.hidden_field :state, :value => current_user.profile.state %>
+    <%= f.hidden_field :zipcode, :value => current_user.profile.zipcode %>
   <div><%= f.submit "Create Samaritan Transaction", class: 'btn btn-primary' %></div>
 <% end %>

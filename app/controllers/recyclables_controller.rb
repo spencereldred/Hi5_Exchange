@@ -13,6 +13,7 @@ class RecyclablesController < ApplicationController
 
   def create
     user = User.find(logged_in_user_id)
+    binding.pry
     user.recyclables.create(recyclable_params)
     create_flash_notice(user)
     redirect_to recyclables_path
@@ -20,6 +21,7 @@ class RecyclablesController < ApplicationController
 
   def update
     @recyclable = Recyclable.find(params_id)
+    binding.pry
     @recyclable.update_attributes(recyclable_update)
     update_flash_notice(@recyclable)
   end
@@ -37,7 +39,8 @@ class RecyclablesController < ApplicationController
     def recyclable_update
       params.require(:recyclable).permit(
         :selected, :selected_date,
-        :completed, :completed_date)
+        :completed, :completed_date,
+        :selected_redeemer_id)
     end
 
     def recyclable_params
@@ -45,7 +48,7 @@ class RecyclablesController < ApplicationController
         :plastic, :glass, :cans, :other, :trans_type,
         :cardboard, :newspaper, :magazines, :paper,
         :non_hi5_plastic, :non_hi5_glass, :non_hi5_cans,
-        :user_id)
+        :user_id, :address, :city, :state, :zipcode)
     end
 
     def create_flash_notice(user)
