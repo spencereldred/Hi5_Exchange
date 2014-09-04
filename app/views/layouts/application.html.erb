@@ -22,8 +22,8 @@
             <% if user_signed_in? %>
               Logged in as <strong><%= current_user.email %></strong>.
               <%= link_to 'Change Password', edit_user_registration_path %> |
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-              |
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
+              <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) %> |
               <%= link_to "Home", root_path %>
             <% else %>
               <%= link_to "Sign up", new_user_registration_path %> |

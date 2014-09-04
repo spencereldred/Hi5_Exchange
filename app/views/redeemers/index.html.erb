@@ -1,12 +1,9 @@
 <h1>Redeemers#index</h1>
 <div ng-controller="RedeemerController">
-  <div class="row">
-    <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) %>
-  </div>
-  <div>
+  <!-- <div>
     <redeemable></redeemable>
-  </div>
-  <!-- <h1>Available Redeemable Transactions</h1> -->
+  </div> -->
+  <h1>Available Redeemable Transactions</h1>
   <% @redeemables.each do |redeemable|  %>
     <div>
       <%= form_for redeemable do |f| %>
@@ -26,10 +23,10 @@
       <% end %>
     </div>
   <% end %>
-  <div>
+  <!-- <div>
     <samaritan></samaritan>
-  </div>
-  <!-- <h1>Available Good Samaritan Transactions</h1> -->
+  </div> -->
+  <h1>Available Good Samaritan Transactions</h1>
   <% @samaritans.each do |samaritan| %>
     <div>
       <%= form_for samaritan do |f| %>
@@ -52,10 +49,10 @@
       <% end %>
     </div>
   <% end %>
-  <div>
+  <!-- <div>
     <redeemableselected></redeemableselected>
-  </div>
-  <!-- <h1>Selected Redeemable Transactions</h1> -->
+  </div> -->
+  <h1>Selected Redeemable Transactions</h1>
   <% @redeemables_selected.each do |redeemable|  %>
     <div>
       <%= form_for redeemable do |f| %>
@@ -79,7 +76,7 @@
   <div>
     <samaritanselected></samaritanselected>
   </div>
-  <!-- <h1>Selected Good Samaritan Transactions</h1> -->
+  <h1>Selected Good Samaritan Transactions</h1>
   <% @samaritans_selected.each do |samaritan| %>
     <div>
       <%= form_for samaritan do |f| %>
