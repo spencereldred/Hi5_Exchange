@@ -41,6 +41,7 @@
   <h1>Available Good Samaritan Transactions</h1>
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: false}">
     <div>
+      <a href="" ng-click="select()">Select </a>
       {{transaction.address}}, {{transaction.city}}:
       <span ng-show="transaction.cardboard" >cardboard</span>
       <span ng-show="transaction.newspaper" >newspaper</span>

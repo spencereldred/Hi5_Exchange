@@ -18,7 +18,6 @@ class RedeemersController < ApplicationController
   def update
     # Update is triggered by the "select" and "unselect" checkboxes and
     # by the complete button on the Redeemers index page
-    binding.pry
     trans = Recyclable.find(params[:id])
     puts "@@@@@@@@@@ this is trans: #{trans}"
     redeemer = {selected: params[:selected],
