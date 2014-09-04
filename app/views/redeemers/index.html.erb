@@ -87,6 +87,7 @@
       Glass: {{transaction.glass}}
       Mixed Hi5: {{transaction.other}}
       Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+      <a href="" ng-click="completed()"> Completed </a>
     </div>
   </div>
   <% @redeemables_selected.each do |redeemable|  %>
@@ -124,6 +125,7 @@
       <span ng-show="transaction.non_hi5_glass" >non_hi5_glass</span>
       <span ng-show="transaction.non_hi5_cans" >non_hi5_cans</span>
       Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+      <a href="" ng-click="completed()"> Completed </a>
     </div>
   </div>
   <% @samaritans_selected.each do |samaritan| %>

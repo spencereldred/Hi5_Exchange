@@ -217,15 +217,16 @@ app.factory "Redeemer", ($resource) ->
   # TODO - fire off an action mail to recycler indicating "redeemer" says the job is done
   $scope.completed = ->
     transaction = @transaction
-    transaction.completion_date = new Date()
+    transaction.completed_date = new Date()
     transaction.completed = true
+    console.log transaction
     address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
-    addresses = _.reject(addresses, (addr) ->
-      address == addr
-    )
-    $scope.add_marker(address,"delete")
-    for address in addresses
-      $scope.add_marker(address)
+    # addresses = _.reject(addresses, (addr) ->
+    #   address == addr
+    # )
+    # $scope.add_marker(address,"delete")
+    # for address in addresses
+    #   $scope.add_marker(address)
     transaction.$update()
 
 

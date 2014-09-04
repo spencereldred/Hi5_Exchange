@@ -16,17 +16,11 @@ class RedeemersController < ApplicationController
   end
 
   def update
-    # Update is triggered by the "select" and "unselect" checkboxes and
-    # by the complete button on the Redeemers index page
+    # Update is triggered by the "select" and "completed" links
+    # on the Redeemers index page
     trans = Recyclable.find(params[:id])
-    puts "@@@@@@@@@@ this is trans: #{trans}"
-    redeemer = {selected: params[:selected],
-                selected_date: params[:selected_date],
-                selected_redeemer_id: params[:selected_redeemer_id],
-                completed: params[:completed],
-                completed_date: params[:completed_date]}
-    trans.update_attributes(redeemer)
-    # TransactionUpdateEmailTextWorker.perform_async(trans.id)
+    trans.update_attributes(recyclable_update)
+    TransactionUpdateEmailTextWorker.perform_async(trans.id)
     respond_to do |format|
       format.json {render :json => trans}
       format.html
@@ -36,7 +30,7 @@ class RedeemersController < ApplicationController
   private
 
     def recyclable_update
-      params.require(:recyclable).permit(
+      params.require(:redeemer).permit(
         :selected, :selected_date,
         :completed, :completed_date,
         :selected_redeemer_id)
