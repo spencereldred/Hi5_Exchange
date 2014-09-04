@@ -154,6 +154,7 @@ app.factory "Redeemer", ($resource) ->
   center_latitude = $('#center_latitude').val()
   center_longitude = $('#center_longitude').val()
   current_user_id = parseInt $('#current_user_id').val()
+  console.log "lat: " + center_latitude + ", long: " + center_longitude + " id: " + current_user_id
   addresses = []
 
   # The callback function loads the page with transactions from the database.
@@ -184,11 +185,13 @@ app.factory "Redeemer", ($resource) ->
   # TODO - Fire off an email to the "recycler" that the item has been selected.
   $scope.select = ->
     transaction = @transaction
-    transaction.selection_date = new Date()
-    transaction.redeemer_user_id = current_user_id
-    console.log transaction.redeemer_user_id
+    transaction.selected_date = new Date()
+    transaction.selected = true
+    transaction.selected_redeemer_id = current_user_id
+    console.log transaction.selected_redeemer_id
     address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
-    $scope.add_marker(address)
+    console.log address
+    # $scope.add_marker(address)
     transaction.$update()
 
   # The Redeemer unselects an item to recycle

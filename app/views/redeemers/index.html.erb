@@ -7,6 +7,7 @@
   <h1>Available Redeemable Transactions</h1>
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: false}">
     <div>
+    <a href="" ng-click="select()">Select </a>
       {{transaction.address}}, {{transaction.city}}:
       Plastic: {{transaction.plastic}}
       Cans: {{transaction.cans}}
