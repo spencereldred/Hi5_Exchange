@@ -3,7 +3,18 @@
   <!-- <div>
     <redeemable></redeemable>
   </div> -->
+
   <h1>Available Redeemable Transactions</h1>
+  <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: false}">
+    <div>
+      {{transaction.address}}, {{transaction.city}}:
+      Plastic: {{transaction.plastic}}
+      Cans: {{transaction.cans}}
+      Glass: {{transaction.glass}}
+      Mixed Hi5: {{transaction.other}}
+      Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+    </div>
+  </div>
   <% @redeemables.each do |redeemable|  %>
     <div>
       <%= form_for redeemable do |f| %>
@@ -27,6 +38,19 @@
     <samaritan></samaritan>
   </div> -->
   <h1>Available Good Samaritan Transactions</h1>
+  <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: false}">
+    <div>
+      {{transaction.address}}, {{transaction.city}}:
+      <span ng-show="transaction.cardboard" >cardboard</span>
+      <span ng-show="transaction.newspaper" >newspaper</span>
+      <span ng-show="transaction.magazines" >magazines</span>
+      <span ng-show="transaction.paper" >paper</span>
+      <span ng-show="transaction.non_hi5_plastic" >non_hi5_plastic</span>
+      <span ng-show="transaction.non_hi5_glass" >non_hi5_glass</span>
+      <span ng-show="transaction.non_hi5_cans" >non_hi5_cans</span>
+      Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+    </div>
+  </div>
   <% @samaritans.each do |samaritan| %>
     <div>
       <%= form_for samaritan do |f| %>
@@ -53,6 +77,16 @@
     <redeemableselected></redeemableselected>
   </div> -->
   <h1>Selected Redeemable Transactions</h1>
+  <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: true, completed: false}">
+    <div>
+      {{transaction.address}}, {{transaction.city}}:
+      Plastic: {{transaction.plastic}}
+      Cans: {{transaction.cans}}
+      Glass: {{transaction.glass}}
+      Mixed Hi5: {{transaction.other}}
+      Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+    </div>
+  </div>
   <% @redeemables_selected.each do |redeemable|  %>
     <div>
       <%= form_for redeemable do |f| %>
@@ -73,10 +107,23 @@
     </div>
   <% end %>
 
-  <div>
+  <!-- <div>
     <samaritanselected></samaritanselected>
-  </div>
+  </div> -->
   <h1>Selected Good Samaritan Transactions</h1>
+  <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: true, completed: false}">
+    <div>
+      {{transaction.address}}, {{transaction.city}}:
+      <span ng-show="transaction.cardboard" >cardboard</span>
+      <span ng-show="transaction.newspaper" >newspaper</span>
+      <span ng-show="transaction.magazines" >magazines</span>
+      <span ng-show="transaction.paper" >paper</span>
+      <span ng-show="transaction.non_hi5_plastic" >non_hi5_plastic</span>
+      <span ng-show="transaction.non_hi5_glass" >non_hi5_glass</span>
+      <span ng-show="transaction.non_hi5_cans" >non_hi5_cans</span>
+      Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+    </div>
+  </div>
   <% @samaritans_selected.each do |samaritan| %>
     <div>
       <%= form_for samaritan do |f| %>
