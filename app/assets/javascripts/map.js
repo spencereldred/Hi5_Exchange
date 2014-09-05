@@ -4,6 +4,7 @@ $(function(){
   var geocoder;
   var center_latitude = $('#center_latitude').val()
   var center_longitude = $('#center_longitude').val()
+  console.log("latitude: " + center_latitude + ", longitude: " + center_longitude)
   function initialize() {
     window.mapWasInitialized = true;
     geocoder = new google.maps.Geocoder();
@@ -17,6 +18,7 @@ $(function(){
   }
 
   window.codeAddress = function(address,todo) {
+    console.log("Inside codeAddress: " + address + ", todo: " + todo )
     if (todo =="delete") {
       for (var i = 0; i < markers.length; i++) {
         // console.log("Inside - set map to null.")
@@ -26,6 +28,7 @@ $(function(){
     } else {
       if(!window.mapWasInitialized) { initialize() };
       geocoder = new google.maps.Geocoder();
+      console.log("geocoder: " + geocoder)
       var latlng = new google.maps.LatLng(center_latitude, center_longitude);
       var mapOptions = {
         zoom: 12,
@@ -41,12 +44,14 @@ $(function(){
               animation: google.maps.Animation.DROP,  // animate
               position: results[0].geometry.location
           });
+          console.log("Inside geocoder. marker: " + marker)
         } else {
            alert('Geocode was not successful for the following reason: ' + status);
         }
         markers.push(marker);
         markers = _.uniq(markers);
         console.log("markers length: ", markers.length)
+        console.log(markers)
       });
     }
 

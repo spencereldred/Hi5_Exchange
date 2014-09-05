@@ -1,7 +1,7 @@
 <%= form_for @profile do |f| %>
 <div>
   <div><%= f.label :first_name %></div>
-  <div><%= f.text_field :first_name %></div>
+  <div><%= f.text_field :first_name, placeholder: "< first name >", required: true %></div>
 
   <div><%= f.label :last_name %></div>
   <div><%= f.text_field :last_name %></div>

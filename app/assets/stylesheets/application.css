@@ -12,3 +12,102 @@
  *= require_self
  *= require_tree .
  */
+
+ html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+textarea.terms {
+  width:450px;
+  height:200px;
+  border:1px solid #ccc;
+  background:#f2f2f2;
+  font:normal 11px/15px arial;
+  padding:6px;
+  color:#333;
+}
+
+#map-canvas {
+  height: 500px;
+  width: 800px;
+  margin: 0px;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+}
+
+footer {
+  font-size: .9em;
+  text-align: center;
+ }
+
+li[class="footer-img"] {
+  display: inline;
+  padding: 0px 10px 0px 10px;
+  list-style: none;
+}
+
+ img[class="icon"] {
+   height: 20px;
+   width: 20px;
+   margin: 0 0px 0 0px;
+   -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+   /*border: 2px solid black;*/
+}
+.error {
+  color: red;
+  font-size: 1.2em;
+}
+.form_label {
+  text-align: right;
+}
+
+#signup, #recycle, #select, #profile, #home {
+  float:right;
+}
+
+#logo {
+  float: left;
+  margin-left: 10%;
+}
+#signin, #signout {
+  float: right;
+  margin-right: 10%;
+}
+
+.right {
+  float: right;
+  margin: 10px 10px 0px 0px;
+}
+
+.thanks_alert {
+    visibility: hidden;
+}
+
+/*.ng-hide {
+  display:block!important;
+
+  position:absolute;
+  top:-9999px;
+  left:-9999px;
+}*/
+

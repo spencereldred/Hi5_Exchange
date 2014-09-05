@@ -161,9 +161,9 @@ app.factory "Redeemer", ($resource) ->
   # Adds markers on the map for the transactions already selected.
   $scope.update_trans = (data)=>
     $scope.transactions = data
-    for transaction in $scope.transactions when transaction.selected == true && transaction.completed == false && transaction.redeemer_user_id == current_user_id
+    for transaction in $scope.transactions when transaction.selected == true && transaction.completed == false && transaction.selected_redeemer_id == current_user_id
       console.log transaction.redeemer_user_id, current_user_id
-      address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
+      address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]+ " " + transaction["zipcode"]
       console.log address
       $scope.add_marker(address)
   # Asynchronously calls the RedeemerController to retrieve the
@@ -173,6 +173,7 @@ app.factory "Redeemer", ($resource) ->
   # Adds a marker to the map.
   # Calls the google map routine with the address passed in.
   $scope.add_marker = (address,action) ->
+    console.log "Inside add_marker"
     codeAddress(address,action)
     addresses.push(address) unless action == "delete"
     addresses = _.uniq(addresses)
@@ -189,9 +190,9 @@ app.factory "Redeemer", ($resource) ->
     transaction.selected = true
     transaction.selected_redeemer_id = current_user_id
     console.log transaction.selected_redeemer_id
-    address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
+    address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"] + " " + transaction["zipcode"]
     console.log address
-    # $scope.add_marker(address)
+    $scope.add_marker(address,"add")
     transaction.$update()
 
   # The Redeemer unselects an item to recycle
@@ -202,7 +203,7 @@ app.factory "Redeemer", ($resource) ->
     transaction.selection_date = $('#unselection_date').val()
     transaction.redeemer_user_id = "nil"
     console.log transaction.redeemer_user_id
-    address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
+    address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"] + " " + transaction["zipcode"]
     addresses = _.reject(addresses, (addr) ->
       address == addr
     )
@@ -221,12 +222,12 @@ app.factory "Redeemer", ($resource) ->
     transaction.completed = true
     console.log transaction
     address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
-    # addresses = _.reject(addresses, (addr) ->
-    #   address == addr
-    # )
-    # $scope.add_marker(address,"delete")
-    # for address in addresses
-    #   $scope.add_marker(address)
+    addresses = _.reject(addresses, (addr) ->
+      address == addr
+    )
+    $scope.add_marker(address,"delete")
+    for address in addresses
+      $scope.add_marker(address)
     transaction.$update()
 
 
