@@ -17,7 +17,7 @@ $(function(){
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   }
 
-  window.codeAddress = function(address,todo) {
+  window.codeAddress = function(address,todo,trans) {
     console.log("Inside codeAddress: " + address + ", todo: " + todo )
     if (todo =="delete") {
       for (var i = 0; i < markers.length; i++) {
@@ -44,7 +44,9 @@ $(function(){
               animation: google.maps.Animation.DROP,  // animate
               position: results[0].geometry.location
           });
-          var contentString = address;
+          var contentString = '<h3>Hi5 Exchange</h3>' +
+                               address + "<br>" +
+                               trans;
           var infowindow = new google.maps.InfoWindow({
               content: contentString
           });

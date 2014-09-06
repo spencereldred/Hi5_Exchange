@@ -172,9 +172,9 @@ app.factory "Redeemer", ($resource) ->
 
   # Adds a marker to the map.
   # Calls the google map routine with the address passed in.
-  $scope.add_marker = (address,action) ->
+  $scope.add_marker = (address,action,trans) ->
     console.log "Inside add_marker"
-    codeAddress(address,action)
+    codeAddress(address,action,trans)
     addresses.push(address) unless action == "delete"
     addresses = _.uniq(addresses)
 
@@ -191,8 +191,14 @@ app.factory "Redeemer", ($resource) ->
     transaction.selected_redeemer_id = current_user_id
     console.log transaction.selected_redeemer_id
     address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"] + " " + transaction["zipcode"]
-    console.log address
-    $scope.add_marker(address,"add")
+    console.log "The address is: " + address
+    trans = transaction["plastic"] + " " + transaction["glass"]
+    trans =   "Plastic: "   + transaction["plastic"] +
+              ", Glass: "     + transaction["glass"] +
+              ", Cans: "      + transaction["cans"] +
+              ", Mixed Hi5: " + transaction["other"]
+    console.log trans
+    $scope.add_marker(address,"add",trans)
     transaction.$update()
 
   # The Redeemer unselects an item to recycle
