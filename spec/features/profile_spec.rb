@@ -40,7 +40,8 @@ feature 'Create and Update Profile' do
     expect(page).to have_content("Function: recycler")
     expect(page).to have_content("Edit Profile")
 
-    click_link "Home"
+    # click_link "Home"
+    visit root_path
 
     click_link "Edit Profile"
     expect(page).to have_content("Edit Profile Page")
@@ -49,11 +50,13 @@ feature 'Create and Update Profile' do
 
     click_on "Update Profile"
     expect(page).to have_content("Profile was successfully updated!")
-    expect(page).to have_content("Profile Show Page")
-    expect(page).to have_content("First name: Minnie")
-    expect(page).to have_content("Home")
+    # 9/6 edit: after profile update - redirecting user to home page not to
+    # profile show page
+    # expect(page).to have_content("Profile Show Page")
+    # expect(page).to have_content("First name: Minnie")
+    # expect(page).to have_content("Home")
 
-    click_link "Home"
+    # click_link "Home"
     # redirect to recycler function page
     expect(page).to have_content("Recyclers#index")
     expect(page).to have_content("Edit Profile")
@@ -63,7 +66,8 @@ feature 'Create and Update Profile' do
     expect(page).to have_content("First name")
     expect(page).to have_content("Home")
 
-    click_link "Home"
+    # click_link "Home"
+    visit root_path
     expect(page).to have_content("Recyclers#index")
 
     click_link "Edit Profile"
