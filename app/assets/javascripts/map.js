@@ -40,9 +40,16 @@ $(function(){
           map.setCenter(results[0].geometry.location);
           var marker = new google.maps.Marker({
               map: map,
-              draggable:true, // animate
+              draggable: true, // animate
               animation: google.maps.Animation.DROP,  // animate
               position: results[0].geometry.location
+          });
+          var contentString = address;
+          var infowindow = new google.maps.InfoWindow({
+              content: contentString
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
           });
           console.log("Inside geocoder. marker: " + marker)
         } else {
