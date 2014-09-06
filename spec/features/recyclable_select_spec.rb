@@ -7,9 +7,15 @@ feature 'Update Transaction' do
   before (:each) do
     Sidekiq::Testing.fake!
     # Freeze today to 8/28/2014, calculate date from there
-    date = Time.local(2014, 8, 28, 9, 0, 0)
-    Timecop.freeze(date)
+    date = Time.local(2014, 8, 28, 0, 0, 0)
+    Timecop.travel(date)
     create_selectable_transactions
+
+    visit new_user_session_path
+    fill_in "Email", with: 'eldredspencer@gmail.com'
+    fill_in "Password", with: 'password'
+    click_button "Login"
+
   end
 
   after (:each) do
@@ -19,11 +25,13 @@ feature 'Update Transaction' do
   end
 
 
-  scenario "redeemer can select a transaction" do
-    visit new_user_session_path
-    fill_in "Email", with: 'eldredspencer@gmail.com'
-    fill_in "Password", with: 'password'
-    click_button "Login"
+  scenario "redeemer can select a transaction", js: true do
+    # visit new_user_session_path
+
+    # fill_in "Email", with: 'eldredspencer@gmail.com'
+    # fill_in "Password", with: 'password'
+    # save_and_open_page
+    # click_button "Login"
 
     expect(page).to have_content("Redeemers#index")
     expect(page).to have_content("Logged in successfully.")

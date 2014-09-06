@@ -40,6 +40,8 @@ feature 'Create and Update Profile' do
     expect(page).to have_content("Function: recycler")
     expect(page).to have_content("Edit Profile")
 
+    click_link "Home"
+
     click_link "Edit Profile"
     expect(page).to have_content("Edit Profile Page")
     expect(page).to have_content("First name")

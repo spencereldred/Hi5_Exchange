@@ -20,7 +20,7 @@ class RedeemersController < ApplicationController
     # on the Redeemers index page
     trans = Recyclable.find(params[:id])
     trans.update_attributes(recyclable_update)
-    TransactionUpdateEmailTextWorker.perform_async(trans.id)
+    # TransactionUpdateEmailTextWorker.perform_async(trans.id)
     respond_to do |format|
       format.json {render :json => trans}
       format.html
