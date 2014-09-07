@@ -192,8 +192,7 @@ app.factory "Redeemer", ($resource) ->
     console.log transaction.selected_redeemer_id
     address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"] + " " + transaction["zipcode"]
     console.log "The address is: " + address
-    trans = transaction["plastic"] + " " + transaction["glass"]
-    trans =   "Plastic: "   + transaction["plastic"] +
+    trans =   "Plastic: "     + transaction["plastic"] +
               ", Glass: "     + transaction["glass"] +
               ", Cans: "      + transaction["cans"] +
               ", Mixed Hi5: " + transaction["other"]
@@ -227,7 +226,7 @@ app.factory "Redeemer", ($resource) ->
     transaction.completed_date = new Date()
     transaction.completed = true
     console.log transaction
-    address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]
+    address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"] + " " + transaction["zipcode"]
     addresses = _.reject(addresses, (addr) ->
       address == addr
     )
