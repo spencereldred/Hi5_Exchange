@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
         WelcomeEmailTextRecyclerWorker.perform_async(profile.user.id)
       end
       # redirecting to show - ultimately redirect to "function" page
-      redirect_to profile_path(profile.id)
+      redirect_to root_path
     else
       flash.notice = "Your profile could not be created."
       redirect_to new_profile_path

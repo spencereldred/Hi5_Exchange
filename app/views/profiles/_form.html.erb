@@ -24,6 +24,7 @@
   <div><%= f.label :function %></div>
   <div> <%= f.select :function, options_for_select(%w[recycler redeemer]), :select => "redeemer"  %></div>
   <br>
+  <%= render :partial => "profiles/terms" if current_user.profile.nil? %>
 
   <div><%= f.submit message, class: "btn btn-primary" %></div>
 

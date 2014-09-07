@@ -44,11 +44,12 @@ $(function(){
               animation: google.maps.Animation.DROP,  // animate
               position: results[0].geometry.location
           });
-          var contentString = '<h4>Hi5 Exchange</h4>' + address;
+          // var contentString = '<h4>Hi5 Exchange</h4>' + address;
           var infowindow = new google.maps.InfoWindow({
-              content: contentString
+              // content: contentString
           });
           google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent('<h4>Hi5 Exchange</h4>' + address);
             infowindow.open(map,marker);
           });
           console.log("Inside geocoder. marker: " + marker);
