@@ -3,6 +3,7 @@ Hi5::Application.routes.draw do
                      controllers: { omniauth_callbacks: "omniauth_callbacks"}
 
   get "landing/index"
+  get "landing/about", as: 'how_it_works'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -18,4 +18,7 @@ class LandingController < ApplicationController
     # end
 
   end
+
+  def about
+  end
 end
