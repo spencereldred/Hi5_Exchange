@@ -6,12 +6,12 @@
 
   <!-- <h1>Available Redeemable Transactions</h1> -->
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: false}">
-    <div>
+    <div class="redeemable">
     <a href="" ng-click="select()">Select </a>
       {{transaction.address}}, {{transaction.city}}:
       Plastic: {{transaction.plastic}}
-      Cans: {{transaction.cans}}
       Glass: {{transaction.glass}}
+      Cans: {{transaction.cans}}
       Mixed Hi5: {{transaction.other}}
       Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
     </div>
@@ -40,16 +40,16 @@
   </div>
   <!-- <h1>Available Good Samaritan Transactions</h1> -->
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: false}">
-    <div>
+    <div class="samaritan">
       <a href="" ng-click="select()">Select </a>
       {{transaction.address}}, {{transaction.city}}:
-      <span ng-show="transaction.cardboard" >cardboard</span>
-      <span ng-show="transaction.newspaper" >newspaper</span>
-      <span ng-show="transaction.magazines" >magazines</span>
-      <span ng-show="transaction.paper" >paper</span>
-      <span ng-show="transaction.non_hi5_plastic" >non_hi5_plastic</span>
-      <span ng-show="transaction.non_hi5_glass" >non_hi5_glass</span>
-      <span ng-show="transaction.non_hi5_cans" >non_hi5_cans</span>
+      <span ng-show="transaction.cardboard" >Cardboard</span>
+      <span ng-show="transaction.newspaper" >Newspaper</span>
+      <span ng-show="transaction.magazines" >Magazines</span>
+      <span ng-show="transaction.paper" >Paper</span>
+      <span ng-show="transaction.non_hi5_plastic" >Non_hi5_plastic</span>
+      <span ng-show="transaction.non_hi5_glass" >Non_hi5_glass</span>
+      <span ng-show="transaction.non_hi5_cans" >Non_hi5_cans</span>
       Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
     </div>
   </div>
@@ -80,13 +80,13 @@
   </div>
   <!-- <h1>Selected Redeemable Transactions</h1> -->
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: true, completed: false}">
-    <div>
+    <div class="redeemable_selected">
       {{transaction.address}}, {{transaction.city}}:
       Plastic: {{transaction.plastic}}
-      Cans: {{transaction.cans}}
       Glass: {{transaction.glass}}
+      Cans: {{transaction.cans}}
       Mixed Hi5: {{transaction.other}}
-      Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+      Selected: {{transaction.created_at | date:'MM/dd h:mm' }}
       <a href="" ng-click="completed()"> Completed </a>
     </div>
   </div>
@@ -115,16 +115,16 @@
   </div>
   <!-- <h1>Selected Good Samaritan Transactions</h1> -->
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: true, completed: false}">
-    <div>
+    <div class="samaritan_selected">
       {{transaction.address}}, {{transaction.city}}:
-      <span ng-show="transaction.cardboard" >cardboard</span>
-      <span ng-show="transaction.newspaper" >newspaper</span>
-      <span ng-show="transaction.magazines" >magazines</span>
-      <span ng-show="transaction.paper" >paper</span>
-      <span ng-show="transaction.non_hi5_plastic" >non_hi5_plastic</span>
-      <span ng-show="transaction.non_hi5_glass" >non_hi5_glass</span>
-      <span ng-show="transaction.non_hi5_cans" >non_hi5_cans</span>
-      Posted: {{transaction.created_at | date:'MM/dd h:mm' }}
+      <span ng-show="transaction.cardboard" >Cardboard</span>
+      <span ng-show="transaction.newspaper" >Newspaper</span>
+      <span ng-show="transaction.magazines" >Magazines</span>
+      <span ng-show="transaction.paper" >Paper</span>
+      <span ng-show="transaction.non_hi5_plastic" >Non_hi5_plastic</span>
+      <span ng-show="transaction.non_hi5_glass" >Non_hi5_glass</span>
+      <span ng-show="transaction.non_hi5_cans" >Non_hi5_cans</span>
+      Selected: {{transaction.created_at | date:'MM/dd h:mm' }}
       <a href="" ng-click="completed()"> Completed </a>
     </div>
   </div>
