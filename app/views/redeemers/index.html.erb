@@ -7,7 +7,7 @@
   <!-- <h1>Available Redeemable Transactions</h1> -->
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: false}">
     <div class="redeemable">
-    <a href="" ng-click="select()">Select </a>
+    <a href="" ng-click="select(transaction)">Select </a>
       {{transaction.address}}, {{transaction.city}}:
       Plastic: {{transaction.plastic}}
       Glass: {{transaction.glass}}
@@ -41,7 +41,7 @@
   <!-- <h1>Available Good Samaritan Transactions</h1> -->
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: false}">
     <div class="samaritan">
-      <a href="" ng-click="select()">Select </a>
+      <a href="" ng-click="select(transaction)">Select </a>
       {{transaction.address}}, {{transaction.city}}:
       <span ng-show="transaction.cardboard" >Cardboard</span>
       <span ng-show="transaction.newspaper" >Newspaper</span>
@@ -87,7 +87,7 @@
       Cans: {{transaction.cans}}
       Mixed Hi5: {{transaction.other}}
       Selected: {{transaction.created_at | date:'MM/dd h:mm' }}
-      <a href="" ng-click="completed()"> Completed </a>
+      <a href="" ng-click="completed(transaction)"> Completed </a>
     </div>
   </div>
   <%# @redeemables_selected.each do |redeemable|  %>
@@ -125,7 +125,7 @@
       <span ng-show="transaction.non_hi5_glass" >Non_hi5_glass</span>
       <span ng-show="transaction.non_hi5_cans" >Non_hi5_cans</span>
       Selected: {{transaction.created_at | date:'MM/dd h:mm' }}
-      <a href="" ng-click="completed()"> Completed </a>
+      <a href="" ng-click="completed(transaction)"> Completed </a>
     </div>
   </div>
   <%# @samaritans_selected.each do |samaritan| %>

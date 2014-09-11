@@ -8,7 +8,7 @@ class RedeemersController < ApplicationController
 
     @redeemables_selected = Recyclable.where(selected_redeemer_id: current_user.id, trans_type: "redeemable", selected: true, completed: false).near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
     @samaritans_selected = Recyclable.where(selected_redeemer_id: current_user.id, trans_type: "samaritan", selected: true, completed: false).near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
-    trans = Recyclable.near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
+    trans = Recyclable.where(completed: false).near([current_user.profile.latitude, current_user.profile.longitude], current_user.profile.radius)
     respond_to do |format|
       format.html
       format.json { render :json => trans }
