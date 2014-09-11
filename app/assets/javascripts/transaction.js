@@ -1,36 +1,8 @@
-var app = angular.module("Hi5Exchange", ["ngResource"]);
+var app = angular.module("Hi5Exchange", ["ngResource", 'redeemer-headings']);
 
 // app.factory('Redeemer', function($resource){
 //   $resource('/redeemers/:id.json', {id: "@id"}, {update: {method: "PUT"}});
 // });
-
-app.directive('redeemable', function(){
-  return {
-    restrict: 'E',
-    template: '<h1>Available Redeemable Transactions</h1>'
-  }
-});
-
-app.directive('samaritan', function(){
-  return {
-    restrict: 'E',
-    template: '<h1>Available Good Samaritan Transactions</h1>'
-  }
-});
-
-app.directive('redeemableselected', function(){
-  return {
-    restrict: 'E',
-    template: '<h1>Selected Redeemable Transactions</h1>'
-  }
-});
-
-app.directive('samaritanselected', function(){
-  return {
-    restrict: 'E',
-    template: '<h1>Selected Good Samaritan Transactions</h1>'
-  }
-});
 
 app.controller('RedeemerController', function($scope, $resource){
   Redeemer = $resource('/redeemers/:id.json', {id: "@id"}, {update: {method: "PUT"}});
@@ -45,15 +17,25 @@ app.controller('RedeemerController', function($scope, $resource){
   $scope.addresses = [];
 
   $scope.update_trans = function(data){
-    $scope.transactions = data;
-    for(var i = 0; i < $scope.transactions.length; i++) {
-      console.log(transaction.redeemer_user_id + " " + current_user_id)
-      address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]+ " " + transaction["zipcode"];
-      $scope.add_marker(address, 'add');
+    console.log("inside update_trans, here is the data: " + data)
+    transactions = data;
+    for(var i = 0; i < transactions.length; i++) {
+      if(transaction.selected == true && transaction.completed == false && transaction.selected_redeemer_id == current_user_id){
+        console.log(transaction.redeemer_user_id + " " + current_user_id)
+        address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"]+ " " + transaction["zipcode"];
+        $scope.add_marker(address, 'add');
+      }
     }
   };
 
-  // Redeemer.query($scope.update_trans);
+  // $scope.transactions = Redeemer.query($scope.update_trans);
+
+  $scope.update_trans($scope.transactions)
+
+
+
+
+  // // Redeemer.query($scope.update_trans);
 
   $scope.add_marker = function(address, action) {
     console.log("Inside new add_marker.");
