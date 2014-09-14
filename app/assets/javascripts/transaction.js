@@ -44,13 +44,16 @@ app.controller('RedeemerController', ['$scope','$resource', 'Redeemer', function
   $scope.completed = function(transaction){
     transaction.completed_date = Date.now();
     transaction.completed = true;
+    console.log("the addresses array is: " + $scope.addresses)
     address = transaction["address"] + ", " + transaction["city"] + " " + transaction["state"] + " " + transaction["zipcode"];
+    console.log("the address to be removed is: " + address)
     $scope.addresses = _.reject($scope.addresses, function(addr){
-      address == addr;
+      return address === addr;
     });
+    console.log("the addresses array less address is now: " + $scope.addresses)
     $scope.add_marker(address, 'delete');
     for(var i = 0; i < $scope.addresses.length; i++) {
-      $scope.add_marker(address);
+      $scope.add_marker($scope.addresses[i],"add");
     }
     transaction.$update();
   };

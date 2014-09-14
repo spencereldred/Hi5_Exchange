@@ -17,7 +17,7 @@ $(function(){
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   }
 
-  window.codeAddress = function(address,todo,trans) {
+  window.codeAddress = function(address,todo) {
     console.log("Inside codeAddress: " + address + ", todo: " + todo );
     if (todo =="delete") {
       for (var i = 0; i < markers.length; i++) {
