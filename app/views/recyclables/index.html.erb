@@ -1,30 +1,33 @@
 <h1>Recyclers#index</h1>
 
-<%= button_to "Create New Transaction", new_recyclable_path, :class => "btn btn-primary", :method => :get  %>
-
-<h1>Open Recyclable Transactions</h1>
-<% @recyclables.each do |recyclable|  %>
-  <div class="redeemable">
-    <%= "#{recyclable.created_at.to_formatted_s(:short)}:" %>
-    <%= "Plastic: #{recyclable.plastic}" if recyclable.plastic %>
-    <%= "Glass: #{recyclable.glass}" if recyclable.glass %>
-    <%= "Cans: #{recyclable.cans}" if recyclable.cans %>
-    <%= "Mixed Hi5: #{recyclable.other}" if recyclable.other %>
-    <%= "Selected: #{recyclable.selected_date.to_formatted_s(:short)}" if recyclable.selected %>
+  <%= button_to "Create New Transaction", new_recyclable_path, :class => "btn btn-primary", :method => :get  %>
+<div ng-controller="RecyclerController">
+  <div>
+    <openredeemable></openredeemable>
   </div>
-<% end  %>
-
-<h1>Open Good Samaritan Transactions</h1>
-<% @samaritans.each do |samaritan|  %>
-  <div class="samaritan">
-    <%= "#{samaritan.created_at.to_formatted_s(:short)}:" %>
-    <%= "Cardboard" if samaritan.cardboard %>
-    <%= "Newspaper" if samaritan.newspaper %>
-    <%= "Magazines" if samaritan.magazines %>
-    <%= "Paper" if samaritan.paper %>
-    <%= "Non_hi5_plastic" if samaritan.non_hi5_plastic %>
-    <%= "Non_hi5_glass" if samaritan.non_hi5_glass %>
-    <%= "Non_hi5_cans" if samaritan.non_hi5_cans %>
-    <%= "Selected: #{samaritan.selected_date.to_formatted_s(:short)}" if samaritan.selected %>
+  <div ng-repeat="recyclable in recyclables | filter: {trans_type: 'redeemable'}">
+    <div class="redeemable">
+      {{recyclable.created_at | date:'MM/dd h:mm'}}:
+      Plastic: {{recyclabe.plastic}}
+      Glass: {{recyclable.glass}}
+      Cans: {{recyclable.cans}}
+      Mixed Hi5: {{recyclable.other}}
+    </div>
   </div>
-<% end %>
+
+  <div>
+    <opensamaritan></opensamaritan>
+  </div>
+  <div ng-repeat="recyclable in recyclables | filter: {trans_type: 'samaritan'} ">
+    <div class="samaritan">
+      {{recyclable.created_at | date:'MM/dd h:mm'}}:
+      <span ng-show='{{recyclable.cardboard}}'>Cardboard</span>
+      <span ng-show='{{recyclable.newspaper}}'>Newspaper</span>
+      <span ng-show='{{recyclable.magazines}}'>Magazines</span>
+      <span ng-show='{{recyclable.paper}}'>Paper</span>
+      <span ng-show='{{recyclable.non_hi5_plastic}}'>Non_Hi5_Plastic</span>
+      <span ng-show='{{recyclable.non_hi5_glass}}'>Non_Hi5_Glass</span>
+      <span ng-show='{{recyclable.non_hi5_cans}}'>Non_Hi5_Cans</span>
+    </div>
+  </div>
+</div><!-- ng-controller -->
