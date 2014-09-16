@@ -3,7 +3,7 @@
   <%= button_to "Create New Transaction", new_recyclable_path, :class => "btn btn-primary", :method => :get  %>
 <div ng-controller="RecyclerController">
   <div>
-    <openredeemable></openredeemable>
+    <open-redeemable></open-redeemable>
   </div>
   <div ng-repeat="recyclable in recyclables | filter: {trans_type: 'redeemable'}">
     <div class="redeemable">
@@ -16,7 +16,7 @@
   </div>
 
   <div>
-    <opensamaritan></opensamaritan>
+    <open-samaritan></open-samaritan>
   </div>
   <div ng-repeat="recyclable in recyclables | filter: {trans_type: 'samaritan'} ">
     <div class="samaritan">

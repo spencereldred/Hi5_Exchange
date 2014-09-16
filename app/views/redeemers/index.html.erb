@@ -2,7 +2,7 @@
 <div ng-controller="RedeemerController">
 
   <div>
-    <availableredeemable></availableredeemable>
+    <available-redeemable></available-redeemable>
   </div>
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'}">
     <div class="redeemable">
@@ -17,7 +17,7 @@
   </div>
 
   <div>
-    <availablesamaritan></availablesamaritan>
+    <available-samaritan></available-samaritan>
   </div>
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: false}">
     <div class="samaritan">
@@ -35,7 +35,7 @@
   </div>
 
   <div>
-    <selectedredeemable></selectedredeemable>
+    <selected-redeemable></selected-redeemable>
   </div>
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'redeemable'} | filter: {selected: true, completed: false}">
     <div class="redeemable_selected">
@@ -50,7 +50,7 @@
   </div>
 
   <div>
-    <selectedsamaritan></selectedsamaritan>
+    <selected-samaritan></selected-samaritan>
   </div>
   <div ng-repeat="transaction in transactions | filter: {trans_type: 'samaritan'} | filter: {selected: true, completed: false}">
     <div class="samaritan_selected">

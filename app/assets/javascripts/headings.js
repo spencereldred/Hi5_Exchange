@@ -1,54 +1,54 @@
 (function(){
   var app = angular.module('headings', []);
 
-  app.directive('availableredeemable', function(){
+  app.directive('availableRedeemable', function(){
     return {
       restrict: 'E',
       template: '<h1>Available Redeemable Transactions</h1>'
     }
   });
 
-  app.directive('availablesamaritan', function(){
+  app.directive('availableSamaritan', function(){
     return {
       restrict: 'E',
       template: '<h1>Available Good Samaritan Transactions</h1>'
     }
   });
 
-  app.directive('selectedredeemable', function(){
+  app.directive('selectedRedeemable', function(){
     return {
       restrict: 'E',
       template: '<h1>Selected Redeemable Transactions</h1>'
     }
   });
 
-  app.directive('selectedsamaritan', function(){
+  app.directive('selectedSamaritan', function(){
     return {
       restrict: 'E',
       template: '<h1>Selected Good Samaritan Transactions</h1>'
     }
   });
 
-  app.directive('enterredeemable', function(){
+  app.directive('enterRedeemable', function(){
     return {
       restrict: 'E',
       template: '<h1>Enter Redeemable Transaction:</h1>'
     }
   });
 
-  app.directive('entersamaritan', function(){
+  app.directive('enterSamaritan', function(){
     return {
       restrict: 'E',
       template: '<h1>Enter Good Samaritan Transaction:</h1>'
     }
   });
-  app.directive('openredeemable', function(){
+  app.directive('openRedeemable', function(){
     return {
       restrict: 'E',
       template: '<h1>Open Redeemable Transactions</h1>'
     }
   });
-  app.directive('opensamaritan', function(){
+  app.directive('openSamaritan', function(){
     return {
       restrict: 'E',
       template: '<h1>Open Good Samaritan Transactions</h1>'
