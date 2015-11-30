@@ -10,10 +10,13 @@ Hi5::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'landing#index'
 
-  resources :profiles, except: [:index, :destroy]
+  resources :profiles, except: [:destroy]
 
-  resources :recyclables
+  resources :transactions
   resources :redeemers
+
+  get '/admins' => 'admins#index'
+  resources :groups
 
 # spencers-mbp-2:Hi5 Spencer$ rake routes
 #                   Prefix Verb     URI Pattern                            Controller#Action

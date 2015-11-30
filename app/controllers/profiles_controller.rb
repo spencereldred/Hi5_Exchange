@@ -1,5 +1,15 @@
 class ProfilesController < ApplicationController
 
+  def index
+    # for test only
+    users = Profile.all
+    # image = ["img": "some image"]
+    respond_to do |format|
+      format.html
+      format.json { render :json => users }
+    end
+  end
+
   def show
     @profile = Profile.find(params_id)
   end

@@ -1,0 +1,159 @@
+<div ng-hide="howItWorks || userProfile">
+  <div ng-controller="RecyclerController">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <h2>Aloha <%= current_user[:first_name] %> <%= current_user[:last_name] %>, enter a new Redeemable.</h2>
+      </div>
+    </div><!-- end row -->
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <h2><new></new></h2>
+      </div>
+    </div><!-- end row -->
+    <div class="row">
+      <div class="bs-example col-sm-offset-2 col-sm-8">
+        <table class="table table-hover" id="recycler-input-table">
+          <thead>
+            <tr>
+              <th>Submit</th>
+              <th>Plastic</th>
+              <th>Cans</th>
+              <th>Glass</th>
+              <!-- <th>Mixed Hi5</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" id="submit_transaction"
+                        ng-click="new_recycle_item(transaction)">Submit
+                </button>
+                <input type="hidden" id="user_id" value="<%= current_user[:id] %>" />
+                <input type="hidden" id="group_id" value="<%= current_user[:group_id] %>" />
+                <input type="hidden" id="user_address" value="<%= current_user[:address] %>" />
+                <input type="hidden" id="user_city" value="<%= current_user[:city] %>" />
+                <input type="hidden" id="user_state" value="<%= current_user[:state] %>" />
+                <input type="hidden" id="user_zipcode" value="<%= current_user[:zipcode] %>" />
+              </td>
+              <td>
+                <select id="plastic" ng-model="transaction.plastic"
+                    ng-init="transaction.plastic = bag_options[0].value"
+                    ng-options="bag_option.value as bag_option.name for bag_option in bag_options">
+                </select>
+              </td>
+              <td>
+                <select ng-model="transaction.cans"
+                        ng-init="transaction.cans = bag_options[0].value"
+                        ng-options="bag_option.value as bag_option.name for bag_option in bag_options">
+                </select>
+              </td>
+              <td>
+                <select ng-model="transaction.glass"
+                        ng-init="transaction.glass = bag_options[0].value"
+                        ng-options="bag_option.value as bag_option.name for bag_option in bag_options">
+                </select>
+              </td>
+              <!-- <td>
+                <select ng-model="transaction.other"
+                        ng-init="transaction.other = bag_options[0].value"
+                        ng-options="bag_option.value as bag_option.name for bag_option in bag_options">
+                </select>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- end col set -->
+    </div><!-- end row -->
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-10">
+          <h2><outred></outred></h2>
+        </div><!-- end col set -->
+    </div><!-- end row -->
+    <div class="row">
+      <div class="bs-example col-sm-offset-2 col-sm-8">
+        <table class="table table-hover" id="recycler-table">
+          <thead>
+            <tr>
+              <!-- <th>Remove</th> -->
+              <th>Address</th>
+              <th>Plastic</th>
+              <th>Cans</th>
+              <th>Glass</th>
+              <!-- <th>Other</th> -->
+              <th>Date Selected</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="transaction in transactions | filter: {recycler_user_id: <%= current_user.id %>} | filter: {trans_type: 'redeemable'} |filter: {completed: false }">
+                <td><%= current_user[:address]%></td>
+                <td>{{transaction.plastic}}</td>
+                <td>{{transaction.cans}}</td>
+                <td>{{transaction.glass}}</td>
+                <!-- <td>{{transaction.other}}</td> -->
+                <td>{{transaction.selection_date | date:'MM/dd/yy h:mm a'}} </td>
+              </tr>
+          </tbody>
+        </table>
+      </div><!-- end col set -->
+    </div><!-- end row -->
+
+    <!-- <div class="row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <h2><sam></sam></h2>
+      </div>
+    </div> -->
+    <!-- <div class="row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <span class="col-sm-2">
+          <button class="btn btn-primary btn-sm" ng-click="new_samaritan_item(transaction)" >Submit
+          </button>
+        </span>
+        <span class="col-sm-2">
+          <input type="checkbox" class="check_box" ng-model="transaction.cardboard" checked="false" > Cardboard
+        </span>
+        <span class="col-sm-2">
+          <input type="checkbox" class="check_box" ng-model="transaction.non_hi5_plastic" checked="false"> Non-Hi5 Plastic
+        </span>
+        <span class="col-sm-2">
+          <input type="checkbox" class="check_box" ng-model="transaction.non_hi5_glass" checked="false"> Non-Hi5 Glass
+        </span>
+        <span class="col-sm-4">
+          <input type="checkbox" class="check_box" ng-model="transaction.non_hi5_cans" checked="false"> Non-Hi5 Cans
+        </span>
+        <span class="col-sm-2">
+          <input type="checkbox" class="check_box" ng-model="transaction.magazines" checked="false"> Magazines
+        </span>
+        <span class="col-sm-2">
+          <input type="checkbox" class="check_box" ng-model="transaction.newspaper" checked="false"> Newspaper
+        </span>
+        <span class="col-sm-2">
+          <input type="checkbox" class="check_box" ng-model="transaction.paper" checked="false"> Paper <br>
+        </span>
+      </div>
+    </div> -->
+    <!-- <div class="row">
+        <div class="col-sm-offset-2 col-sm-10">
+          <h2><outsam></outsam></h2>
+        </div>
+    </div> -->
+    <!-- <div class="row">
+      <div class="bs-example col-sm-offset-2 col-sm-10">
+        <span class="col-sm-12">
+          <div ng-repeat="transaction in transactions | filter: {recycler_user_id: <%#= current_user.id %>} | filter: {trans_type: 'samaritan'}  | filter: {completed: false }">
+              <span class="col-sm-2"><%#= current_user[:address]%></span>
+              <span class="col-sm-2" ng-show="transaction.cardboard" >cardboard</span>
+              <span class="col-sm-2" ng-show="transaction.non_hi5_plastic" >non_hi5_plastic</span>
+              <span class="col-sm-2" ng-show="transaction.non_hi5_glass" >non_hi5_glass</span>
+              <span class="col-sm-2" ng-show="transaction.non_hi5_cans" >non_hi5_cans</span>
+              <span class="col-sm-2" ng-show="transaction.magazines" >magazines</span>
+              <span class="col-sm-2" ng-show="transaction.newspaper" >newspaper</span>
+              <span class="col-sm-2" ng-show="transaction.paper" >paper</span></br>
+          </div>
+
+        </span>
+
+      </div>
+    </div> -->
+
+  </div> <!-- ng-controller-->
+</div>
