@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html ng-app="Hi5Exchange">
-<head>
-  <title>Hi5 Exchange</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <!-- mobile first bootstrap meta tag -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp">
-  </script>
-</head>
-<body>
-  <div class="row">
-    <div class="col-sm-offset-3 col-sm-9 col-xs-offset-1 col-xs-9">
-      <%= image_tag("hi5_banner.png", class: "img-responsive", width: "60%")  %>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <!-- <div id="container"> -->
-      <div class="row">
-        <div class="col-sm-offset-3 col-sm-7 col-xs-offset-1 col-xs-7">
-          <div id="user_nav">
-            <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %></strong>.
-              <%= link_to 'Change Password', edit_user_registration_path %> |
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
-              <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) if !current_user.profile.nil? %> |
-              <%= link_to "How it Works", how_it_works_path %> |
-              <%= link_to "Home", root_path %>
-            <% else %>
-              <%= link_to "Sign up", new_user_registration_path %> |
-              <%= link_to "Login", new_user_session_path %> |
-              <%= link_to "Twitter Sign In", user_omniauth_authorize_path(:twitter) %> |
-              <%= link_to "Facebook Sign In", user_omniauth_authorize_path(:facebook) %>
-
-            <% end %>
-          </div>
-          <div class="row">
-            <% flash.each do |name, msg| %>
-              <%= content_tag :div, msg, id: "flash_#{name}" , class: "alert alert-info" %>
-            <% end %>
-          </div>
-          <%= yield %>
-        </div>
+  <head>
+    <title>Hi5 Exchange</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <!-- mobile first bootstrap meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp">
+    </script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-9 col-xs-offset-1 col-xs-9">
+        <%= image_tag("hi5_banner.png", class: "img-responsive", width: "60%")  %>
       </div>
-    <!-- </div> -->
-  </div>
-
-
-
-</body>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-offset-3 col-sm-7 col-xs-offset-1 col-xs-7">
+            <div id="user_nav">
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to 'Change Password', edit_user_registration_path %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
+                <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) if !current_user.profile.nil? %> |
+                <%= link_to "How it Works", how_it_works_path %> |
+                <%= link_to "Home", root_path %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path %> |
+                <%= link_to "Login", new_user_session_path %> |
+                <%= link_to "Twitter Sign In", user_omniauth_authorize_path(:twitter) %> |
+                <%= link_to "Facebook Sign In", user_omniauth_authorize_path(:facebook) %>
+              <% end %>
+            </div>
+            <div class="row">
+              <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, id: "flash_#{name}" , class: "alert alert-info" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <%= yield %>
+    </div>
+  </body>
 </html>
