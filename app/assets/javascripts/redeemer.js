@@ -75,7 +75,6 @@ app.controller('RedeemerController', ['$scope', '$rootScope', '$resource', 'Rede
 
     var updateTransaction = function (transaction) { // start updateTransaction
       console.log("updateTransaction called - transaction: %O", transaction);
-      debugger
       transaction.$update().then(function () {
         Redeemer.query($scope.update_trans);
       });
