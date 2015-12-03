@@ -20,7 +20,7 @@ class LandingController < ApplicationController
       redirect_to transactions_path
     elsif current_user.profile.function == "redeemer"
       redirect_to redeemers_path
-    elsif current_user.profile.function == "admin"
+    elsif current_user.profile.function == "group_admin"
       redirect_to admins_path
     elsif current_user.profile.function == "super_admin"
       redirect_to admins_path

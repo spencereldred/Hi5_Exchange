@@ -18,7 +18,7 @@ class TransactionsController < ApplicationController
 
   def create
     binding.pry
-    trans = Transaction.create(recyclable_params)
+    trans = Transaction.create(transaction_create_params)
     respond_to do |format|
       format.html
       format.json { render :json => trans }
@@ -31,40 +31,13 @@ class TransactionsController < ApplicationController
 
   def update
     binding.pry
-    trans = Transaction.find(params[:id])
-    # recycler = {completed: params[:completed], completion_date: params[:completion_date]}
-    trans.update_attributes(recyclable_update)
+    trans = Transaction.find(params_id)
+    trans.update_attributes(transaction_update_params)
     respond_to do |format|
       format.html
       format.json { render :json => trans }
     end
   end
-
-  # def index
-  #   user = User.find(logged_in_user_id)
-  #   trans = user.recyclables.where(completed:false)
-  #   respond_to do |format|
-  #     format.html
-  #     format.json { render :json => trans }
-  #   end
-  # end
-
-  # def new
-  #   @recyclable = Recyclable.new
-  # end
-
-  # def create
-  #   user = User.find(logged_in_user_id)
-  #   user.recyclables.create(recyclable_params)
-  #   create_flash_notice(user)
-  #   redirect_to recyclables_path
-  # end
-
-  # def update
-  #   @recyclable = Recyclable.find(params_id)
-  #   @recyclable.update_attributes(recyclable_update)
-  #   update_flash_notice(@recyclable)
-  # end
 
   private
 
@@ -76,44 +49,24 @@ class TransactionsController < ApplicationController
       current_user.id
     end
 
-    # def recyclable_update
-    #   params.require(:recyclable).permit(
-    #     :selected, :selected_date,
-    #     :completed, :completed_date,
-    #     :selected_redeemer_id)
-    # end
-
-    def recyclable_update
+    def transaction_create_params
       params.require(:transaction).permit(
-        :selected, :selection_date, :completed, :completion_date,
-        :id, :redeemer_user_id, :recycler_user_id, :group_id,
-        :address, :city, :state, :zipcode,
-        :plastic, :cans, :glass, :other,
-        :rating, :longitude, :latitude,
-        :cardboard, :non_hi5_plastic, :non_hi5_cans, :non_hi5_glass,
-        :magazines, :newspaper, :paper,
-        :trans_type, :created_at, :updated_at, :distance, :bearing)
+                                          :recycler_user_id,
+                                          :trans_type, :group_id,
+                                          :address, :city,
+                                          :state, :zipcode,
+                                          :plastic,  :cans,
+                                          :glass,    :other
+                                          )
     end
 
-    def recyclable_params
+    def transaction_update_params
       params.require(:transaction).permit(
-        :selected, :selection_date, :completed, :completion_date,
-        :id, :redeemer_user_id, :recycler_user_id, :group_id,
-        :address, :city, :state, :zipcode,
-        :plastic, :cans, :glass, :other,
-        :rating, :longitude, :latitude,
-        :cardboard, :non_hi5_plastic, :non_hi5_cans, :non_hi5_glass,
-        :magazines, :newspaper, :paper,
-        :trans_type, :created_at, :updated_at, :distance, :bearing)
+                                          :selected,  :selected_date,
+                                          :completed, :completed_date,
+                                          :selected_redeemer_id
+                                          )
     end
-
-    # def recyclable_params
-    #   params.require(:recyclable).permit(
-    #     :plastic, :glass, :cans, :other, :trans_type,
-    #     :cardboard, :newspaper, :magazines, :paper,
-    #     :non_hi5_plastic, :non_hi5_glass, :non_hi5_cans,
-    #     :user_id, :address, :city, :state, :zipcode)
-    # end
 
     def create_flash_notice(user)
       if user.recyclables.last.trans_type == 'redeemable'

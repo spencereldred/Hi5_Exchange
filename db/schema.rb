@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20151128163722) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
+    t.integer  "member_count"
     t.string   "promo_code"
     t.string   "url"
     t.text     "description"

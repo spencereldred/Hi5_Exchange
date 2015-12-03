@@ -1,9 +1,7 @@
 class ProfilesController < ApplicationController
 
   def index
-    # for test only
     users = Profile.all
-    # image = ["img": "some image"]
     respond_to do |format|
       format.html
       format.json { render :json => users }
@@ -24,9 +22,9 @@ class ProfilesController < ApplicationController
     if profile.save
       flash.notice = "Profile was created successfully!"
       if profile.function == "redeemer"
-        WelcomeEmailTextRedeemerWorker.perform_async(profile.user.id)
+        # WelcomeEmailTextRedeemerWorker.perform_async(profile.user.id)
       else
-        WelcomeEmailTextRecyclerWorker.perform_async(profile.user.id)
+        # WelcomeEmailTextRecyclerWorker.perform_async(profile.user.id)
       end
       # redirecting to show - ultimately redirect to "function" page
       redirect_to root_path
@@ -45,7 +43,7 @@ class ProfilesController < ApplicationController
     profile = Profile.find(params_id)
     if profile.update_attributes(profile_params)
       flash.notice = "Profile was successfully updated!"
-      ProfileUpdatedEmailTextWorker.perform_async(profile.user)
+      # ProfileUpdatedEmailTextWorker.perform_async(profile.user)
       redirect_to root_path
     else
       flash.notice = "Profile could not be updated."

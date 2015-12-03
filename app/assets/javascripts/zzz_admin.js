@@ -38,7 +38,7 @@ app.controller('UserController', ['$scope', '$rootScope', '$resource', 'User',
     };
     User.query(update_users);
 
-    if ($rootScope.current_user_function === "admin" ||
+    if ($rootScope.current_user_function === "group_admin" ||
         $rootScope.current_user_function === "super_admin") {
       $rootScope.isAdmin = true;
     }

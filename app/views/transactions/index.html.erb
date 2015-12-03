@@ -28,12 +28,12 @@
                 <button class="btn btn-primary btn-sm" id="submit_transaction"
                         ng-click="new_recycle_item(transaction)">Submit
                 </button>
-                <input type="hidden" id="user_id" value="<%= current_user[:id] %>" />
-                <input type="hidden" id="group_id" value="<%= current_user[:group_id] %>" />
-                <input type="hidden" id="user_address" value="<%= current_user[:address] %>" />
-                <input type="hidden" id="user_city" value="<%= current_user[:city] %>" />
-                <input type="hidden" id="user_state" value="<%= current_user[:state] %>" />
-                <input type="hidden" id="user_zipcode" value="<%= current_user[:zipcode] %>" />
+                <input type="hidden" id="user_id" value="<%= @current_profile[:id] %>" />
+                <input type="hidden" id="group_id" value="<%= @current_profile[:group_id] %>" />
+                <input type="hidden" id="user_address" value="<%= @current_profile[:address] %>" />
+                <input type="hidden" id="user_city" value="<%= @current_profile[:city] %>" />
+                <input type="hidden" id="user_state" value="<%= @current_profile[:state] %>" />
+                <input type="hidden" id="user_zipcode" value="<%= @current_profile[:zipcode] %>" />
               </td>
               <td>
                 <select id="plastic" ng-model="transaction.plastic"
@@ -84,7 +84,7 @@
             </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="transaction in transactions | filter: {recycler_user_id: <%= current_user.id %>} | filter: {trans_type: 'redeemable'} |filter: {completed: false }">
+              <tr ng-repeat="transaction in transactions | filter: {recycler_user_id: <%= @current_profile.id %>} | filter: {trans_type: 'redeemable'} |filter: {completed: false }">
                 <td><%= current_user[:address]%></td>
                 <td>{{transaction.plastic}}</td>
                 <td>{{transaction.cans}}</td>

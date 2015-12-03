@@ -2,9 +2,13 @@ class GroupsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def index
+    groups = Group.all
+    groups.each do |group|
+      group[:member_count] = group.profiles.length
+    end
     respond_to do |format|
       format.html
-      format.json { render :json => Group.all }
+      format.json { render :json => groups }
     end
   end
 

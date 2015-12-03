@@ -51,7 +51,7 @@ app.controller('RedeemerController', ['$scope', '$rootScope', '$resource', 'Rede
         },
         updateInterval = 5 * 60 * 1000; // 5 minutes;
 
-    if (current_user_function === "admin" ||
+    if (current_user_function === "group_admin" ||
         current_user_function === "super_admin") {
       $rootScope.isAdmin = true;
     }
