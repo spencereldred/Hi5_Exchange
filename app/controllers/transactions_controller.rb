@@ -3,9 +3,15 @@ class TransactionsController < ApplicationController
 
   def index
     @current_profile = Profile.where(user_id: current_user.id)[0]
+    if @current_profile.function == 'super_admin'
+      trans = Transaction.all
+      # trans = Transaction.near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
+    else
+      trans = Transaction.where(group_id: @current_profile.group_id).near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
+    end
     respond_to do |format|
       format.html
-      format.json { render :json => Transaction.near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius) }
+      format.json { render :json => trans }
     end
   end
 
@@ -22,9 +28,8 @@ class TransactionsController < ApplicationController
       format.html
       format.json { render :json => trans }
     end
-    if trans.trans_type == "redeemable"
-      # JobAvailableEmailWorker.perform_async(trans.recycler_user_id)
-      # JobAvailableTextWorker.perform_async(trans.recycler_user_id)
+    if trans.errors.empty?
+      create_flash_notice_and_send_create_notifications(trans)
     end
   end
 
@@ -49,10 +54,10 @@ class TransactionsController < ApplicationController
                                           )
     end
 
-    def create_flash_notice(user)
-      if user.recyclables.last.trans_type == 'redeemable'
+    def create_flash_notice_and_send_create_notifications(trans)
+      if trans.trans_type == 'redeemable'
         flash.notice = "Redeemable transaction has been created!"
-      elsif user.recyclables.last.trans_type == 'samaritan'
+      elsif trans.trans_type == 'samaritan'
         flash.notice = "Samaritan transaction has been created!"
       end
       # JobAvailableEmailTextWorker.perform_async(user.id)

@@ -24,8 +24,7 @@ class RedeemersController < ApplicationController
       trans.update_attributes(transaction_update_params)
     end
     if trans.errors.empty?
-      # TransactionUpdateEmailWorker.perform_async(trans.id)
-      # TransactionUpdateTextWorker.perform_async(trans.id)
+      update_flash_notice_and_send_update_notifications(trans)
     end
     respond_to do |format|
       format.json {render :json => trans}
@@ -43,25 +42,22 @@ class RedeemersController < ApplicationController
                                       )
     end
 
-    def update_flash_notice(recyclable)
-      if recyclable.selected and !recyclable.completed
-        user_recyclable = UserRecyclable.all.where(recyclable_id: recyclable.id)
-        user_recyclable.last.redeemer_id = current_user.id
-        user_recyclable.last.save
-        if recyclable.trans_type == "redeemable"
+    def update_flash_notice_and_send_update_notifications(trans)
+      if trans.selected and !trans.completed
+        if trans.trans_type == "redeemable"
           flash.notice = "Redeemable transaction has been selected!"
         else
           flash.notice = "Good Samaritan transaction has been selected!"
         end
-        # TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
+        # TransactionUpdateEmailTextWorker.perform_async(trans.id)
       end
-      if recyclable.selected and recyclable.completed
-        if recyclable.trans_type == "redeemable"
+      if trans.selected and trans.completed
+        if trans.trans_type == "redeemable"
           flash.notice = "Redeemable transaction has been completed!"
         else
           flash.notice = "Good Samaritan transaction has been completed!"
         end
-        # TransactionUpdateEmailTextWorker.perform_async(recyclable.id)
+        # TransactionUpdateEmailTextWorker.perform_async(trans.id)
       end
       redirect_to redeemers_path
     end

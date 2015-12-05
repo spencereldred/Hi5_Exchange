@@ -1,7 +1,12 @@
 class ProfilesController < ApplicationController
 
   def index
-    users = Profile.all
+    @current_profile = Profile.where(user_id: current_user.id)[0]
+    if @current_profile.function == 'super_admin'
+      users = Profile.all
+    else
+      users = Profile.where(group_id: @current_profile.group_id)
+    end
     respond_to do |format|
       format.html
       format.json { render :json => users }
@@ -66,5 +71,6 @@ class ProfilesController < ApplicationController
                                         :phone,      :function
                                       )
     end
+
 
 end
