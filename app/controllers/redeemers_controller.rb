@@ -5,8 +5,11 @@ class RedeemersController < ApplicationController
   def index
     # returns transactions in a 20 mile radius to Redeemers index page
     @current_profile = Profile.where(user_id: current_user.id)[0]
+    public_group_id = Group.where(name: "public_group")[0].id;
     puts "@@@@@@@@@@@@@@@@@??????????!!!!!!!!!!!!!!!! #{@current_profile.inspect} !!!!!!!!!!????????@@@@@"
-    trans = Transaction.near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
+    # Device.where("parent_id =" +  @parent.id.to_s + " OR status = 0")
+    trans = Transaction.where("group_id =" + @current_profile.group_id.to_s + " OR group_id =" + public_group_id.to_s)
+            .near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
     respond_to do |format|
       format.html
       format.json { render :json => trans }
