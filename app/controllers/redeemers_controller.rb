@@ -9,7 +9,7 @@ class RedeemersController < ApplicationController
     puts "@@@@@@@@@@@@@@@@@??????????!!!!!!!!!!!!!!!! #{@current_profile.inspect} !!!!!!!!!!????????@@@@@"
     # Device.where("parent_id =" +  @parent.id.to_s + " OR status = 0")
     trans = Transaction.where("group_id =" + @current_profile.group_id.to_s + " OR group_id =" + public_group_id.to_s)
-            .near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
+                       .near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
     respond_to do |format|
       format.html
       format.json { render :json => trans }

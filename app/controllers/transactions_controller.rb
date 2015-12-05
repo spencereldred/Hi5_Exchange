@@ -5,9 +5,9 @@ class TransactionsController < ApplicationController
     @current_profile = Profile.where(user_id: current_user.id)[0]
     if @current_profile.function == 'super_admin'
       trans = Transaction.all
-      # trans = Transaction.near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
     else
-      trans = Transaction.where(group_id: @current_profile.group_id).near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
+      trans = Transaction.where(group_id: @current_profile.group_id)
+                         .near([@current_profile.latitude, @current_profile.longitude], @current_profile.radius)
     end
     respond_to do |format|
       format.html

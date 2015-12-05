@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
 
   def index
     @current_profile = Profile.where(user_id: current_user.id)[0]
+    public_group_id = Group.where(name: "public_group")[0].id;
     if @current_profile.function == 'super_admin'
       groups = Group.all
     else

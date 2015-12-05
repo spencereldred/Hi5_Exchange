@@ -85,7 +85,7 @@
           </thead>
           <tbody>
               <tr ng-repeat="transaction in transactions | filter: {recycler_user_id: <%= @current_profile.id %>} | filter: {trans_type: 'redeemable'} |filter: {completed: false }">
-                <td><%= current_user[:address]%></td>
+                <td><%= @current_profile[:address]%></td>
                 <td>{{transaction.plastic}}</td>
                 <td>{{transaction.cans}}</td>
                 <td>{{transaction.glass}}</td>

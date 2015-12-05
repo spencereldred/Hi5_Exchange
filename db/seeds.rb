@@ -1,11 +1,9 @@
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+  ####  Super Admin  ####
 
-  @public_group = Group.create(name: 'public_group', promo_code: 'public', description: 'public group', url: 'public.com')
-  @maui_group = Group.create(name: 'maui_group', promo_code: 'maui', description: 'first maui group', url: 'maui.com')
-  @sf_group = Group.create(name: 'sf_group', promo_code: 'sf', description: 'first sf group', url: 'sf.com')
-  @co_group = Group.create(name: 'co_group', promo_code: 'co', description: 'first co group', url: 'co.com')
-  @super_admin_group = Group.create(name: 'super_admin_group', promo_code: 'super_admin', description: 'first admin group', url: 'admin.com')
+  @super_admin_group = Group.create(
+    name: 'super_admin_group', promo_code: 'super_admin',
+    description: 'first admin group', url: 'admin.com'
+    )
 
   @super_admin = User.create(
     email: 'super_admin@example.com', password: 'password',
@@ -20,6 +18,11 @@
   sleep(1)
 
   ####  HI  ####
+
+  @maui_group = Group.create(
+    name: 'maui_group', promo_code: 'maui',
+    description: 'first maui group', url: 'maui.com'
+    )
 
   @maui_group_admin = User.create(
     email: 'maui_group_admin@example.com', password: 'password',
@@ -66,6 +69,11 @@
 
   ####  Public  ####
 
+  @public_group = Group.create(
+    name: 'public_group', promo_code: 'public',
+    description: 'public group', url: 'public.com'
+    )
+
   @public_group_admin = User.create(
     email: 'public_group_admin@example.com', password: 'password',
     password_confirmation: 'password')
@@ -110,6 +118,11 @@
   sleep(1)
 
   ####  SF  ####
+
+  @sf_group = Group.create(
+    name: 'sf_group', promo_code: 'sf',
+    description: 'first sf group', url: 'sf.com'
+    )
 
   @sf_group_admin = User.create(
     email: 'sf_group_admin@example.com', password: 'password',
@@ -175,6 +188,11 @@
   sleep(1)
 
   ####  CO  ####
+
+  @co_group = Group.create(
+    name: 'co_group', promo_code: 'co',
+    description: 'first co group', url: 'co.com'
+    )
 
   @co_group_admin = User.create(
     email: 'co_group_admin@example.com', password: 'password',
