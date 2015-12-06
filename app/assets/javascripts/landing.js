@@ -121,7 +121,7 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       return dateString;
     };
 
-    $scope.login = $scope.signUp = false;
+    $scope.login = $scope.signUp = $scope.showForgotPassword = false;
 
     $scope.signIn =$scope.howItWorks = $scope.recyclerSignUp =
     $scope.userProfile = $scope.redeemer = $scope.recycler = false;
@@ -140,6 +140,7 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       e.preventDefault();
       $scope.login = false;
       $scope.signUp = false;
+      $scope.showForgotPassword = false;
       console.log("showHome: " + $scope.login);
     };
 
@@ -147,6 +148,7 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       e.preventDefault();
       $scope.login = true;
       $scope.signUp = false;
+      $scope.showForgotPassword = false;
       console.log("showLogin: " + $scope.login);
     };
 
@@ -154,8 +156,17 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       e.preventDefault();
       $scope.login = false;
       $scope.signUp = true;
+      $scope.showForgotPassword = false;
       console.log("showSignup: " + $scope.signUp);
     };
+
+    $scope.forgotPassword = function (e) {
+      e.preventDefault();
+      $scope.login = false;
+      $scope.signUp = false;
+      $scope.showForgotPassword = true;
+      console.log("forgotPassword: " + $scope.showForgotPassword);
+    }
 
     $scope.toggleSignIn = function () {
       $scope.howItWorks = $scope.recyclerSignUp = $scope.redeemerSignUp = false;
