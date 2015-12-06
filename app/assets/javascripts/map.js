@@ -4,7 +4,7 @@ $(function(){
   var geocoder;
   var center_latitude = $('#center_latitude').val();
   var center_longitude = $('#center_longitude').val();
-  console.log("latitude: " + center_latitude + ", longitude: " + center_longitude)
+  // console.log("latitude: " + center_latitude + ", longitude: " + center_longitude)
   function initialize() {
     window.mapWasInitialized = true;
     geocoder = new google.maps.Geocoder();

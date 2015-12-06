@@ -121,7 +121,9 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       return dateString;
     };
 
-    $scope.signIn = $scope.howItWorks = $scope.recyclerSignUp =
+    $scope.login = $scope.signUp = false;
+
+    $scope.signIn =$scope.howItWorks = $scope.recyclerSignUp =
     $scope.userProfile = $scope.redeemer = $scope.recycler = false;
     $rootScope.showFlash = false;
     $scope.redeemerSignUp = true;
@@ -132,6 +134,27 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       $scope.hideBanner = false;
       $scope.howItWorks = true;
       clearUserSignUpFields();
+    };
+
+    $scope.showHome = function (e) {
+      e.preventDefault();
+      $scope.login = false;
+      $scope.signUp = false;
+      console.log("showHome: " + $scope.login);
+    };
+
+    $scope.showLogin = function (e) {
+      e.preventDefault();
+      $scope.login = true;
+      $scope.signUp = false;
+      console.log("showLogin: " + $scope.login);
+    };
+
+    $scope.showSignup = function (e) {
+      e.preventDefault();
+      $scope.login = false;
+      $scope.signUp = true;
+      console.log("showSignup: " + $scope.signUp);
     };
 
     $scope.toggleSignIn = function () {
