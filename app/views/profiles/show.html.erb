@@ -1,10 +1,14 @@
-<h1>Profile Show Page</h1>
-<div>First name: <%= @profile.first_name %></div>
-<div>Last name: <%= @profile.last_name %></div>
-<div>Address: <%= @profile.address %></div>
-<div>City: <%= @profile.city %></div>
-<div>State: <%= @profile.state %></div>
-<div>Zipcode: <%= @profile.zipcode %></div>
-<div>Function: <%= @profile.function %></div>
-<div>Phone: <%= @profile.phone %></div>
-<div><a href="/profiles/<%= @profile.id %>/edit"><button class="btn btn-primary">Edit Profile</button></a></div>
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-7 col-xs-offset-1 col-xs-7">
+    <h1>Profile Show Page</h1>
+    <div>First name: <%= @profile.first_name %></div>
+    <div>Last name: <%= @profile.last_name %></div>
+    <div>Address: <%= @profile.address %></div>
+    <div>City: <%= @profile.city %></div>
+    <div>State: <%= @profile.state %></div>
+    <div>Zipcode: <%= @profile.zipcode %></div>
+    <div>Function: <%= @profile.function %></div>
+    <div>Phone: <%= @profile.phone %></div>
+    <div><a href="/profiles/<%= @profile.id %>/edit"><button class="btn btn-primary">Edit Profile</button></a></div>
+</div>
+</div>

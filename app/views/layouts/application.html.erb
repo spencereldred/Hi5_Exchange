@@ -32,7 +32,7 @@
               <% else %>
                 <a ng-click="showHome($event)" ng-href="/users/login">Home</a> |
                 <a ng-click="showLogin($event)" ng-href="/users/login">Login</a> |
-                <a ng-click="showSignup($event)" ng-href="/users/login">new Sign Up</a> |
+                <a ng-click="showSignup($event)" ng-href="/users/login">Sign Up</a> |
                 <%= link_to "Twitter Sign In", user_omniauth_authorize_path(:twitter) %> |
                 <%= link_to "Facebook Sign In", user_omniauth_authorize_path(:facebook) %>
               <% end %>
