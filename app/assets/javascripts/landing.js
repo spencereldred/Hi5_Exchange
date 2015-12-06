@@ -123,24 +123,35 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
 
     $scope.login = $scope.signUp = $scope.showForgotPassword = false;
 
-    $scope.signIn =$scope.howItWorks = $scope.recyclerSignUp =
+    $scope.signIn = $scope.howItWorks = $scope.recyclerSignUp =
     $scope.userProfile = $scope.redeemer = $scope.recycler = false;
     $rootScope.showFlash = false;
     $scope.redeemerSignUp = true;
 
-    $scope.toggleHowItWorks = function () {
-      $scope.signIn = $scope.recyclerSignUp = $scope.redeemerSignUp = $scope.userProfile = false;
-      $rootScope.showFlash = false;
-      $scope.hideBanner = false;
+    $scope.showHowItWorks = function (e) {
+      e.preventDefault();
+      $scope.login = false;
+      $scope.signUp = false;
+      $scope.showForgotPassword = false;
       $scope.howItWorks = true;
-      clearUserSignUpFields();
+      console.log("showHowItWorks: " + $scope.howItWorks);
     };
+
+    $scope.hideHowItWords = function (e) {
+      e.preventDefault();
+      $scope.login = false;
+      $scope.signUp = false;
+      $scope.showForgotPassword = false;
+      $scope.howItWorks = false;
+      console.log("hideHowItWords: " + $scope.howItWorks);
+    }
 
     $scope.showHome = function (e) {
       e.preventDefault();
       $scope.login = false;
       $scope.signUp = false;
       $scope.showForgotPassword = false;
+      $scope.howItWorks = false;
       console.log("showHome: " + $scope.login);
     };
 
@@ -149,6 +160,7 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       $scope.login = true;
       $scope.signUp = false;
       $scope.showForgotPassword = false;
+      $scope.howItWorks = false;
       console.log("showLogin: " + $scope.login);
     };
 
@@ -157,6 +169,7 @@ app.controller('landingPageController', ['$scope', '$rootScope', '$resource', 'U
       $scope.login = false;
       $scope.signUp = true;
       $scope.showForgotPassword = false;
+      $scope.howItWorks = false;
       console.log("showSignup: " + $scope.signUp);
     };
 

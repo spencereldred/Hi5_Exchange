@@ -17,22 +17,23 @@
   </head>
   <body>
     <div id="wrap" ng-controller="landingPageController">
-
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-offset-3 col-sm-7 col-xs-offset-1 col-xs-7">
             <div id="user_nav">
               <% if user_signed_in? %>
                 Logged in as <strong><%= current_user.email %></strong>.
-                <%= link_to 'Change Password', edit_user_registration_path %> |
-                <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
+                <%= link_to "Home", root_path %> |
+                <a ng-click="showHowItWorks($event)" ng-href="#">How it Works</a> |
+                <%#= link_to "How it Works", how_it_works_path %>
                 <%= link_to "Edit Profile", edit_profile_path(current_user.profile.id) if !current_user.profile.nil? %> |
-                <%= link_to "How it Works", how_it_works_path %> |
-                <%= link_to "Home", root_path %>
+                <%= link_to 'Change Password', edit_user_registration_path %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
               <% else %>
                 <a ng-click="showHome($event)" ng-href="/users/login">Home</a> |
                 <a ng-click="showLogin($event)" ng-href="/users/login">Login</a> |
                 <a ng-click="showSignup($event)" ng-href="/users/login">Sign Up</a> |
+                <a ng-click="showHowItWorks($event)" ng-href="#">How it Works</a> |
                 <%= link_to "Twitter Sign In", user_omniauth_authorize_path(:twitter) %> |
                 <%= link_to "Facebook Sign In", user_omniauth_authorize_path(:facebook) %>
               <% end %>
@@ -44,13 +45,38 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <!--  -->
+        <div class="row"><!-- Banner -->
           <div class="col-sm-offset-3 col-sm-9 col-xs-offset-1 col-xs-9">
             <%= image_tag("hi5_banner.png", class: "img-responsive", width: "60%")  %>
           </div>
+        </div><!-- end Banner -->
+
+        <!-- How It Works -->
+        <div class="jumbotron" ng-show="howItWorks">
+          <h2 class="heading_for_jumbotron">How it Works</h2>
+          <div class="row">
+            <h2 class="text-center">Recycler</h2>
+            <li class="col-sm-offset-1 col-sm-11" ng-repeat="rule in recyclerRules"><p>{{rule}}</p></li>
+            <!-- <h2 class="text-center">Redeemer</h2>
+            <li class="col-sm-offset-1 col-sm-11" ng-repeat="rule in redeemerRules" ><p>{{rule}}</p></li> -->
+            <div class="row">
+              <button class="btn btn-default btn-lg right" ng-click="hideHowItWords($event)">Close</button>
+            </div>
+          </div>
         </div>
+        <!-- end How It Works -->
+
         <%= yield %>
       </div>
     </div>
   </body>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <h6 class="text-center">Hi5 Exchange - Copyright 2013</h6>
+      </div>
+      <br/><br/>
+    </div>
+  </footer>
 </html>
